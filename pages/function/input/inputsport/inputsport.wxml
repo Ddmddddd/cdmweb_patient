@@ -1,0 +1,81 @@
+<!--pages/input/inputsport/inputsport.wxml-->
+<view class='page'>
+  <form bindsubmit='sportformSubmit' bindreset='formReset'>
+
+    <view class="weui-cells__title">测量时间</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">日期</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="date" value='{{date}}' start="2017-11-1"  end="2022-12-31" bindchange='bindDateChange'>
+            <view class='weui-input'>{{date}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">时间</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="time" value='{{time}}' start="00:00" end="23:59" bindchange='bindTimeChange'>
+            <view class='weui-input'>{{time}}</view>
+          </picker>
+        </view>
+      </view>
+    </view>
+
+    <view class="weui-cells__title">运动情况</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">运动类型</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="selector" value='{{sportsType}}' range='{{sportstypeArr}}' range-key='name' bindchange='bindTypeChange'>
+            <view class='weui-input'>{{sportsType}}</view>
+          </picker>
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">运动时间</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input type='digit' class='weui-input' placeholder='单位min' value='{{durationTime}}' bindinput='bindInputdurationTime' />
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">运动强度</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="selector" value='{{intensity}}'range='{{intensityArr}}' range-key='name' bindchange='bindintensityChange'>
+            <view class='weui-input'>{{intensity}}</view>
+          </picker>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells__title">备注：</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <textarea class="weui-textarea" placeholder="若有特殊说明，请备注" style="height: 3.3em" value='{{memo}}' bindinput='bindInputCom'  />
+
+        </view>
+      </view>
+    </view>
+
+  <block wx:if="{{serialNo!=0}}">
+      <button bindtap="dataManager" data-status="{{254}}" type='primary'>确定修改</button>
+      <button bindtap="dataManager" data-status="{{255}}" type="warn">删除</button>
+    </block>
+    <block wx:else>
+      <button bindtap="dataManager" data-status="{{0}}" type='primary'>完成</button>
+    </block>
+  </form>
+
+</view>

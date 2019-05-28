@@ -1,0 +1,40 @@
+<!-- pages/sports/sports.wxml -->
+<view class='container'>
+  <!-- <view class="circle-box">
+    <canvas class="circle" style=" width:180px; height:180px;" canvas-id="canvasCircle">
+    </canvas>
+    <canvas class="circle" style="width:180px; height:180px;" canvas-id="canvasArcCir">
+    </canvas>
+
+    <view class='circle-content'>
+      <text class='step step-text'>步数</text>
+      <view class="step">{{step}}</view>
+      <text class='step step-target'>目标步数：9000</text>
+    </view>
+  </view> -->
+  <navigator class='record-item' url='../input/inputsport/inputsport?id=0'>
+    <view class='record-item-add'>
+      <view class='add-icon'>+</view>
+      <view class='add-title'>添加一次记录</view>
+    </view>
+  </navigator>
+  <block wx:for="{{sports}}" wx:for-item="sport" wx:key="index" wx:for-index="index">
+    <navigator wx:if="{{sport.sportsType!=6}}" class='record-item' url='../input/inputsport/inputsport?id={{sport.serialNo}}&time={{sport.happenDateTime}}&sportsType={{sport.sportsType}}&dur={{sport.durationTime}}&int={{sport.intensity}}&memo={{sport.memo}}&step={{sport.stepCount}}'>
+      <view class='record-item-history'>
+        <view class='history-date'>
+          <view class='history-day'>{{date[index][0]}}</view>
+          <view class='history-time'>{{date[index][1]}}</view>
+        </view>
+        <!-- <view class='history-date'>{{bp.measureTime}}</view> -->
+        <view class='history-type'>
+          <view class='history-data'>{{sport.sportsType}}</view>
+          <view class='history-unit'>类型</view>
+        </view>
+        <view class='history-dur'>
+          <view class='history-data'>{{sport.durationTime}}min</view>
+          <view class='history-unit'>强度{{sport.intensity}}</view>
+        </view>
+      </view>
+    </navigator>
+  </block>
+</view>

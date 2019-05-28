@@ -1,0 +1,32 @@
+<!--pages/weight/weight.wxml-->
+<view class='container'>
+  <view class=" charts_item">
+  </view>
+  <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+  <navigator class='chart-nav' url="../charts/wgareachart/wgareachart">更多详情</navigator>
+
+  <navigator class='record-item' url='../input/inputwg/inputwg?id=0&weight=""&memo=""&time=""'>
+    <view class='record-item-add'>
+      <view class='add-icon'>+</view>
+      <view class='add-title'>添加一次记录</view>
+    </view>
+  </navigator>
+
+
+  <block wx:for="{{visiblewgs}}" wx:for-item="wg" wx:key="index" wx:for-index="index">
+    <navigator class='record-item' url='../input/inputwg/inputwg?id={{wg.serialNo}}&weight={{wg.weight}}&memo={{wg.memo}}&time={{wg.measureDateTime}}'>
+      <view class='record-item-history'>
+        <view class='history-date'>
+          <view class='history-day'>{{date[index][0]}}</view>
+          <view class='history-time'>{{date[index][1]}}</view>
+        </view>
+        <!-- <view class='history-date'>{{bp.measureTime}}</view> -->
+        <view class='history-wg'>
+          <view class='history-data'> {{wg.weight||'未输入'}}</view>
+          <view class='history-unit' style='margin-left:2%'>Kg</view>
+        </view>
+      </view>
+    </navigator>
+  </block>
+  <button class='wg-chart-btn' bindtap='NavChart' >查看体重图表详情</button>
+</view>

@@ -1,0 +1,87 @@
+/* pages/rank/rank.wxss */
+
+.rank-item {
+  height: 200px;
+  width: 100%;
+  background-color: deepskyblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.swiper-tab {
+  width: 100%;
+  border-bottom: 2rpx solid #777;
+  text-align: center;
+  line-height: 80rpx;
+}
+
+.swiper-tab-list {
+  font-size: 30rpx;
+  display: inline-block;
+  width: 50%;
+  color: #777;
+}
+
+.on {
+  color: #da7c0c;
+  border-bottom: 5rpx solid lightskyblue;
+}
+
+swiper {
+  height: 400px;
+  width: 100%;
+  overflow: auto;
+}
+.rank-score{
+  width: 100px;
+  height: 100px;
+  border-radius: 100px;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.score-text1{
+  font-size: 18px;
+  color: deepskyblue;
+}
+.score-text2{
+  font-size: 25px;
+}
+.rank-ranking{
+    font-size: 25px;
+}
+.rank-beat{
+  font-size: 16px;
+  color: dimgray;
+}
+.rank-list {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid gainsboro;
+  height: 40px;
+  justify-content: center;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+}
+
+.list-index {
+  width: 20%;
+  text-align: center;
+}
+
+.list-name {
+  width: 40%;
+  text-align: center;
+}
+
+.list-score {
+  width: 40%;
+  text-align: center;
+}

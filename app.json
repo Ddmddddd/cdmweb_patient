@@ -1,0 +1,76 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/homepage/homepage",
+    "pages/setting/setting",
+    "pages/register/register",
+    "pages/new_register/new_register",
+    "pages/function/bp/bp",
+    "pages/function/weight/weight",
+    "pages/function/medicine/medicine",
+    "pages/function/sports/sports",
+    "pages/function/uncomf/uncomf",
+    "pages/function/eat/eat",
+    "pages/function/bg/bg",
+    "pages/function/report/report",
+    "pages/function/rank/rank",
+    "pages/function/charts/bplinechart/bplinechart",
+    "pages/function/charts/wgareachart/wgareachart",
+    "pages/function/class/class-index/class-index",
+    "pages/function/class/class-learn/class-learn",
+    "pages/function/class/class-sub/class-sub",
+    "pages/function/input/inputbg/inputbg",
+    "pages/function/input/inputbp/inputbp",
+    "pages/function/input/inputmed/inputmed",
+    "pages/function/input/inputwg/inputwg",
+    "pages/function/input/inputfood/inputfood",
+    "pages/function/input/inputuncomf/inputuncomf",
+    "pages/function/input/inputsport/inputsport",
+    "pages/function/input/inputtip/inputtip",
+    "pages/message/message",
+    "pages/message/mescontent/mescontent",
+    "pages/setting/user/user",
+    "pages/setting/bindUserInfo/bindphone/bindphone",
+    "pages/setting/bindUserInfo/bindpassword/bindpassword",
+    "pages/function/charts/bgcalendar/bgcalendar"
+  ],
+  "window": {
+    "navigationBarTitleText": "慢病微管家",
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#f2f2f2",
+    "navigationBarBackgroundColor": "#fbfbfb",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#a9b7b7",
+    "selectedColor": "#3e9afe",
+    "borderStyle": "white",
+    "list": [
+      {
+        "selectedIconPath": "image/homepage_fill.png",
+        "iconPath": "image/homepage.png",
+        "pagePath": "pages/homepage/homepage",
+        "text": "首页"
+      },
+      {
+        "selectedIconPath": "image/message_fill.png",
+        "iconPath": "image/message.png",
+        "pagePath": "pages/message/message",
+        "text": "资讯"
+      },
+      {
+        "selectedIconPath": "image/mine_fill.png",
+        "iconPath": "image/mine.png",
+        "pagePath": "pages/setting/setting",
+        "text": "我的"
+      }
+    ]
+  },
+  "plugins": {
+    "calendar": {
+      "version": "1.1.3",
+      "provider": "wx92c68dae5a8bb046"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+<!-- pages/uncomf/uncomf.wxml -->
+<view class='container'>
+  <navigator class='record-item' url='../input/inputuncomf/inputuncomf?id=0'>
+    <view class='record-item-add'>
+      <view class='add-icon'>+</view>
+      <view class='add-title'>添加一次记录</view>
+    </view>
+  </navigator>
+  <block wx:for="{{uncomfs}}" wx:for-item="uncomf" wx:key="index" wx:for-index="index">
+    <navigator class='record-item' url='../input/inputuncomf/inputuncomf?id={{uncomf.serialNo}}&time={{uncomf.happenDateTime}}&feature={{feature[index]}}&memo={{uncomf.memo}}&name={{uncomf.discomfort}}'>
+      <view class='record-item-history'>
+        <view class='history-date'>
+          <view class='history-day'>{{date[index][0]}}</view>
+          <view class='history-time'>{{date[index][1]}}</view>
+        </view>
+        <!-- <view class='history-date'>{{uncomf.measureTime}}</view> -->
+        <view class='history-list'>
+          <!-- <block wx:for="{{uncomfname[index]}}" wx:key="*this" wx:for-index="index2"> -->
+            <view class='history-list-item'>{{uncomf.discomfort}}</view>
+          <!-- </block> -->
+        </view>
+      </view>
+    </navigator>
+  </block>
+</view>

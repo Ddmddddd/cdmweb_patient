@@ -1,0 +1,22 @@
+/* pages/bs/bs.wxss */
+@import '../bp/bp.wxss';
+.history-type{ 
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* padding-left: 4rpx; */
+}
+.history-timePoint{
+  font: 42rpx bolder;
+  color: #188df0;
+}
+.normal{
+  color: #188df0;
+}
+.high{
+  color: #FF4500;
+}
+.low{
+  color: #666;
+}

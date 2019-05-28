@@ -1,0 +1,53 @@
+<!--pages/user/user.wxml-->
+<!--pages/setting/setting.wxml-->
+<view class='page'>
+
+  <view class="weui-cells__title">账号</view>
+  <view class="weui-cells weui-cells_after-title">
+
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <view class="weui-label">病历号</view>
+      </view>
+      <view class="weui-cell__ft">{{patientid}}</view>
+    </view>
+
+    <!-- <view class="weui-cell" bindtap='bindChangeId'> -->
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <view class="weui-label">身份证号码</view>
+      </view>
+      <view  class="weui-cell__ft">{{identityCardNumber}} </view>
+    </view>
+
+    <navigator url='../bindUserInfo/bindphone/bindphone?phone={{phoneNumber}}' class="weui-cell weui-cell_access ">
+      <view class="weui-cell__bd">
+        <view class="weui-label">绑定手机</view>
+      </view>
+      <view   class="weui-cell__ft">{{phoneNumber}} </view>
+    </navigator>
+
+    <!-- <navigator url='../bindUserInfo/bindmail/bindmail?mail={{email}}' class="weui-cell weui-cell_access ">
+      <view class="weui-cell__bd">
+        <view class="weui-label">绑定邮箱</view>
+      </view>
+      <view  class="weui-cell__ft">{{email}} </view>
+    </navigator> -->
+
+  </view>
+
+  <view style='margin-top:100rpx'>
+    <view class="weui-cells__title">安全</view>
+
+    <view class="weui-cells weui-cells_after-title">
+      <navigator url='../bindUserInfo/bindpassword/bindpassword' class="weui-cell weui-cell_access ">
+        <view class="weui-cell__bd">
+          <view class="weui-label">修改密码</view>
+        </view>
+        <view class="weui-cell__ft"></view>
+      </navigator>
+    </view>
+
+  </view>
+
+</view>

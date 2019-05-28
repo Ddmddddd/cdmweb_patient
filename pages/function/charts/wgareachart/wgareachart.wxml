@@ -1,0 +1,3 @@
+<!--pages/charts/wgareachart/wgareachart.wxml-->
+
+<canvas canvas-id="lineCanvas" disable-scroll="true" style="width:750rpx;height:1200rpx;" bindtouchstart="touchHandler" bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas>

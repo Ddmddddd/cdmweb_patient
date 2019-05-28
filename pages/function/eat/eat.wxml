@@ -1,0 +1,47 @@
+<!-- pages/eat/eat.wxml -->
+<view class='container'>
+  <navigator wx:if="{{!(hidden&2)}}" class='record-item' url="../input/inputfood/inputfood?type=1&id=0">
+    <view class='record-item-add'>
+      <view class='add-icon'>+</view>
+      <view class='add-title'>添加早餐记录</view>
+    </view>
+  </navigator>
+  <navigator wx:if="{{!(hidden&4)}}" class='record-item' url="../input/inputfood/inputfood?type=2&id=0">
+    <view class='record-item-add'>
+      <view class='add-icon'>+</view>
+      <view class='add-title'>添加午餐记录</view>
+    </view>
+  </navigator>
+  <navigator wx:if="{{!(hidden&8)}}" class='record-item' url="../input/inputfood/inputfood?type=3&id=0">
+    <view class='record-item-add'>
+      <view class='add-icon'>+</view>
+      <view class='add-title'>添加晚餐记录</view>
+    </view>
+  </navigator>
+  <navigator class='record-item' url='../input/inputfood/inputfood?type=0&id=0'>
+    <view class='record-item-add'>
+      <view class='add-icon'>+</view>
+      <view class='add-title'>添加一次记录</view>
+    </view>
+  </navigator>
+
+  <block wx:for="{{foods}}" wx:for-item="food" wx:for-index="index2" wx:key="id">
+    <navigator class='record-item' url='../input/inputfood/inputfood?type={{food.type}}&id={{food.serialNo}}&time={{food.happenDateTime}}&kinds={{food.kinds}}&appetite={{food.appetite}}&memo={{food.memo}}'>
+      <view class='record-item-history'>
+        <view class='history-date'>
+          <view class='history-day'>{{eattype[index2]}}</view>
+          <view class='history-time'>{{date[index2][1]}}</view>
+        </view>
+        <!-- <view class='history-date'>{{bp.measureTime}}</view> -->
+        <view class='history-list'>
+          <block  wx:for="{{foodtype[index2]}}" wx:key="*this">
+            <view class='history-list-item'>
+            {{item}}{{appetite[index2][index]}}g
+            </view>
+          </block>
+        </view>
+      </view>
+    </navigator>
+  </block>
+
+</view>

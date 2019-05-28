@@ -1,0 +1,111 @@
+<!-- pages/homepage/homepage.wxml -->
+<view class='container'>
+  <view class=" home-card-item">
+    <view class="paddinghalfrem card-content">
+      <image class="image-profile" mode="aspectFill" src="../../image/userPhoto.jpeg" />
+      <view class="text-item">
+        <text class="text-title">{{nickname}},您好</text>
+        <text class="text-subtitle">已加入血压助手{{registTime}}天</text>
+      </view>
+      <!-- <view class="text-item" style='  margin-left: 70px;'>
+        <text class="text-subtitle">成长值</text>
+        <text class="text-title">??</text>
+      </view> -->
+    </view>
+    <view class="card-content" style='justify-content: space-around;'>
+      <view class='tip-card-item'>
+        <image class="backimage-tip" src="../../image/card1.jpg" />
+        <view class="text-item" style='position:relative;left:-5px;top:-93px;z-index:1'>
+          <text class="text-subtitle white ">目标血压</text>
+          <text class="PressureGoal">{{systolicPressureGoal}}/{{diastolicPressureGoal}}</text>
+        </view>
+      </view>
+      <view class='tip-card-item'>
+        <image class="backimage-tip" src="../../image/card2.jpg" />
+        <view class="text-item" style='position:relative;left:-5px;top:-93px;z-index:1'>
+          <text class="text-subtitle white">复诊时间</text>
+          <text class="returnVisitDate">{{returnVisitDate}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='nav-grids'>
+    <navigator url="../function/bp/bp" class=" nav-grid-item">
+      <view class="paddinghalfrem grid-content ">
+        <view class="text-item-grid">
+          <image class="image-grid" mode='aspectFit' src='../../image/bp.png' />
+          <text class="text-title">测量血压</text>
+        <view wx:if="{{bptask>0}}" class='red-icon icon'>{{bptask}}</view>
+        </view>
+      </view>
+    </navigator>
+    <navigator url="../function/class/class-index/class-index" class=" nav-grid-item">
+      <view class="paddinghalfrem grid-content">
+        <view class="text-item-grid">
+          <image class="image-grid" mode='aspectFit' src='../../image/class.png' />
+          <text class="text-title">健康课堂</text>
+        <view wx:if="{{classtask>0}}" class='red-icon icon'>{{classtask}}</view>
+        </view>
+      </view>
+    </navigator>
+    <navigator url="../function/medicine/medicine" class=" nav-grid-item">
+      <view class="paddinghalfrem grid-content ">
+        <view class="text-item-grid">
+          <image class="image-grid" mode='aspectFit' src='../../image/medicine.png' />
+          <text class="text-title">服用药物</text>
+          <view wx:if="{{medtask>0}}" class='red-icon icon'>{{medtask}}</view>
+        </view>
+      </view>
+    </navigator>
+    <navigator url="../function/eat/eat" class=" nav-grid-item">
+      <view class="paddinghalfrem grid-content ">
+        <view class="text-item-grid">
+          <image class="image-grid" mode='aspectFit' src='../../image/food.png' />
+          <text class="text-title">饮食</text>
+        </view>
+      </view>
+    </navigator>
+    <navigator url="../function/sports/sports" class=" nav-grid-item">
+      <view class="paddinghalfrem grid-content ">
+        <view class="text-item-grid">
+          <image class="image-grid" mode='aspectFit' src='../../image/sport.png' />
+          <text class="text-title">运动</text>
+        </view>
+      </view>
+    </navigator>
+    <navigator url="../function/uncomf/uncomf" class=" nav-grid-item">
+      <view class="paddinghalfrem grid-content ">
+        <view class="text-item-grid">
+          <image class="image-grid" mode='aspectFit' src='../../image/cry.png' />
+          <text class="text-title">不适情况</text>
+        </view>
+      </view>
+    </navigator>
+    <navigator url="../function/weight/weight" class=" nav-grid-item">
+      <view class="paddinghalfrem grid-content ">
+        <view class="text-item-grid">
+          <image class="image-grid" mode='aspectFit' src='../../image/weight.png' />
+          <text class="text-title">测量体重</text>
+          <view wx:if="{{weighttask>0}}" class='red-icon icon'>{{weighttask}}</view>
+        </view>
+      </view>
+    </navigator>
+    <navigator url="../function/report/report" class=" nav-grid-item">
+      <view class="paddinghalfrem grid-content ">
+        <view class="text-item-grid">
+          <image class="image-grid" mode='aspectFit' src='../../image/report.png' />
+          <text class="text-title">月报</text>
+        </view>
+      </view>
+    </navigator>
+    <navigator url="../function/bg/bg" class=" nav-grid-item">
+      <view class="paddinghalfrem grid-content ">
+        <view class="text-item-grid">
+          <image class="image-grid" mode='aspectFit' src='../../image/bg.png' />
+          <text class="text-title">测量血糖</text>
+          <view wx:if="{{bgtask>0}}" class='red-icon icon'>{{bgtask}}</view>
+        </view>
+      </view>
+    </navigator>
+  </view>
+</view>

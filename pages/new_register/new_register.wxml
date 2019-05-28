@@ -1,0 +1,87 @@
+<!-- pages/new_register/new_register.wxml -->
+<view class='page'>
+  <view class="registe-desc">
+    <text>欢迎您加入{{hospitalName}}</text>
+    <text>高血压院外管理计划</text>
+  </view>
+  <view class="registe-body">
+    <view class="registe">
+      <view>姓名</view>
+      <view>
+        <input type="text" value="{{patientName}}" bindblur="patientNameInput" bindinput="patientNameInput" />
+      </view>
+    </view>
+    <view class="error-info" wx:if="{{nameError==true}}">请输入姓名</view>
+    <view class="registe">
+      <view>身份证号</view>
+      <view>
+        <input type="text" bindinput="idcardNumberInput" bindblur="validatePatientId" />
+      </view>
+    </view>
+    <view class="error-info" wx:if="{{identityError==true}}">{{identityErrorMsg}}</view>
+    <view class="registe">
+      <view>密码</view>
+      <view>
+        <input bindblur="validatePasswordAgain" type="number" bindinput="passWordInput" placeholder='长度不小于6位' />
+      </view>
+    </view>
+    <view class="registe">
+      <view>确认密码</view>
+      <view>
+        <input bindblur="validatePassword" type="number" bindinput="passWordCheckInput" placeholder='请再次输入密码' />
+      </view>
+    </view>
+    <view class="error-info" wx:if="{{passwordError==true}}">密码重复输入有误</view>
+    <view class="registe">
+      <view>性别</view>
+      <view>
+        <radio-group class="radio-group" bindchange="sexRadioChange">
+          <label class="radio">
+            <radio value="男" />
+            男
+          </label>
+          <label class="radio" style="margin-left: 5px;">
+            <radio value="女" />
+            女
+          </label>
+        </radio-group>
+      </view>
+    </view>
+    <view class="registe">
+      <view>手机号码</view>
+      <view>
+        <input type="number" bindinput="phoneNumberInput" bindblur="phonenumberCheck" />
+      </view>
+    </view>
+    <view class="error-info" wx:if="{{phonenumberError==true}}">手机号输入有误</view>
+    <view class="registe">
+      <view>学历</view>
+      <view>
+        <picker mode="selector" value='{{education}}' range='{{educationArr}}' bindchange='bindeducationChange'>
+          <view class='weui-input'>{{education}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class="registe">
+      <view>职业</view>
+      <view>
+        <picker mode="selector" value='{{profession}}' range='{{professionArr}}' bindchange='bindprofessionChange'>
+          <view class='weui-input'>{{profession}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class="registe">
+      <view>身高</view>
+      <view>
+        <input type="number" bindinput="heightInput" placeholder='单位：厘米' />
+      </view>
+    </view>
+    <view class="registe">
+      <view>体重</view>
+      <view>
+        <input type="number" bindinput="weightInput" placeholder='单位：公斤' />
+      </view>
+    </view>
+    <button bindtap="confirm_register" type='primary'>完成</button>
+  </view>
+</view>

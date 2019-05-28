@@ -1,0 +1,63 @@
+/* pages/new_register/new_register.wxss */
+page{
+  background-color:rgb(226, 247,252)
+}
+.registe-body {
+  width: 100%;
+}
+
+.registe-desc {
+  width: 100%;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.registe-desc > text {
+  color:black;
+  display: block;
+}
+.registe-desc > text:first-child {
+  font-size: 14pt;
+}
+.registe-desc > text:last-child {
+  font-size: 12pt;
+}
+
+.registe{  
+  width: 90%;
+  padding: 5px 0;
+  margin-left: 5%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  height: 35px;
+  border-bottom: 1px solid white;
+}
+.registe > view:first-child {
+  width: 40%;
+  border-right: 1px dashed gray;
+}
+
+.registe > view:nth-child(2){
+  width: 96%;
+  margin-left: 2%;
+}
+.registe_title{
+  font-size: 16pt;
+}
+
+button {
+  width: 80%;
+  margin: 30px 0 10px 10%;
+}
+
+.error-info {
+  text-align: center;
+  font-size: 12px;
+  color: red;
+}

@@ -1,0 +1,213 @@
+<!--pages/report/report.wxml-->
+<view class='container'>
+  <view class='report-item'>
+    <view class='report-item-title'>本月战绩</view>
+    <view class='pie-charts'>
+      <view class='circle-pie-charts'>
+        <canvas class="circle" style=" width:120px; height:120px;" canvas-id="canvasCircle1">
+        </canvas>
+        <canvas class="circle" style=" width:120px; height:120px;" canvas-id="canvasArcCir">
+        </canvas>
+        <view class='circle-sub'>月评得分</view>
+        <view class='circle-score'>{{monthlyScore}}</view>
+      </view>
+    </view>
+    <view class='summary'>
+      <view class='summary-item'>
+        <view class='summary-item-title'>血压检测</view>
+        <view class='summary-item-data'>{{bpRealTimes}}/{{bpGoalTimes}}</view>
+      </view>
+      <view class='summary-item'>
+        <view class='summary-item-title'>体重检测</view>
+        <view class='summary-item-data'>{{weightRealTimes}}/{{weightGoalTimes}}</view>
+      </view>
+      <view class='summary-item'>
+        <view class='summary-item-title'>服药记录</view>
+        <view class='summary-item-data'>{{drugReallTimes}}/{{drugGoalTimes}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class='report-item'>
+    <view class='report-item-title'>本月血压</view>
+    <view class='summary'>
+      <view class='summary-item'>
+        <view class='summary-item-title'>当前血压</view>
+        <view class='summary-item-data'>{{currentBP}}mmHg</view>
+      </view>
+      <view class='summary-item'>
+        <view class='summary-item-title'>我的目标</view>
+        <view class='summary-item-data'>{{goalBP}}mmHg</view>
+      </view>
+    </view>
+    <view class='pie-charts'>
+      <view class='circle-pie-charts'>
+        <canvas class="circle" style=" width:120px; height:120px;" canvas-id="canvasCircle2">
+        </canvas>
+        <view class='circle-sub'>测量次数</view>
+        <view class='circle-score'>{{bpRealTimes}}</view>
+      </view>
+
+      <view class='circle-note'>
+        <view class='circle-note-text sta'>达标{{bpstapercent}}%--{{bpStandardTimes}}次</view>
+        <view class='circle-note-text high'>偏高{{bphighpercent}}%--{{bpHigherTimes}}次</view>
+        <view class='circle-note-text low'>偏低{{bplowpercent}}%--{{bpLowerTimes}}次</view>
+      </view>
+    </view>
+    <view class='table'>
+      <view class='tr'>
+        <view class='th'>统计项</view>
+        <view class='th'>最高值</view>
+        <view class='th'>最低值</view>
+        <view class='th'>平均值</view>
+      </view>
+      <view class='tr'>
+        <view class='td'>收缩压</view>
+        <view class='td'>
+          <view class='td-data'>{{sbpMax}}</view>
+          <view class='td-time'>{{sbpMax_Time}}</view>
+        </view>
+        <view class='td'>
+          <view class='td-data'>{{sbpMin}}</view>
+          <view class='td-time'>{{sbpMin_Time}}</view>
+        </view>
+        <view class='td'>
+          <view class='td-data'>{{sbpAVG}}</view>
+        </view>
+      </view>
+      <view class='tr'>
+        <view class='td'>舒张压</view>
+        <view class='td'>
+          <view class='td-data'>{{dbpMax}}</view>
+          <view class='td-time'>{{dbpMax_Time}}</view>
+        </view>
+        <view class='td'>
+          <view class='td-data'>{{dbpMin}}</view>
+          <view class='td-time'>{{dbpMin_Time}}</view>
+        </view>
+        <view class='td'>
+          <view class='td-data'>{{dbpAVG}}</view>
+        </view>
+      </view>
+      <view class='tr'>
+        <view class='td'>脉压差</view>
+        <view class='td'>
+          <view class='td-data'>{{bpDifMax}}</view>
+          <view class='td-time'>{{bpDifMax_Time}}</view>
+        </view>
+        <view class='td'>
+          <view class='td-data'>{{bpDifMin}}</view>
+          <view class='td-time'>{{bpDifMin_Time}}</view>
+        </view>
+        <view class='td'>
+          <view class='td-data'>{{bpDifAVG}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='report-item'>
+    <view class='report-item-title'>本月心率</view>
+    <view class='pie-charts'>
+      <view class='circle-pie-charts'>
+        <canvas class="circle" style=" width:120px; height:120px;" canvas-id="canvasCircle3">
+        </canvas>
+        <view class='circle-sub'>测量次数</view>
+        <view class='circle-score'>{{hrRealTimes}}</view>
+      </view>
+      <view class='circle-note'>
+        <view class='circle-note-text sta'>达标{{hrstapercent}}%--{{hrStandardTimes}}次</view>
+        <view class='circle-note-text high'>偏高{{hrhighpercent}}%--{{hrHigherTimes}}次</view>
+        <view class='circle-note-text low'>偏低{{hrlowpercent}}%--{{hrLowerTimes}}次</view>
+      </view>
+    </view>
+    <view class='table'>
+      <view class='tr'>
+        <view class='th'>统计项</view>
+        <view class='th'>最高值</view>
+        <view class='th'>最低值</view>
+        <view class='th'>平均值</view>
+      </view>
+      <view class='tr'>
+        <view class='td'>心率值</view>
+        <view class='td'>
+          <view class='td-data'>{{hrMax}}</view>
+          <view class='td-time'>{{hrMax_Time}}</view>
+        </view>
+        <view class='td'>
+          <view class='td-data'>{{hrMin}}</view>
+          <view class='td-time'>{{hrMin_Time}}</view>
+        </view>
+        <view class='td'>
+          <view class='td-data'>{{hrAVG}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='report-item'>
+    <view class='report-item-title'>本月体重</view>
+    <view class='summary'>
+      <view class='summary-item'>
+        <view class='summary-item-title'>当前体重</view>
+        <view class='summary-item-data'>{{currentWeight}}Kg</view>
+      </view>
+      <view class='summary-item'>
+        <view class='summary-item-title'>我的目标</view>
+        <view class='summary-item-data'>{{goalWeight}}Kg</view>
+      </view>
+    </view>
+    <view class=''>
+      <image src='../../../image/you.png' class='pos {{BMIstatus}}'></image>
+      <image src='../../../image/bmibanner.jpg' class='banner'></image>
+      <view class='bmilables'>
+        <text>过轻</text>
+        <text>正常</text>
+        <text>过重</text>
+        <text>肥胖</text>
+        <text>过度肥胖</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- <view class='report-item'>
+    <view class='report-item-title'>本月排名</view>
+    <view class='rank'>第
+      <view style='font-size:28px'>{{currentRanking}}</view>名</view>
+    <view class='summary'>
+      <view class='summary-item'>
+        <view class='summary-item-title'>击败人数</view>
+        <view class='summary-item-data'>{{defeatNum}}人</view>
+      </view>
+      <view class='summary-item'>
+        <view class='summary-item-title'>下降名次</view>
+        <view class='summary-item-data'>{{goUpNum}}名</view>
+      </view>
+      <view class='summary-item'>
+        <view class='summary-item-title'>下月目标</view>
+        <view class='summary-item-data'>第{{predictNextRanking}}名</view>
+      </view>
+    </view>
+  </view>
+  <view class='report-item'>
+    <view class='report-item-title'>本月明星</view>
+    <view class='summary' style='height:100px'>
+      <view class='summary-item'>
+        <view class='summary-item-title' style='border:3px solid orange'>控压最好</view>
+        <view class='summary-item-data'>{{bpStar}}</view>
+        <view class='summary-item-data'>{{bestBP}}</view>
+      </view>
+      <view class='summary-item'>
+        <view class='summary-item-title' style='border:3px solid green'>得分最高</view>
+        <view class='summary-item-data'>{{scoreStar}}</view>
+        <view class='summary-item-data'>{{bestScore}}</view>
+      </view>
+      <view class='summary-item'>
+        <view class='summary-item-title' style='border:3px solid deepskyblue'>坚持最久</view>
+        <view class='summary-item-data'>{{persistenceStar}}</view>
+        <view class='summary-item-data'>{{bestDays}}</view>
+      </view>
+    </view>
+  </view> -->
+  
+</view>

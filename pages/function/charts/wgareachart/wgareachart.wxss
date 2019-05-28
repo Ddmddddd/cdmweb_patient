@@ -1,0 +1,10 @@
+/* pages/charts/wgareachart/wgareachart.wxss */
+page{
+  background-color: white
+}
+canvas{
+  background-color: white;
+  position: absolute;
+  top: 20px;
+  left: 2px;
+}

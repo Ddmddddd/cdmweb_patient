@@ -1,0 +1,39 @@
+<!-- index.wxml -->
+<view class='container'>
+  <image mode="aspectFit" src="../../image/login4.jpg" />
+  <view class="login-content">
+    <view class="login">
+      <view>账号</view>
+      <view>
+        <input class='weui-input' type="text" bindinput="userNameInput" value="{{userName}}" cursor-spacing="30rpx" placeholder="手机号"/>
+      </view>
+    </view>
+    <view class="login">
+      <view>密码</view>
+      <view class="login-password">
+        <input class='weui-input' type="text" bindinput="userPasswordInput" password="{{!showPsw}}" value="{{userPassword}}" cursor-spacing="30rpx"/>
+        <image src="{{ showPsw ? '../../image/open-eyes.png' : '../../image/close-eyes.png' }}" bindtap="switchShowPassword"></image>
+      </view>
+    </view>
+    <block wx:if="{{captchaRequire}}">
+      <view class="warning">
+        <text>已登陆出错三次</text>
+        <text>为了您的账号安全，请输入验证码后登陆</text>
+      </view>
+      <view class="login">
+        <view>验证码</view>
+        <view>
+          <input bindblur="" type="text" bindinput="userCaptchaInput"  placeholder='输入图片中的内容' cursor-spacing="50px" />
+        </view>
+      </view>
+      <view class="captcha">
+        <image src="{{imageValue}}" style="background-image:url('../../image/captcha.png');background-size:120px 40px" />
+        <view bindtap="newCaptcha">看不清？换一换</view>    
+      </view>
+    </block>
+    <view class='index_btn'>
+      <button style='color:white;background-color:lightskyblue' bindtap="logIn">登录</button>
+      <button bindtap="register">注册</button>
+    </view>
+  </view>
+</view>

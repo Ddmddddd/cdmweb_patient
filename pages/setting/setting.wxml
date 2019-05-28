@@ -1,0 +1,44 @@
+<!--pages/setting/setting.wxml-->
+
+<view class='container'>
+ <view class="weui-cells">
+    <navigator url="" class="weui-cell">
+      <view class='cell-icon'>
+        <image class='image-profile' mode='aspectFit' src='../../image/userPhoto.jpeg'></image>
+      </view>
+      <view class="cell-text">
+        <view class="title">{{patientName}}</view>
+        <view class="subtitle">{{patientid}}</view>
+      </view>
+    </navigator>
+  </view>
+
+    <view class="weui-cells__title" style='margin-top:100rpx;'></view>
+    <view class="weui-cells weui-cells_after-title">
+      <navigator url="user/user" class="weui-cell weui-cell_input ">
+        <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <view class="weui-label">账号与安全</view>
+          </view>
+        </view>
+      </navigator>
+      <!-- <navigator url="" class="weui-cell weui-cell_input ">
+        <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <view class="weui-label">提醒</view>
+          </view>
+        </view>
+      </navigator> -->
+      <view bindtap='quit' class="weui-cell weui-cell_input ">
+        <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <view class="weui-label">退出</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+ 
+
+
+</view>

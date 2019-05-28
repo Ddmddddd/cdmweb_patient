@@ -1,0 +1,10 @@
+.bp {
+  width: 110rpx;
+  text-align: right;
+}
+
+.hr {
+  width: 220rpx;
+  text-align: right;
+}
+

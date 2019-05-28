@@ -1,0 +1,76 @@
+/* pages/input/inputtip/inputtip.wxss */
+@import '../../bp/bp.wxss';
+.tip-item{
+  width:95%;
+  padding: 10px;
+  margin-top: 20px;
+}
+.item-title{
+  margin-bottom: 10px;
+  margin-left: 3%;
+  font-weight: bold;
+}
+.pos{
+  width: 30px;
+  height: 30px;
+}
+.banner{
+  width: 100%;
+  height: 30px;
+}
+.bplables{
+  display: flex;
+  justify-content: space-between;
+}
+.hrlables{
+  display: flex;
+  justify-content: space-around;
+}
+.B00{
+  margin-left: 2%;
+}
+.B01{
+  margin-left: 19%;
+}
+.B02{
+  margin-left: 35%;
+}
+.B03{
+  margin-left: 49%;
+}
+.B04{
+  margin-left: 62%;
+}
+.B05{
+  margin-left: 75%;
+}
+.B06{
+  margin-left: 88%;
+}
+.H00{
+  margin-left: 14%;
+}
+.H01{
+  margin-left: 47%;
+}
+.H02{
+  margin-left: 81%;
+}
+.info{
+  margin-top: 10px;
+  border: 2px dashed;
+  border-radius: 6px;
+  width: 90%;
+   margin-left: 2%; 
+  padding: 10px;
+  background-color: white;
+
+}
+.info-tag{
+  display: inline;
+  font-weight: bold;
+}
+.info-tip{
+  margin-top: 10px;
+
+}

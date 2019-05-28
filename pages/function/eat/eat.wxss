@@ -1,0 +1,18 @@
+/* pages/eat/eat.wxss */
+@import '../bp/bp.wxss';
+.history-list {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 90%;
+  overflow: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.history-list-item {
+  font: 44rpx;
+  color: #188df0;
+  line-height: 46rpx;
+}
+

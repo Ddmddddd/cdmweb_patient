@@ -1,0 +1,7 @@
+<!--pages/charts/bplinechart/bplinechart.wxml-->
+
+  <canvas canvas-id="lineCanvas" disable-scroll="true" style="width:750rpx;height:1300rpx;" bindtouchstart="touchHandler" bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas>
+
+<!-- <view class='charts-item-full'>
+  <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+</view> -->

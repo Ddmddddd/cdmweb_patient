@@ -1,0 +1,31 @@
+<!--pages/bs/bs.wxml-->
+<view class='container'>
+
+  <navigator class='record-item' url='../input/inputbg/inputbg?id=0'>
+    <view class='record-item-add'>
+      <view class='add-icon'>+</view>
+      <view class='add-title'>添加一次血糖记录</view>
+    </view>
+  </navigator>
+
+  <block wx:for="{{bgs}}" wx:for-item="bg" wx:for-index="index2" wx:key="id">
+    <navigator class='record-item' url='../input/inputbg/inputbg?timePoint={{bg.timePoint}}&id={{bg.serialNo}}&time={{bg.measureDateTime}}&memo={{bg.memo}}&bloodGlucose={{bg.bloodGlucose}}'>
+      <view class='record-item-history'>
+        <view class='history-date'>
+          <view class='history-day'>{{date[index2][0]}}</view>
+          <view class='history-time'>{{date[index2][1]}}</view>
+        </view>
+        <view class="history-type">
+          <view class="history-timePoint">{{bg.timePoint}}</view>
+        </view>
+        <view class='history-bp'>
+          <view class="history-data {{warning[index2]}}">
+          {{bg.bloodGlucose}}
+          </view>
+          <view class='history-unit'>mmol/L</view>
+        </view>
+      </view>
+    </navigator>
+  </block>
+  <button class='bp-chart-btn' bindtap='NavChart' >查看血糖历史详情</button>
+</view>

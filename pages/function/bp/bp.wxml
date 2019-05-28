@@ -1,0 +1,36 @@
+<view class='container'>
+  <view class=" charts_item">
+  </view>
+  <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+  <navigator class='chart-nav' url="../charts/bplinechart/bplinechart">更多详情</navigator>
+  <navigator class='record-item' url='../input/inputbp/inputbp?id=0'>
+    <view class='record-item-add'>
+      <view class='add-icon'>+</view>
+      <view class='add-title'>添加一次记录</view>
+    </view>
+  </navigator>
+
+
+  <block wx:for="{{visiblebps}}" wx:for-item="bp" wx:key="index" wx:for-index="index">
+  <navigator class='record-item' url='../input/inputbp/inputbp?id={{bp.serialNo}}&sp={{bp.systolicPressure}}&dp={{bp.diastolicPressure}}&hr={{bp.heartRate}}&memo={{bp.memo}}&time={{bp.measureDateTime}}'>
+      <view class='record-item-history'>
+        <view class='history-date'>
+          <view class='history-day'>{{date[index][0]}}</view>
+          <view class='history-time'>{{date[index][1]}}</view>
+        </view>
+        <!-- <view class='history-date'>{{bp.measureTime}}</view> -->
+        <view class='history-bp'>
+          <view class="history-data {{(bp.systolicPressure<=140)&&(bp.systolicPressure>90)&&(bp.diastolicPressure>60)&&(bp.diastolicPressure<=90)?'normal':'warn'}}">
+          {{bp.systolicPressure}}/{{bp.diastolicPressure}}
+          </view>
+          <view class='history-unit'>mmHg</view>
+        </view>
+        <view class='history-hr'>
+          <view class="history-data {{(bp.heartRate>=50)&&(bp.heartRate<=100)?'normal':'warn'}}"> {{bp.heartRate}}</view>
+          <view class='history-unit'>bmp</view>
+        </view>
+      </view>
+    </navigator>
+  </block>
+  <button class='bp-chart-btn' bindtap='NavChart' >查看血压图表详情</button>
+</view>

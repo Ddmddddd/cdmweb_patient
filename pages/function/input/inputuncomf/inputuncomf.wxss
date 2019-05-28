@@ -1,0 +1,8 @@
+/* pages/input/inputuncomf/inputuncomf.wxss */
+.switch-text{
+ position:relative;
+ left: 10rpx;
+ display:inline-block;
+ width: 30%;
+
+}

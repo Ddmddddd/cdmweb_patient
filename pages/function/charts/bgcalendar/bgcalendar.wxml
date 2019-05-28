@@ -1,0 +1,16 @@
+<!-- pages/function/charts/bgcalendar/bgcalendar.wxml -->
+<view class='calendar-container'>
+  <calendar binddayClick="dayClick" weeks-type="cn" days-color="{{dayscolor}}" cell-size="38" 
+  bindnextMonth="dateChange" 
+  bindprevMonth="dateChange" 
+  binddateChange="dateChange" />
+</view>
+<view class="history">
+  <view wx:for="{{bgHisData}}" wx:key="index" class="his-item">
+    <view></view>
+    <view class="content">
+      <text>{{item.timePoint}}</text>
+      <text>{{item.bloodGlucose}}mmol/L</text>
+    </view>
+  </view>
+</view>

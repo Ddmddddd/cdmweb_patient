@@ -1,0 +1,16 @@
+<!-- <web-view src="{{url}}{{id}}"></web-view> -->
+<view class='container' wx:if='{{showPage}}'>
+  <view class='article-title'>{{name}}</view>
+  <view class='article-info'>
+    <text>{{time}}</text>|
+    <text>血压助手</text>
+  </view>
+  <view class='article-litpic'>
+    <rich-text nodes='{{img}}'></rich-text>
+  </view>
+  <view class='article-des'>阅读本文大概需要{{readtime}}分钟</view>
+  <import src="../../../wxParser/index.wxml" />
+  <view class="wxParser">
+    <template is="wxParser" data="{{wxParserData:richText.nodes}}" />
+  </view>
+</view>

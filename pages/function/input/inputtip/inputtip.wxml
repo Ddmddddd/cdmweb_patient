@@ -1,0 +1,53 @@
+<!--pages/input/inputtip/inputtip.wxml-->
+<!-- <progress percent="80" active color="pink" stroke-width="12"/> -->
+<view class='container'>
+
+  <view class='tip-item'>
+    <view class='item-title'>血压:{{bloodPressure}}</view>
+    <image src='../../../../image/you.png' class='pos {{BPstatus}}'></image>
+    <image src='../../../../image/bpbanner.jpg' class='banner'></image>
+    <view class='bplables'>
+      <text>低血压</text>
+      <text>理想</text>
+      <text>正常</text>
+      <text>正常高</text>
+      <text>轻度</text>
+      <text>中度</text>
+      <text>重度</text>
+    </view>
+    <view class='info'>本次测量:
+      <view class='info-tag'>
+        {{BPtag[bpindex]}}
+      </view>
+      <view class='info-tip'>
+        {{BPInfo}}
+      </view>
+    </view>
+  </view>
+
+  <view class='tip-item'>
+    <view class='item-title'>心率:{{heartRate}}bmp</view>
+    <image src='../../../../image/you.png' class='pos {{HRcolor[hrindex]}}'></image>
+    <image src='../../../../image/hrbanner.jpg' class='banner'></image>
+    <view class='hrlables'>
+      <text>过缓</text>
+      <text>正常</text>
+      <text>过快</text>
+    </view>
+    <view class='info'>本次测量:
+      <view class='info-tag'>
+        {{HRtag[hrindex]}}
+      </view>
+      <view class='info-tip'>
+        {{HRInfo}}
+      </view>
+    </view>
+  </view>
+
+  <!-- <view class='tip-item'>
+    <view class='item-title'>健康小知识</view>
+    <view class='info'>
+      {{tip}}
+    </view>
+  </view> -->
+</view>

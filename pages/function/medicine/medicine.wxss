@@ -1,0 +1,23 @@
+/* pages/medicine/medicine.wxss */
+@import '../bp/bp.wxss';
+.history-list {
+  display: flex;
+  width: 60%;
+  height: 90%;
+  overflow: auto;
+  justify-content: space-around;
+  align-items: flex-end;
+  flex-direction: column;
+}
+
+.history-list-item {
+
+  font-size: 30rpx;
+  color: #188df0;
+  /* flex-shrink: 1; */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  padding-right: 16rpx
+}

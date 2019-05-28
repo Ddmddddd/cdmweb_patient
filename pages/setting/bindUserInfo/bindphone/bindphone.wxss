@@ -1,0 +1,9 @@
+/* pages/bindUserInfo/bindphone/bindphone.wxss */
+.weui-cells__title{
+  font-size: 16px;
+  color: black
+}
+.bind-btn{
+  margin-top: 50px;
+
+}

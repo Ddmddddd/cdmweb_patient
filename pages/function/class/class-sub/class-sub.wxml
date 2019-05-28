@@ -1,0 +1,10 @@
+<!--pages/class/class-sub/class-sub.wxml-->
+<view>
+  <view class="sub-list">
+    <view class="item" wx:for="{{currentSub}}" wx:key="coid" bindtap="subChange" data-coid="{{item.coid}}">
+      <image src="{{item.sub?'../../../../image/checkon.png':'../../../../image/checkoff.png'}}"  />
+      <text>{{item.name}}</text>
+    </view>
+  </view>
+  <button bindtap="subscribeRequest" type="primary">订阅</button>
+</view>

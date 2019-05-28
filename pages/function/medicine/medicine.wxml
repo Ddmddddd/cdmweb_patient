@@ -1,0 +1,30 @@
+<!--pages/medicine/medicine.wxml-->
+<view class='container'>
+
+  <navigator class='record-item' url='../input/inputmed/inputmed?id=0'>
+    <view class='record-item-add'>
+      <view class='add-icon'>+</view>
+      <view class='add-title'>添加一次记录</view>
+    </view>
+  </navigator>
+  
+  <block wx:for="{{medicines}}" wx:for-item="med" wx:key="id" wx:for-index="index2">
+    <navigator class='record-item' url='../input/inputmed/inputmed?id={{med.serialNo}}&dosage={{med.dosage}}&drugName={{med.drugName}}&memo={{med.memo}}&time={{med.useDateTime}}'>
+      <view class='record-item-history'>
+        <view class='history-date'>
+          <view class='history-day'>{{date[index2][0]}}</view>
+          <view class='history-time'>{{date[index2][1]}}</view>
+        </view>
+        <!-- <view class='history-date'>{{bp.measureTime}}</view> -->
+        <view class='history-list'>
+          <block  wx:for="{{medname[index2]}}" wx:key="*this">
+            <view class='history-list-item'>
+            {{item}}{{medvalue[index2][index]}}
+            </view>
+          </block>
+        </view>
+      </view>
+    </navigator>
+  </block>
+
+</view>

@@ -1,0 +1,22 @@
+<!--pages/bindUserInfo/bindphone/bindphone.wxml-->
+<view class='container'>
+  <view class="weui-cells__title">原手机号码</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__bd">
+        <input type='text' class='weui-input' value='{{former_phone}}' disabled="true" />
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-cells__title">新手机号码</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__bd">
+        <input type='number' class='weui-input' placeholder='请输入新的手机号码' value='{{new_phone}}' bindinput='bindInputPhone' />
+      </view>
+    </view>
+  </view>
+
+  <button type='primary' class='bind-btn' bindtap='change'>确定</button>
+</view>

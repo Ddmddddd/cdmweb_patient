@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "血压变化",
+  "usingComponents": {
+    "ec-canvas": "../../../../components/ec-canvas/ec-canvas"
+  }
+}
