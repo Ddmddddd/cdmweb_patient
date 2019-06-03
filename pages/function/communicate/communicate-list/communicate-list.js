@@ -1,8 +1,6 @@
-// pages/exchange/communicate-communicate-list.js
+// pages/communicate/communicate-list/communicate-list.js
 var util = require('../../../../utils/util.js');
 import { tokenRequest } from "../../../../utils/Request";
-import { vicoBloodGlucoseGet } from "../../../../utils/config";
-// import * as echarts from '../../components/ec-canvas/echarts.min';
 var app = getApp();
 
 Page({
@@ -11,18 +9,9 @@ Page({
      * 页面的初始数据
      */
     data: {
-        ec: {
-            lazyLoad: true
-        },
-
     },
 
-    NavChart:function(){
-        let data = JSON.stringify(this.data.bgs)
-        wx.navigateTo({
-            url: '../../charts/bgcalendar/bgcalendar?data=' + data,
-        })
-    },
+  
     /**
      * 刷新数据函数
      */

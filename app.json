@@ -13,6 +13,7 @@
     "pages/function/eat/eat",
     "pages/function/bg/bg",
     "pages/function/communicate/communicate-list/communicate-list",
+    "pages/function/communicate/communicate-chat/communicate-chat",
     "pages/function/report/report",
     "pages/function/rank/rank",
     "pages/function/charts/bplinechart/bplinechart",
