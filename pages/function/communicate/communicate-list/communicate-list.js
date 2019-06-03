@@ -1,4 +1,4 @@
-// pages/exchange/commuicate-commuicate-list.js
+// pages/exchange/communicate-communicate-list.js
 var util = require('../../../../utils/util.js');
 import { tokenRequest } from "../../../../utils/Request";
 import { vicoBloodGlucoseGet } from "../../../../utils/config";

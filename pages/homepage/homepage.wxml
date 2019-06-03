@@ -107,7 +107,7 @@
         </view>
       </view>
     </navigator>
-    <navigator url="../function/commuicate/commuicate-list/commuicate-list" class=" nav-grid-item">
+    <navigator url="../function/communicate/communicate-list/communicate-list" class=" nav-grid-item">
       <view class="paddinghalfrem grid-content ">
         <view class="text-item-grid">
           <image class="image-grid" mode='aspectFit' src='../../image/bp.png' />

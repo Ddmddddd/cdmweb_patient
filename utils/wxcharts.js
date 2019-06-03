@@ -1015,7 +1015,7 @@ function drawToolTip(textList, offset, opts, config, context) {
         context.closePath();
     });
 
-    // draw text commuicate-list
+    // draw text communicate-list
     context.beginPath();
     context.setFontSize(config.fontSize);
     context.setFillStyle('#ffffff');
