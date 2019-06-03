@@ -1,9 +1,9 @@
-// pages/exchange/exchange.js
-var util = require('../../../utils/util.js');
-import { tokenRequest } from "../../../utils/Request";
-import { vicoBloodGlucoseGet } from "../../../utils/config";
+// pages/exchange/commuicate-commuicate-list.js
+var util = require('../../../../utils/util.js');
+import { tokenRequest } from "../../../../utils/Request";
+import { vicoBloodGlucoseGet } from "../../../../utils/config";
 // import * as echarts from '../../components/ec-canvas/echarts.min';
-// var app = getApp();
+var app = getApp();
 
 Page({
 
@@ -20,7 +20,7 @@ Page({
     NavChart:function(){
         let data = JSON.stringify(this.data.bgs)
         wx.navigateTo({
-            url: '../charts/bgcalendar/bgcalendar?data=' + data,
+            url: '../../charts/bgcalendar/bgcalendar?data=' + data,
         })
     },
     /**

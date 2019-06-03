@@ -1,7 +1,7 @@
 <view class='container'>
   <view class=" charts_item">
   </view>
-  <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+  <!-- <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas> -->
   <view>
     <!--<view class="search-input">-->
       <!--<input placeholder="搜索患者、聊天记录"/>-->
@@ -9,7 +9,7 @@
       <view class="list-body">
         <view class="list-part" hover-class="hover-list-part">
           <!--<view>-->
-            <image class="list-icon" src="../../../image/userPhoto.jpeg" />
+            <image class="list-icon" src="../../../../image/userPhoto.jpeg" />
             <view class="list-part-right">
               <view class="list-title">
                 <span style="float: left;font-size: 16px;color: #353535">黄大仙</span>
