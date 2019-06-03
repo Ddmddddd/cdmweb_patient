@@ -107,5 +107,14 @@
         </view>
       </view>
     </navigator>
+    <navigator url="../function/exchange/exchange" class=" nav-grid-item">
+      <view class="paddinghalfrem grid-content ">
+        <view class="text-item-grid">
+          <image class="image-grid" mode='aspectFit' src='../../image/bp.png' />
+          <text class="text-title">医患交流</text>
+          <view wx:if="{{weighttask>0}}" class='red-icon icon'>{{weighttask}}</view>
+        </view>
+      </view>
+    </navigator>
   </view>
 </view>

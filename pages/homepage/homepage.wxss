@@ -138,8 +138,8 @@ loading, navigator, audio, image, video, map, canvas {
 .nav-grids {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
+  /*justify-content: space-around;*/
+  /*align-items: center;*/
 }
 
 .nav-grid-item {
