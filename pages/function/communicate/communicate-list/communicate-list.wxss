@@ -1,6 +1,6 @@
 /* pages/communicate/communicate-list/communicate-list.wxss */
 .container{
-  overflow: hidden auto;
+  /* overflow: hidden auto; */
 }
 .search-input{
   width: 90%;
@@ -23,7 +23,14 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
+}
+.avatar{
+  width: 20%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .list-avatar{
   height: 40px;
@@ -32,27 +39,36 @@
   border-radius: 40px;
 }
 .list-part-right{
-  width: 75%;
-  height: 50px;
+  width: 80%;
+  height: 100%;
   display: flex;
   flex-direction: column;
+    padding-right: 10px;
+
 
 }
 .communicate-title{
-  height: 50%;
+  height: 55%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
+}
+.name{
+  font-size: 16px;
 }
 .time{
   color: rgb(161, 161, 161);
   font-size: 13px;
 }
 .communicate-detail{
-  height: 50%;
+  height: 45%;
   color: #8A8A8A;
   font-size: 14px;
+  /* line-height: 20px; */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .hover-list-part{
   /*background-color: #9b9b9b;*/
