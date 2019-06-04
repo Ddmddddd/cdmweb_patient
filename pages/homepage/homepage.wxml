@@ -110,7 +110,7 @@
     <navigator url="../function/communicate/communicate-list/communicate-list" class=" nav-grid-item">
       <view class="paddinghalfrem grid-content ">
         <view class="text-item-grid">
-          <image class="image-grid" mode='aspectFit' src='../../image/bp.png' />
+          <image class="image-grid" mode='aspectFit' src='../../image/communicate.png' />
           <text class="text-title">医患交流</text>
           <view wx:if="{{weighttask>0}}" class='red-icon icon'>{{weighttask}}</view>
         </view>
