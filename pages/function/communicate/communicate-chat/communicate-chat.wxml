@@ -1,4 +1,13 @@
 <view class='container'>
-  <view>leia
+  <view class="communicate-detail">
   </view>
+  <view class="user-input">
+    <view class='input-area'>
+      <textarea class="weui-textarea" auto-height="true" maxlength="1000"></textarea>
+    </view>
+    <view class='btn'>
+    
+    </view>
+  </view>
+
 </view>
