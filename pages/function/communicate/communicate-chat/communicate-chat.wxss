@@ -3,36 +3,85 @@
   display: flex;
   flex-direction: column;
 }
-
-.communicate-detail{
-  height:75%;
-  padding-bottom: 10px;
-  flex-grow: 1;
-  /* border-bottom:1px solid #555; */
+.chat-history{
+  height: calc(100% - 90rpx);
+}
+.msg{
+  display: flex;
+  flex-direction: row-reverse;
 }
 
-.user-input{
+.msg-content{
+  display: flex;
+  flex-direction: row;
+}
+
+.avatar{
+  width: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.msg-avatar{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 10rpx;
+}
+
+.content{
   display: flex;
   flex-direction: column;
-  /* min-height: 50px; */
+  padding: 15rpx 0;
+}
+
+.time{
+  height: 30rpx;
+  line-height: 30rpx;
+  color: #c7c6c6;
+  font-size: smaller;
+}
+.text{
+  max-width: 450rpx;
+  margin: 5rpx 0;
+}
+.text-content{
+  border-radius: 10rpx;
+  padding: 20rpx;
+  word-break: break-all;
+  line-height: 40rpx;
+  display: inline-block;
+
+}
+.flag{
+  height: 30rpx;
+  color: #c7c6c6;
+  font-size: smaller;
+  line-height: 30rpx;
+}
+.user-operation{
+  height: 90rpx;
+  background-color: rgba(236, 236, 236, 0.897);
+  padding: 15rpx 20rpx;
+  display: flex;
+  align-content: center;
+}
+
+.user-input-content{
+  width: 100%;
   background-color: #fff;
-  padding: 5px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.user-input{
+  width: 90%;
+  height: 40rpx;
+  line-height: 40rpx;
 }
 
-.input-area{
-  width: 70%;
-  border: 1px solid #ededed;
-  border-radius: 30px;
-  padding: 5px 15px;
-}
-
-.weui-textarea{
-  min-height: 25px;
-  /* height: auto; */
-  max-height: 85px;
-  line-height: 20px;
-  /* font-size:14px; */
-}
-.btn{
-  float: right;
+editor{
+  width: 90%;
+  height: 40rpx;
+  line-height: 40rpx;
 }

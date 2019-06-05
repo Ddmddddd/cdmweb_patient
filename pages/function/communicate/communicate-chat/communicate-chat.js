@@ -2,6 +2,9 @@
 var util = require('../../../../utils/util.js');
 import { tokenRequest } from "../../../../utils/Request";
 var app = getApp();
+var myMsg = true;
+var chatList = [];
+var index = 0;
 
 Page({
 
@@ -9,9 +12,10 @@ Page({
    * 页面的初始数据
    */
   data: {
+    userInputValue:'',
+    chatList:[],
+    toView:'msg-0'
   },
-
-
   /**
    * 刷新数据函数
    */
@@ -25,6 +29,8 @@ Page({
   onLoad: function (options) {
     var query = wx.createSelectorQuery();
     query.select('weui-textarea')
+    chatList = [];
+    index = 0;
   },
 
   /**
@@ -75,5 +81,43 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+
+  // component function
+  // 绑定用户输入
+  userInput: function(e){
+    this.setData({
+      userInputValue: e.detail.value
+    })
+  },
+  // 发送信息
+  sendMsg: function(){
+    // 获取用户输入信息
+    let msgText = this.data.userInputValue;
+    if (msgText === "") {
+      return
+    }
+    let msg = {
+      myMsg:myMsg,
+      dateTime: util.formatTime(new Date()),
+      content: msgText,
+      flag: 0,
+      idx: index
+    }
+    myMsg = !myMsg;
+    index ++;
+    chatList.push(msg);
+    this.setData({
+      chatList: chatList,
+      userInputValue: '',
+      toView: 'msg-' + msg.idx
+    })
+  
+  },
+  onFocus: function(){
+    this.setData({
+      toView: 'msg-' + chatList[chatList.length - 1].idx
+    })
+  },
+  
 })
