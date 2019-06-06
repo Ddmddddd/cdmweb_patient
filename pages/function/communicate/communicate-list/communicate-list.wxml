@@ -1,156 +1,19 @@
 <view class='container'>
     <view class="list-body">
-      <navigator url="../communicate-chat/communicate-chat" class=" nav-person-item">
-        <view class="list-part" hover-class="hover-list-part">
-          <!--<view>-->
+      <navigator url="../communicate-chat/communicate-chat" class=" nav-person-item" wx:for="{{chatList}}" wx:key="{{item.UserID}}">
+        <view class="list-part">
           <view class="avatar">
             <image class="list-avatar" src="../../../../image/userPhoto.jpeg" />
+            <view class="newMag" wx:if="{{item.UnReadMsgList.length > 0}}"></view>
           </view>
           <view class="list-part-right">
             <view class="communicate-title">
-              <view class="name">黄大仙</view><view class="time">2019-06-03</view>
+              <view class="name">{{item.Name}}</view><view class="time">{{item.LastMsgDateTime}}</view>
             </view>
             <view class="communicate-detail">
-              我丢雷楼膜,去你妈的蛇皮棒棒锤大陆贵妇的撒 u 一飞看
+              {{item.LastMsgContent}}
             </view>
           </view>
-          <!--</view>-->
-        </view>
-      </navigator>
-      <navigator url="../communicate-chat/communicate-chat" class=" nav-person-item">
-        <view class="list-part" hover-class="hover-list-part">
-          <!--<view>-->
-          <view class="avatar">
-            <image class="list-avatar" src="../../../../image/userPhoto.jpeg" />
-          </view>
-          <view class="list-part-right">
-            <view class="communicate-title">
-              <view class="name">黄大仙</view><view class="time">2019-06-03</view>
-            </view>
-            <view class="communicate-detail">
-              我丢雷楼膜,去你妈的蛇皮棒棒锤大陆贵妇的撒 u 一飞看
-            </view>
-          </view>
-          <!--</view>-->
-        </view>
-      </navigator>
-      <navigator url="../communicate-chat/communicate-chat" class=" nav-person-item">
-        <view class="list-part" hover-class="hover-list-part">
-          <!--<view>-->
-          <view class="avatar">
-            <image class="list-avatar" src="../../../../image/userPhoto.jpeg" />
-          </view>
-          <view class="list-part-right">
-            <view class="communicate-title">
-              <view class="name">黄大仙</view><view class="time">2019-06-03</view>
-            </view>
-            <view class="communicate-detail">
-              我丢雷楼膜,去你妈的蛇皮棒棒锤大陆贵妇的撒 u 一飞看
-            </view>
-          </view>
-          <!--</view>-->
-        </view>
-      </navigator>
-      <navigator url="../communicate-chat/communicate-chat" class=" nav-person-item">
-        <view class="list-part" hover-class="hover-list-part">
-          <!--<view>-->
-          <view class="avatar">
-            <image class="list-avatar" src="../../../../image/userPhoto.jpeg" />
-          </view>
-          <view class="list-part-right">
-            <view class="communicate-title">
-              <view class="name">黄大仙</view><view class="time">2019-06-03</view>
-            </view>
-            <view class="communicate-detail">
-              我丢雷楼膜,去你妈的蛇皮棒棒锤大陆贵妇的撒 u 一飞看
-            </view>
-          </view>
-          <!--</view>-->
-        </view>
-      </navigator>
-      <navigator url="../communicate-chat/communicate-chat" class=" nav-person-item">
-        <view class="list-part" hover-class="hover-list-part">
-          <!--<view>-->
-          <view class="avatar">
-            <image class="list-avatar" src="../../../../image/userPhoto.jpeg" />
-          </view>
-          <view class="list-part-right">
-            <view class="communicate-title">
-              <view class="name">黄大仙</view><view class="time">2019-06-03</view>
-            </view>
-            <view class="communicate-detail">
-              我丢雷楼膜,去你妈的蛇皮棒棒锤大陆贵妇的撒 u 一飞看
-            </view>
-          </view>
-          <!--</view>-->
-        </view>
-      </navigator>
-      <navigator url="../communicate-chat/communicate-chat" class=" nav-person-item">
-        <view class="list-part" hover-class="hover-list-part">
-          <!--<view>-->
-          <view class="avatar">
-            <image class="list-avatar" src="../../../../image/userPhoto.jpeg" />
-          </view>
-          <view class="list-part-right">
-            <view class="communicate-title">
-              <view class="name">黄大仙</view><view class="time">2019-06-03</view>
-            </view>
-            <view class="communicate-detail">
-              我丢雷楼膜,去你妈的蛇皮棒棒锤大陆贵妇的撒 u 一飞看
-            </view>
-          </view>
-          <!--</view>-->
-        </view>
-      </navigator>
-      <navigator url="../communicate-chat/communicate-chat" class=" nav-person-item">
-        <view class="list-part" hover-class="hover-list-part">
-          <!--<view>-->
-          <view class="avatar">
-            <image class="list-avatar" src="../../../../image/userPhoto.jpeg" />
-          </view>
-          <view class="list-part-right">
-            <view class="communicate-title">
-              <view class="name">黄大仙</view><view class="time">2019-06-03</view>
-            </view>
-            <view class="communicate-detail">
-              我丢雷楼膜,去你妈的蛇皮棒棒锤大陆贵妇的撒 u 一飞看
-            </view>
-          </view>
-          <!--</view>-->
-        </view>
-      </navigator>
-      <navigator url="../communicate-chat/communicate-chat" class=" nav-person-item">
-        <view class="list-part" hover-class="hover-list-part">
-          <!--<view>-->
-          <view class="avatar">
-            <image class="list-avatar" src="../../../../image/userPhoto.jpeg" />
-          </view>
-          <view class="list-part-right">
-            <view class="communicate-title">
-              <view class="name">黄大仙</view><view class="time">2019-06-03</view>
-            </view>
-            <view class="communicate-detail">
-              我丢雷楼膜,去你妈的蛇皮棒棒锤大陆贵妇的撒 u 一飞看
-            </view>
-          </view>
-          <!--</view>-->
-        </view>
-      </navigator>
-      <navigator url="../communicate-chat/communicate-chat" class=" nav-person-item">
-        <view class="list-part" hover-class="hover-list-part">
-          <!--<view>-->
-          <view class="avatar">
-            <image class="list-avatar" src="../../../../image/userPhoto.jpeg" />
-          </view>
-          <view class="list-part-right">
-            <view class="communicate-title">
-              <view class="name">黄大仙</view><view class="time">2019-06-03</view>
-            </view>
-            <view class="communicate-detail">
-              我丢雷楼膜,去你妈的蛇皮棒棒锤大陆贵妇的撒 u 一飞看
-            </view>
-          </view>
-          <!--</view>-->
         </view>
       </navigator>
     </view>

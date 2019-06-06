@@ -53,6 +53,7 @@ const vicoBloodGlucoseGet = vicoBaseUrl + '/patient.api/data/blood/glucose/recor
 const vicoBloodGlucoseCommit = vicoBaseUrl + '/patient.api/data/blood/glucose/record/commit'
 const vicoBloodGlucoseDelete = vicoBaseUrl + '/patient.api/data/blood/glucose/record/delete'
 const vicoMonthlyReport = vicoBaseUrl + '/patient.api/data/monthly/report'
+const vicoChatListGet = vicoBaseUrl + '/patient.api/data/doctor/patient/chat/msg/list'
 
 //用户管理
 const vicoPhoneChange = vicoBaseUrl + '/patient.api/account/phone/change'
@@ -106,6 +107,7 @@ export {
   vicoBloodGlucoseDelete,
   vicoBloodGlucoseGet,
   vicoMonthlyReport,
+  vicoChatListGet,
   //
   vicoPasswordChange,
   vicoPhoneChange,

@@ -38,6 +38,15 @@
   border: 1px solid #E5E5E5;
   border-radius: 40px;
 }
+.newMag{
+  height:10px;
+  width:10px;
+  border-radius:10px;
+  background-color:red;
+  position:relative;
+  top:-15px;
+  left:-10px;
+}
 .list-part-right{
   width: 80%;
   height: 100%;
@@ -70,9 +79,8 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.hover-list-part{
-  /*background-color: #9b9b9b;*/
-}
+
+
 
 
 
