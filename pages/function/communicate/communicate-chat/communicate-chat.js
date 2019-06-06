@@ -27,7 +27,7 @@ Page({
   data: {
     doctorId: null,
     doctorName:'',
-    msgSerialNos:[],
+    unReadMsgList:[],
     userInputValue: '',
     chatList: [],
     toView: 'msg-0',
@@ -44,18 +44,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    this.openWS();
     var query = wx.createSelectorQuery();
     query.select('weui-textarea')
     chatList = [];
     index = 0;
-    debugger
+    let chatBasic = JSON.parse(options.chatInfo)
     this.setData({
-      doctorId: parseInt(options.doctorId),
-      doctorName: options.doctorName,
-      msgSerialNos: options.unReadMsgList
+      doctorId: parseInt(chatBasic.id),
+      doctorName: chatBasic.name,
+      unReadMsgList: chatBasic.unReadMsgList
     })
     wx.setNavigationBarTitle({
-      title: options.docName
+      title: chatBasic.name
     })
     this.getHistoryMsgList()
   },
@@ -160,6 +161,8 @@ Page({
         top: top
       })
     }
+    console.log(this.data.top);
+    console.log(this.data.toView);
   },
   onBlur: function() {
     top = 0;
@@ -198,9 +201,18 @@ Page({
         let data = res.data.data;
         chatList = data
         this.setData({
-          chatList: chatList
+          chatList: chatList,
         })
-        this.readMsg();
+        this.getMsgHeight()
+        if (chatList.length >= 1) {
+          this.setData({
+            toView: 'msg-' + (chatList.length - 1)
+          })
+        }
+        // 阅读未读的消息
+        if (this.data.unReadMsgList.length > 0){
+          this.readMsg();
+        }
       }
     })
   },
@@ -245,7 +257,7 @@ Page({
     let url = vicoChatRead
     let data = {
       receiverID: this.data.doctorId,
-      msgSerialNos: this.data.msgSerialNos
+      msgSerialNos: this.data.unReadMsgList
     }
     let method = "POST"
     let token = wx.getStorageSync('login_token');
@@ -264,6 +276,47 @@ Page({
         
       }
     })
-  }
+  },
+  /*
+    * 创建websocket连接
+    * */
+  openWS: function () {
+    var that = this;
+    let token = wx.getStorageSync("login_token");
+    let url =
+      "wss://cdmwb-dev.vico-lab.com/patient.api/socket/notify/subscribe?token=" +
+      token;
+    if (
+      app.globalData.localSocket.readyState !== 0 &&
+      app.globalData.localSocket.readyState !== 1
+    ) {
+      console.log(
+        "开始尝试连接WebSocket！readyState=" +
+        app.globalData.localSocket.readyState
+      );
+      app.initSocket(url);
+    }
+
+    app.globalData.callback = function (res) {
+      let msg = JSON.parse(res.data).data;
+      let message = {
+        serialNo: msg.serialNo,
+        senderID: msg.senderID,
+        receiverID: msg.receiverID,
+        msgDateTime: msg.msgDateTime,
+        msgContent: msg.msgContent,
+        msgFlag: 0,
+        // idx: index
+      }
+      index++;
+      chatList.push(message);
+      that.setData({
+        chatList: chatList,
+        userInputValue: '',
+        toView: 'msg-' + (chatList.length - 1)
+      })
+      that.getMsgHeight();
+    };
+  },
 
 })

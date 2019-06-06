@@ -81,6 +81,12 @@ Page({
             }
         })
     },
+    gotoChat: function(e){
+      let chatModel = JSON.stringify(e.currentTarget.dataset['chat']);
+      wx.navigateTo({
+        url: '../communicate-chat/communicate-chat?chatInfo=' + chatModel
+      })
+    },
 
 
 
