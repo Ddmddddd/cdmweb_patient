@@ -80,8 +80,11 @@
   line-height: 40rpx;
 }
 
-editor{
-  width: 90%;
-  height: 40rpx;
-  line-height: 40rpx;
+#msg-area{
+  position: absolute;
+  width: 100%;
+  top: 0;
+  /* transition: top .25s cubic-bezier(0.2,0,0.2,1); */
 }
+
+

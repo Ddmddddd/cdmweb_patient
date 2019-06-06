@@ -3,8 +3,15 @@ var util = require('../../../../utils/util.js');
 import { tokenRequest } from "../../../../utils/Request";
 var app = getApp();
 var myMsg = true;
-var chatList = [];
-var index = 0;
+var chatList = []; //信息记录
+var index = 0;  // 滚动目标
+var windowHeihgt = wx.getSystemInfoSync().windowHeight; // 界面高度
+var keyHeight = 0; // 键盘高度
+var restHeight = 0;
+var historyHeight = 0;
+var inputHeight = 0;
+var msgHeight = 0;
+var top = 0;
 
 Page({
 
@@ -14,7 +21,8 @@ Page({
   data: {
     userInputValue:'',
     chatList:[],
-    toView:'msg-0'
+    toView:'msg-0',
+    top: 0
   },
   /**
    * 刷新数据函数
@@ -37,7 +45,13 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    // 获取输入框的高度
+    var query = wx.createSelectorQuery();
+    var that = this;
+    query.select('#user-input').boundingClientRect(function(rect){
+      inputHeight = rect.height;
+      historyHeight = windowHeihgt - inputHeight;
+    }).exec();
   },
 
   /**
@@ -112,12 +126,44 @@ Page({
       userInputValue: '',
       toView: 'msg-' + msg.idx
     })
-  
+    this.getMsgHeight();
   },
-  onFocus: function(){
+  onFocus: function(e){
+    keyHeight = e.detail.height;
+    if (chatList.length >= 1){
+      this.setData({
+        toView: 'msg-' + chatList[chatList.length - 1].idx
+      })
+    }
+    // 得到键盘弹出时，剩下的展示界面高度
+    if (restHeight === 0){
+      restHeight = windowHeihgt - keyHeight - inputHeight;
+    }
+    // 根据历史记录的共度，偏移历史信息区域
+    if(msgHeight < restHeight){
+      top = keyHeight + 10;
+      this.setData({
+        top:top
+      })
+    } else if (msgHeight < historyHeight){
+      top = historyHeight - msgHeight;
+      this.setData({
+        top: top
+      })
+    }
+  },
+  onBlur: function(){
+    top = 0;
     this.setData({
-      toView: 'msg-' + chatList[chatList.length - 1].idx
+      top: top
     })
   },
-  
+
+  getMsgHeight: function(){
+    var query = wx.createSelectorQuery();
+    var that = this;
+    query.select('#msg-area').boundingClientRect(function (rect) {
+      msgHeight = rect.height
+    }).exec();
+  }
 })
