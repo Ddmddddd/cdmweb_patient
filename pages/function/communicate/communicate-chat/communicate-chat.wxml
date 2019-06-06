@@ -1,12 +1,48 @@
 <view class='container'>
-  <view class="communicate-detail">
-  </view>
-  <view class="user-input">
-    <view class='input-area'>
-      <textarea class="weui-textarea" auto-height="true" maxlength="1000"></textarea>
-    </view>
-    <view class='btn'>
-    
+  <scroll-view class='chat-history' scroll-y scroll-with-animation scroll-into-view="{{toView}}">
+    <block wx:for='{{chatList}}' wx:key='{{index}}'>
+      <view id="msg-{{item.idx}}" class='msg' style="flex-direction:{{item.myMsg?'row-reverse':'row'}}">
+        <view class='msg-content'  style="flex-direction:{{item.myMsg?'row-reverse':'row'}}">
+          <view class='avatar'>
+            <image class="msg-avatar" src="../../../../image/userPhoto.jpeg" />
+          </view>
+          <view class='content'>
+            <view class='time' style="text-align:{{item.myMsg?'right':'left'}}">
+              {{item.dateTime}}
+            </view>
+            <view class='text'>
+              <span 
+                class='text-content' 
+                style="float:{{item.myMsg?'right':'left'}};background-color:{{item.myMsg?'rgb(132,240,                        49)':'#fff'}};">
+                {{item.content}}
+              </span>
+            </view>
+            <view wx:if='{{item.myMsg}}' class='flag' style="text-align:right;">
+              {{item.flag == 0?'已读':'未读'}}
+            </view>
+            <view wx:if='{{!item.myMsg}}' class='flag' style="text-align:left;">
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <view id='msgInit'></view>
+  </scroll-view>
+  <view class='user-operation'>
+    <view class='user-input-content'>
+      <input
+        class='user-input'
+        confirm-type='send'
+        confirm-hold='true'
+        cursor-spacing='20'
+        bindinput='userInput'
+        value='{{userInputValue}}'
+        bindconfirm='sendMsg'
+        bindfocus='onFocus'
+        bindblur='onBlur'
+        adjust-position='{{true}}'
+      >
+      </input>
     </view>
   </view>
 
