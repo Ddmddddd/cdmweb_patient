@@ -112,7 +112,7 @@
         <view class="text-item-grid">
           <image class="image-grid" mode='aspectFit' src='../../image/communicate.png' />
           <text class="text-title">医患交流</text>
-          <view wx:if="{{weighttask>0}}" class='red-icon icon'>{{weighttask}}</view>
+          <view wx:if="{{msgtask>0}}" class='red-icon icon'>{{msgtask}}</view>
         </view>
       </view>
     </navigator>
