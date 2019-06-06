@@ -39,6 +39,9 @@ Page({
     query.select('weui-textarea')
     chatList = [];
     index = 0;
+    wx.setNavigationBarTitle({
+        title: options.docName
+    })
   },
 
   /**

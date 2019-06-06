@@ -1,6 +1,6 @@
 <view class='container'>
     <view class="list-body">
-      <navigator url="../communicate-chat/communicate-chat" class=" nav-person-item" wx:for="{{chatList}}" wx:key="{{item.UserID}}">
+      <navigator  class=" nav-person-item" wx:for="{{chatList}}" wx:key="{{item.UserID}}" url="../communicate-chat/communicate-chat?docName={{item.Name}}&UnReadMsgList={{item.UnReadMsgList}}">
         <view class="list-part">
           <view class="avatar">
             <image class="list-avatar" src="../../../../image/userPhoto.jpeg" />
