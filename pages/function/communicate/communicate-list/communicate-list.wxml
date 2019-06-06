@@ -1,7 +1,7 @@
 <view class='container'>
   <scroll-view class="list-body" scroll-y scroll-with-animation>
     <block wx:for='{{chatList}}' wx:key='{{index}}'>
-      <navigator url="../communicate-chat/communicate-chat?doctorId={{item.id}}" class=" nav-person-item">
+      <navigator url="../communicate-chat/communicate-chat?doctorId={{item.id}}&doctorName={{item.name}}&unReadMsgList={{item.unReadMsgList}}" class=" nav-person-item">
         <view class="list-part">
           <view class="avatar">
             <image class="list-avatar" src="../../../../image/userPhoto.jpeg" />

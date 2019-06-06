@@ -26,6 +26,7 @@ Page({
    */
   data: {
     doctorId: null,
+    doctorName:'',
     msgSerialNos:[],
     userInputValue: '',
     chatList: [],
@@ -47,9 +48,14 @@ Page({
     query.select('weui-textarea')
     chatList = [];
     index = 0;
+    debugger
     this.setData({
       doctorId: parseInt(options.doctorId),
-      msgSerialNos: options.msgSerialNos
+      doctorName: options.doctorName,
+      msgSerialNos: options.unReadMsgList
+    })
+    wx.setNavigationBarTitle({
+      title: options.docName
     })
     this.getHistoryMsgList()
   },
@@ -194,6 +200,7 @@ Page({
         this.setData({
           chatList: chatList
         })
+        this.readMsg();
       }
     })
   },
