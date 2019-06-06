@@ -20,7 +20,8 @@ Page({
     weighttask: 0,
     medtask: 0,
     bgtask:0,
-    classtask:0
+    classtask:0,
+    msgtask:0,
   },
 
   /**
@@ -85,6 +86,7 @@ Page({
         var weighttask = data.managementPlan.weightTasks.length - data.todayRecords.weightRecordList.length;
         var medtask = data.managementPlan.drugTasks.length - data.todayRecords.drugRecordList.length;
         var bgtask = data.managementPlan.bloodGlucoseTasks.length - data.todayRecords.bloodGlucoseRecordList.length;
+        var msgtask = data.chatDoctorList.length;
         that.setData({
           nickname: nickname,
           registDate: data.loginUserInfo.registDate || "2016/6/23 18:18:53",
@@ -94,13 +96,15 @@ Page({
           bptask: bptask,
           weighttask: weighttask,
           medtask: medtask,
-          bgtask:bgtask
+          bgtask:bgtask,
+          msgtask:msgtask
         })
         that.calregistTime(that.data.registDate);
         app.globalData.bptask = bptask;
         app.globalData.weighttask = weighttask;
         app.globalData.medtask = medtask;
         app.globalData.bgtask = bgtask;
+        app.globalData.msgtask = msgtask;
       }
     })
   },
@@ -169,7 +173,8 @@ Page({
       bptask: app.globalData.bptask,
       weighttask: app.globalData.weighttask,
       medtask: app.globalData.medtask,
-      classtask:app.globalData.classtask
+      classtask:app.globalData.classtask,
+      msgtask:app.globalData.msgtask
     })
   },
 

@@ -15,6 +15,7 @@ App({
     weighttask: 0,
     medtask: 0,
     classtask: 0,
+    msgtask:0,
     //charts
     bps: [],
     wgs: [],
