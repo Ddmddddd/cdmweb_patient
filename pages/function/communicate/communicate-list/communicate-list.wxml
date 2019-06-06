@@ -1,21 +1,23 @@
 <view class='container'>
-    <view class="list-body">
-      <navigator url="../communicate-chat/communicate-chat" class=" nav-person-item" wx:for="{{chatList}}" wx:key="{{item.UserID}}">
+  <scroll-view class="list-body" scroll-y scroll-with-animation>
+    <block wx:for='{{chatList}}' wx:key='{{index}}'>
+      <navigator url="../communicate-chat/communicate-chat?doctorId={{item.id}}" class=" nav-person-item">
         <view class="list-part">
           <view class="avatar">
             <image class="list-avatar" src="../../../../image/userPhoto.jpeg" />
-            <view class="newMag" wx:if="{{item.UnReadMsgList.length > 0}}"></view>
+            <view class="newMag" wx:if="{{item.unReadMsgList.length > 0}}"></view>
           </view>
           <view class="list-part-right">
             <view class="communicate-title">
-              <view class="name">{{item.Name}}</view><view class="time">{{item.LastMsgDateTime}}</view>
+              <view class="name">{{item.name}}</view>
+              <view class="time">{{!item.lastMsgDateTime?"":item.lastMsgDateTime}}</view>
             </view>
             <view class="communicate-detail">
-              {{item.LastMsgContent}}
+              {{item.lastMsgContent}}
             </view>
           </view>
         </view>
       </navigator>
-    </view>
-
+    </block>
+  </scroll-view>
 </view>

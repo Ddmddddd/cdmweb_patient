@@ -3,7 +3,7 @@ import {vicoBloodGlucoseGet} from "../../../../utils/config";
 
 var util = require('../../../../utils/util.js');
 import { tokenRequest } from "../../../../utils/Request";
-import { vicoChatListGet } from "../../../../utils/config";
+import { vicoDoctorListGet } from "../../../../utils/config";
 var app = getApp();
 
 Page({
@@ -12,7 +12,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        chatList : {},
+        chatList : [],
     },
 
   
@@ -30,7 +30,7 @@ Page({
     openWS: function(){
         let token = wx.getStorageSync("login_token");
         let url =
-            "wss://nx.zjubiomedit.com/patient.api/socket/notify/subscribe?token=" +
+            "wss://cdmwb-dev.vico-lab.com/patient.api/socket/notify/subscribe?token=" +
             token;
         if (
             app.globalData.localSocket.readyState !== 0 &&
@@ -61,7 +61,7 @@ Page({
     * 获取和医生的聊天记录列表
     * */
     getChatList: function(){
-        let url = vicoChatListGet
+        let url = vicoDoctorListGet
         let data = {
             patientID:wx.getStorageSync('patientid_token')
         }
@@ -71,34 +71,15 @@ Page({
             "token":token,
             "content-type": "application/json"
         }
-        this.setData({
-            chatList : [{
-                    UserID: 21,
-                    Name:   "李老师",
-                    UnReadMsgList: ["哈哈","嘻嘻"],
-                    LastMsgContent:  "你好呀",
-                    LastMsgDateTime: "2019-06-06 09:38",
-                },
-                {
-                    UserID: 22,
-                    Name:   "王老师",
-                    UnReadMsgList: [],
-                    LastMsgContent:  "我很好",
-                    LastMsgDateTime: "2019-06-06 09:38",
-                },]
+        tokenRequest({url:url, header:header, method:method, data:null}).then(res=>{
+            console.log(res)
+            if (res.data.code == 0) {
+                let data = res.data.data;
+                this.setData({
+                  chatList: data
+                })
+            }
         })
-
-        // tokenRequest({url:url, header:header, method:method, data:data}).then(res=>{
-        //     console.log(res)
-            // if (res.data.code == 20001) {
-            //     console.log('relogin')
-            //     setTimeout(()=>{
-            //         that.refresh()
-            //     },700)
-            // } else {
-            //
-            // }
-        // })
     },
 
 

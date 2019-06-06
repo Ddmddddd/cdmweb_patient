@@ -17,8 +17,8 @@ const mesContentGet = mesBaseUrl + 'getKnoContent.jsp?kno_id='
 /**
  * 新接口url
  */
-// const vicoBaseUrl = 'https://cdmwb.vico-lab.com'
-const vicoBaseUrl = 'https://nx.zjubiomedit.com'
+const vicoBaseUrl = 'https://cdmwb-dev.vico-lab.com'
+// const vicoBaseUrl = 'https://nx.zjubiomedit.com'
 //公共平台接口 字典信息 获取议员列表
 const vicoDivisionGet = vicoBaseUrl + '/public/dict/division/base/info'
 const vicoDoctorGet = vicoBaseUrl + '/public/dict/org/and/doctor/info'
@@ -53,7 +53,10 @@ const vicoBloodGlucoseGet = vicoBaseUrl + '/patient.api/data/blood/glucose/recor
 const vicoBloodGlucoseCommit = vicoBaseUrl + '/patient.api/data/blood/glucose/record/commit'
 const vicoBloodGlucoseDelete = vicoBaseUrl + '/patient.api/data/blood/glucose/record/delete'
 const vicoMonthlyReport = vicoBaseUrl + '/patient.api/data/monthly/report'
-const vicoChatListGet = vicoBaseUrl + '/patient.api/data/doctor/patient/chat/msg/list'
+const vicoDoctorListGet = vicoBaseUrl + '/patient.api/data/doctor/patient/chat/doctor/list'
+const vicoChatHistoryListGet = vicoBaseUrl + '/patient.api/data/doctor/patient/chat/msg/list'
+const vicoChatRead = vicoBaseUrl +'/patient.api/data/doctor/patient/chat/msg/read'
+const vicoChatSend = vicoBaseUrl +'/patient.api/data/doctor/patient/chat/msg/send'
 
 //用户管理
 const vicoPhoneChange = vicoBaseUrl + '/patient.api/account/phone/change'
@@ -107,7 +110,10 @@ export {
   vicoBloodGlucoseDelete,
   vicoBloodGlucoseGet,
   vicoMonthlyReport,
-  vicoChatListGet,
+  vicoDoctorListGet,
+  vicoChatHistoryListGet,
+  vicoChatRead,
+  vicoChatSend,
   //
   vicoPasswordChange,
   vicoPhoneChange,
