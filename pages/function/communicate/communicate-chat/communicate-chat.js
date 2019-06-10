@@ -58,7 +58,7 @@ Page({
     wx.setNavigationBarTitle({
       title: chatBasic.name
     })
-    this.getHistoryMsgList()
+    this.getHistoryMsgList(true)
   },
 
   /**
@@ -179,7 +179,7 @@ Page({
     }).exec();
   },
 
-  getHistoryMsgList: function() {
+  getHistoryMsgList: function(clearInput) {
     let url = vicoChatHistoryListGet
     let data = {
       doctorId: this.data.doctorId
@@ -201,8 +201,13 @@ Page({
         let data = res.data.data;
         chatList = data
         this.setData({
-          chatList: chatList,
+          chatList: chatList
         })
+        if (clearInput) {
+          this.setData({
+            userInputValue: ''
+          })
+        }
         this.getMsgHeight()
         if (chatList.length >= 1) {
           this.setData({
@@ -212,6 +217,8 @@ Page({
         // 阅读未读的消息
         if (this.data.unReadMsgList.length > 0){
           this.readMsg();
+        }else{
+          app.globalData.msgtask = 0;
         }
       }
     })
@@ -232,28 +239,32 @@ Page({
     }).then(res => {
       console.log(res)
       if (res.data.code == 0) {
-        let message = {
-          serialNo: '',
-          senderID: '',
-          receiverID: msg.receiverID,
-          msgDateTime: util.formatTime(new Date()),
-          msgContent: msg.msgContent,
-          msgFlag: 0,
-          // idx: index
-        }
-        index++;
-        chatList.push(message);
-        this.setData({
-          chatList: chatList,
-          userInputValue: '',
-          toView: 'msg-' + (chatList.length - 1)
-        })
-        this.getMsgHeight();
+        this.getHistoryMsgList(true);
+        // let message = {
+        //   serialNo: msg.serialNo,
+        //   senderID: msg.senderID,
+        //   receiverID: msg.receiverID,
+        //   msgDateTime: util.formatTime(new Date()),
+        //   msgContent: msg.msgContent,
+        //   msgFlag: 0,
+        //   // idx: index
+        // }
+        // index++;
+        // chatList.push(message);
+        // this.setData({
+        //   chatList: chatList,
+        //   userInputValue: '',
+        //   toView: 'msg-' + (chatList.length - 1)
+        // })
+        // this.getMsgHeight();
       }
     })
   },
 
   readMsg: function(){
+    if (this.data.unReadMsgList.length <= 0) {
+      return
+    }
     let url = vicoChatRead
     let data = {
       receiverID: this.data.doctorId,
@@ -271,9 +282,8 @@ Page({
       method: method,
       data: data
     }).then(res => {
-      console.log(res)
       if (res.data.code == 0) {
-        
+        app.globalData.msgtask = 0
       }
     })
   },
@@ -284,7 +294,7 @@ Page({
     var that = this;
     let token = wx.getStorageSync("login_token");
     let url =
-      "wss://cdmwb-dev.vico-lab.com/patient.api/socket/notify/subscribe?token=" +
+      "wss://nx.zjubiomedit.com/patient.api/socket/notify/subscribe?token=" +
       token;
     if (
       app.globalData.localSocket.readyState !== 0 &&
@@ -298,24 +308,43 @@ Page({
     }
 
     app.globalData.callback = function (res) {
-      let msg = JSON.parse(res.data).data;
-      let message = {
-        serialNo: msg.serialNo,
-        senderID: msg.senderID,
-        receiverID: msg.receiverID,
-        msgDateTime: msg.msgDateTime,
-        msgContent: msg.msgContent,
-        msgFlag: 0,
-        // idx: index
+      let resData = JSON.parse(res.data);
+      let msg = resData.data;
+      if (resData.notifyID == 2) {
+        let message = {
+          serialNo: msg.serialNo,
+          senderID: msg.senderID,
+          receiverID: msg.receiverID,
+          msgDateTime: msg.msgDateTime,
+          msgContent: msg.msgContent,
+          msgFlag: 0,
+          // idx: index
+        }
+        index++;
+        chatList.push(message);
+        that.setData({
+          chatList: chatList,
+          userInputValue: '',
+          toView: 'msg-' + (chatList.length - 1)
+        })
+        that.getMsgHeight();
+      }else if(resData.notifyID == 3) {
+        let readList = msg.msgSerialNos
+        readList.forEach(item => {
+          let targetIndex = -1;
+          targetIndex = chatList.findIndex(ele => { return ele.serialNo === item })
+          if (targetIndex != -1) {
+            let target = chatList[targetIndex]
+            target.msgFlag = 1;
+            chatList.splice(targetIndex, 1, target)
+            that.setData({
+              chatList:chatList
+            })
+          }
+
+        })
       }
-      index++;
-      chatList.push(message);
-      that.setData({
-        chatList: chatList,
-        userInputValue: '',
-        toView: 'msg-' + (chatList.length - 1)
-      })
-      that.getMsgHeight();
+
     };
   },
 

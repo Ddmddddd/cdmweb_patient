@@ -17,7 +17,7 @@
                 </span>
               </view>
               <view wx:if='{{item.senderID!=doctorId}}' class='flag' style="text-align:right;">
-                {{item.flag == 0?'已读':'未读'}}
+                {{item.msgFlag == 1?'已读':'未读'}}
               </view>
               <view wx:if='{{!item.senderID!=doctorId}}' class='flag' style="text-align:left;">
               </view>
@@ -26,7 +26,7 @@
         </view>
       </block>
     </view>
-    <view id='msgInit'></view>
+    <!-- <view id='unReadTag'>未读消息</view> -->
   </scroll-view>
   <view class='user-operation' id='user-input'>
     <view class='user-input-content'>

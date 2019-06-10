@@ -86,7 +86,10 @@ Page({
         var weighttask = data.managementPlan.weightTasks.length - data.todayRecords.weightRecordList.length;
         var medtask = data.managementPlan.drugTasks.length - data.todayRecords.drugRecordList.length;
         var bgtask = data.managementPlan.bloodGlucoseTasks.length - data.todayRecords.bloodGlucoseRecordList.length;
-        var msgtask = data.chatDoctorList.length;
+        var msgtask = 0
+        data.chatDoctorList.forEach(item => {
+          msgtask += item.unReadMsgList.length
+        })
         that.setData({
           nickname: nickname,
           registDate: data.loginUserInfo.registDate || "2016/6/23 18:18:53",

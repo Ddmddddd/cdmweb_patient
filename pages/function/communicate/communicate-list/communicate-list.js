@@ -15,7 +15,7 @@ Page({
         chatList : [],
     },
 
-  
+
     /**
      * 刷新数据函数
      */
@@ -28,9 +28,10 @@ Page({
     * 创建websocket连接
     * */
     openWS: function(){
+        var that = this
         let token = wx.getStorageSync("login_token");
         let url =
-            "wss://cdmwb-dev.vico-lab.com/patient.api/socket/notify/subscribe?token=" +
+            "wss://nx.zjubiomedit.com/patient.api/socket/notify/subscribe?token=" +
             token;
         if (
             app.globalData.localSocket.readyState !== 0 &&
@@ -44,16 +45,8 @@ Page({
         }
 
         app.globalData.callback = function(res) {
-            setTimeout(() => {
-                let resData = res.data;
-                this.chatList.forEach(item =>{
-                    if(item.UserID === resData.id){
-                        this.setData({
-                            item : resData,
-                        })
-                    }
-                })
-            }, 1500);
+            // 接收到最新消息，使用最简单的方式，从新调一次获取列表方法
+            that.getChatList();
         };
     },
 
