@@ -37,4 +37,4 @@ jspm_packages
 .node_repl_history
 
 # user project config
-project.config.json
+/project.config.json
