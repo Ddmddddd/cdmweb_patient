@@ -174,6 +174,7 @@ Page({
 
   //诊断选择
   diagnoseRadioChange:function(e){
+      //如果选中两个则diagnosis值固定
       if(e.detail.value.length === 2){
           this.setData({
               diagnosis: "高血压，糖尿病"

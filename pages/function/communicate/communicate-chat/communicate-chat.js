@@ -129,6 +129,10 @@ Page({
     // 获取用户输入信息
     let msgText = this.data.userInputValue;
     if (msgText === "") {
+        wx.showToast({
+            title: "发送信息不能为空！",
+            icon: "none"
+        });
       return
     }
     let msg = {
