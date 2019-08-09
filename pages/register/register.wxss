@@ -61,3 +61,27 @@ button {
   font-size: 12px;
   color: red;
 }
+
+checkbox .wx-checkbox-input {
+  border-radius: 50%; /* 圆角 */
+  width: 22px; /* 背景的宽 */
+  height: 22px; /* 背景的高 */
+}
+/* 选中后的 背景样式 （红色背景 无边框 可根据UI需求自己修改） */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+
+  background: #09BB07;
+}
+/* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+  border-radius: 50%; /* 圆角 */
+  width: 22px; /* 选中后对勾大小，不要超过背景的尺寸 */
+  height: 22px; /* 选中后对勾大小，不要超过背景的尺寸 */
+  line-height: 22px;
+  text-align: center;
+  font-size: 13px; /* 对勾大小 30rpx */
+  color: #F0FEFF; /* 对勾颜色 白色 */
+  background: transparent;
+  transform: translate(-50%, -50%) scale(1);
+  -webkit-transform: translate(-50%, -50%) scale(1);
+}

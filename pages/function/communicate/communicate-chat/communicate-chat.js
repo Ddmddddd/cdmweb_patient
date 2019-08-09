@@ -294,7 +294,7 @@ Page({
     var that = this;
     let token = wx.getStorageSync("login_token");
     let url =
-      "wss://nx.zjubiomedit.com/patient.api/socket/notify/subscribe?token=" +
+      "wss://cdmwb.vico-lab.com/patient.api/socket/notify/subscribe?token=" +
       token;
     if (
       app.globalData.localSocket.readyState !== 0 &&

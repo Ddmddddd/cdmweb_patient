@@ -2,7 +2,7 @@
 <view class='page'>
   <view class="registe-desc">
     <text>欢迎您加入</text>
-    <text>高血压院外管理计划</text>
+    <text>院外健康管理计划</text>
   </view>
   <view class="registe-body">
     <view class="registe">
@@ -12,6 +12,17 @@
       </view>
     </view>
     <view class="error-info" wx:if="{{nameError==true}}">请输入姓名</view>
+    <view class="registe">
+      <view>诊断</view>
+      <view>
+        <checkbox-group  bindchange="diagnoseRadioChange">
+            <label wx:for="{{diagnosisArr}}" wx:key="item.id" style="margin-right: 5px;">
+              <checkbox value="{{item.name}}" checked="{{item.checked}}"></checkbox>
+              {{item.name}}
+            </label>
+        </checkbox-group>
+      </view>
+    </view>
     <view class="registe">
       <view>身份证号</view>
       <view>

@@ -5,7 +5,7 @@
       <image class="image-profile" mode="aspectFill" src="../../image/userPhoto.jpeg" />
       <view class="text-item">
         <text class="text-title">{{nickname}},您好</text>
-        <text class="text-subtitle">已加入血压助手{{registTime}}天</text>
+        <text class="text-subtitle">已加入健康助手{{registTime}}天</text>
       </view>
       <!-- <view class="text-item" style='  margin-left: 70px;'>
         <text class="text-subtitle">成长值</text>

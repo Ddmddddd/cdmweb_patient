@@ -124,7 +124,7 @@ export const tokenRequest = ({
   function reLoginRequest(){
     var account = wx.getStorageSync('patientid_token');
     var password = wx.getStorageSync('password_token');
-    let url =  'https://nx.zjubiomedit.com/auth/login/patient';
+    let url =  'https://cdmwb.vico-lab.com/auth/login/patient';
     let data = {
       account: account,
       password: password,
@@ -301,7 +301,7 @@ export const validateID = (code) => {
     };
     var tip = "";
     var pass = true;
-    var birthDate = ""
+    var birthDate = "";
     if (!city[code.substr(0, 2)]) {
         tip = "地址编码错误";
         pass = false;

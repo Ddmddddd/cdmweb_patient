@@ -18,7 +18,7 @@ const mesContentGet = mesBaseUrl + 'getKnoContent.jsp?kno_id='
  * 新接口url
  */
 // const vicoBaseUrl = 'https://cdmwb.vico-lab.com'
-const vicoBaseUrl = 'https://nx.zjubiomedit.com'
+const vicoBaseUrl = 'https://cdmwb-dev.vico-lab.com'
 //公共平台接口 字典信息 获取议员列表
 const vicoDivisionGet = vicoBaseUrl + '/public/dict/division/base/info'
 const vicoDoctorGet = vicoBaseUrl + '/public/dict/org/and/doctor/info'
