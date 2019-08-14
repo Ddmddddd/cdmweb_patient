@@ -200,7 +200,7 @@ Page({
   onShow: function() {
     let token = wx.getStorageSync("login_token");
     let url =
-      "wss://cdmwb.vico-lab.com/patient.api/socket/notify/subscribe?token=" +
+      "wss://test.zjubiomedit.com/patient.api/socket/notify/subscribe?token=" +
       token;
     if (
       app.globalData.localSocket.readyState !== 0 &&

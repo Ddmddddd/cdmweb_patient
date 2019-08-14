@@ -17,8 +17,7 @@ const mesContentGet = mesBaseUrl + 'getKnoContent.jsp?kno_id='
 /**
  * 新接口url
  */
-// const vicoBaseUrl = 'https://cdmwb.vico-lab.com'
-const vicoBaseUrl = 'https://cdmwb-dev.vico-lab.com'
+const vicoBaseUrl = 'https://test.zjubiomedit.com'
 //公共平台接口 字典信息 获取议员列表
 const vicoDivisionGet = vicoBaseUrl + '/public/dict/division/base/info'
 const vicoDoctorGet = vicoBaseUrl + '/public/dict/org/and/doctor/info'
@@ -63,7 +62,7 @@ const vicoPhoneChange = vicoBaseUrl + '/patient.api/account/phone/change'
 const vicoPasswordChange = vicoBaseUrl + '/patient.api/account/password/change'
 
 //wss
-// const vicoWebsocket = 'wss://nx.zjubiomedit.com/patient.api/socket/notify/subscribe?token='
+// const vicoWebsocket = 'wss://test.zjubiomedit.com/patient.api/socket/notify/subscribe?token='
 export {
   eduBaseUrl,
   eduSubscribeApi,

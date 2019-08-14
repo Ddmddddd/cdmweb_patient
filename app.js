@@ -171,7 +171,7 @@ App({
       console.log('WebSocket连接已关闭！readyState=' + that.globalData.localSocket.readyState)
       let token = wx.getStorageSync("login_token");
       let url =
-        "wss://cdmwb.vico-lab.com/patient.api/socket/notify/subscribe?token=" +
+        "wss://test.zjubiomedit.com/patient.api/socket/notify/subscribe?token=" +
         token;
       that.initSocket(url)
     })
