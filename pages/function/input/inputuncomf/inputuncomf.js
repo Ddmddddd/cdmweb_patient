@@ -17,8 +17,8 @@ Page({
     memo: "",
 
     uncomfArr: ["剧烈头痛", "恶心呕吐", "胸痛", "四肢麻木无力", "语言不清"],
-    event:{}
-
+    event:{},
+    commitStatus : true,
   },
 
   bindSwitchChange:function(e){
@@ -110,22 +110,26 @@ Page({
       token: token,
       "content-type": "application/json"
     };
-    tokenRequest({ url: url, header: header, method: method, data: data }).then(res => {
-      if (res.data.code == 20001) {
-        console.log('relogin')
-        setTimeout(()=>{
-          that.dataManager(that.data.event)
-        },700)
-      } else {
-        wx.showToast({
-          title: "成功",
-          icon: "success"
+    if(that.data.commitStatus){
+        tokenRequest({ url: url, header: header, method: method, data: data }).then(res => {
+            if (res.data.code == 20001) {
+                console.log('relogin')
+                setTimeout(()=>{
+                    that.dataManager(that.data.event)
+                },700)
+            } else {
+                that.data.commitStatus = false;
+                wx.showToast({
+                    title: "成功",
+                    icon: "success"
+                });
+                setTimeout(() => {
+                    wx.navigateBack();
+                }, 1500);
+            }
         });
-        setTimeout(() => {
-          wx.navigateBack();
-        }, 1500);
-      }
-    });
+    }
+
   },
 
 

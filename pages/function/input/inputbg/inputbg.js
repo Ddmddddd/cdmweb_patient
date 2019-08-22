@@ -33,6 +33,8 @@ Page({
     // {type:2 , name:"晚餐前" ,addition:"餐前"},{type:2 , name:"晚餐后" ,addition:"餐后"},
     // {type:10 , name:"睡前" ,addition:""}],
     // type:["早","午","晚"]
+
+    commitStatus : true,
   },
 
   //page func
@@ -144,28 +146,32 @@ Page({
       token: token,
       "content-type": "application/json"
     };
-    tokenRequest({ url: url, header: header, method: method, data: data }).then(
-      res => {
-        // console.log(res)
-        if (res.data.code == 20001) {
-          console.log("relogin");
-          setTimeout(() => {
-            that.dataManager(that.data.event);
-          }, 700);
-        } else {
-          // if (!status) {
-          //   app.globalData.bptask--;
-          // }
-          wx.showToast({
-            title: "成功",
-            icon: "success"
-          });
-          setTimeout(() => {
-            wx.navigateBack();
-          }, 1500);
-        }
-      }
-    );
+    if(that.data.commitStatus){
+        tokenRequest({ url: url, header: header, method: method, data: data }).then(
+            res => {
+                // console.log(res)
+                if (res.data.code == 20001) {
+                    console.log("relogin");
+                    setTimeout(() => {
+                        that.dataManager(that.data.event);
+                    }, 700);
+                } else {
+                    // if (!status) {
+                    //   app.globalData.bptask--;
+                    // }
+                    that.data.commitStatus = false;
+                    wx.showToast({
+                        title: "成功",
+                        icon: "success"
+                    });
+                    setTimeout(() => {
+                        wx.navigateBack();
+                    }, 1500);
+                }
+            }
+        );
+    }
+
   },
   /**
    * 生命周期函数--监听页面加载

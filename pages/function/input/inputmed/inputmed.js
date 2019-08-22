@@ -72,8 +72,8 @@ Page({
       ]
     ],
     multiIndex2: [0, 0],
-    event:{}
-
+    event:{},
+    commitStatus : true,
   },
 
   bindDateChange: function(e) {
@@ -230,27 +230,31 @@ Page({
       token: token,
       "content-type": "application/json"
     };
-    tokenRequest({ url: url, header: header, method: method, data: data }).then(
-      res => {
-        if (res.data.code == 20001) {
-          console.log('relogin')
-          setTimeout(()=>{
-            that.dataManager(that.data.event)
-          },700)
-        } else {
-          if (!status) {
-            app.globalData.medtask--;
-          }
-          wx.showToast({
-            title: "成功",
-            icon: "success"
-          });
-          setTimeout(() => {
-            wx.navigateBack();
-          }, 1500);
-        }
-      }
-    );
+    if(that.data.commitStatus){
+        tokenRequest({ url: url, header: header, method: method, data: data }).then(
+            res => {
+                if (res.data.code == 20001) {
+                    console.log('relogin')
+                    setTimeout(()=>{
+                        that.dataManager(that.data.event)
+                    },700)
+                } else {
+                    if (!status) {
+                        app.globalData.medtask--;
+                    }
+                    that.data.commitStatus = false;
+                    wx.showToast({
+                        title: "成功",
+                        icon: "success"
+                    });
+                    setTimeout(() => {
+                        wx.navigateBack();
+                    }, 1500);
+                }
+            }
+        );
+    }
+
   },
 
   /**
