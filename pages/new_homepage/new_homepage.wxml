@@ -1,0 +1,78 @@
+<!--pages/new_homepage/new_homepage.wxml-->
+<view class="homepage">
+    <view class="first">
+        <view class="top">
+          <image mode="aspectFill" src="../../image/userPhoto.jpeg" />
+          <view class="base">
+            <text>{{nickname}}</text>
+            <text>慢病微管家已为您服务{{registTime}}天</text>
+          </view>
+          <navigator class="report" url="../function/report/report">
+            <image mode="aspectFill" src="../../image/report.png" />
+            <view>查看月报</view>
+          </navigator>
+        </view>
+        <view style="display:flex;flex-direction:row;">
+            <view class="mask">
+              <text>今日计划</text>
+              <view>
+                <view class="plan">
+                  <image src="{{bptask!=0?'../../image/picker.png':'../../image/picker-selected.png'}}" mode="aspectFill" />
+                  <text>测量血压</text>
+                </view>
+                <view class="plan">
+                  <image src="{{weighttask!=0?'../../image/picker.png':'../../image/picker-selected.png'}}" mode="aspectFill" />
+                  <text>测量体重</text>
+                </view>
+                <view class="plan">
+                  <image src="{{classtask!=0?'../../image/picker.png':'../../image/picker-selected.png'}}" mode="aspectFill" />
+                  <text>科普阅读</text>
+                </view>
+              </view>
+            </view>
+            <view class="mask target">
+              <view>目标血压</view>
+              <view>140/90mmHg</view>
+            </view>
+        </view>
+    </view>
+    <view class="lesson" bindtap="gotoStudy">
+      <view>{{classTitle}}<text wx:if="{{classtask==0}}">(已阅读)</text></view>
+      <image mode="aspectFit" src="../../image/hypertension_class.png" />
+    </view>
+    <view class="health" style="width:90%;margin-left:5%;">健康记录</view>
+    <view class="record">
+      <navigator class="health_card" style="background-color:#FFFFCC" url="../function/bp/bp">
+        <text>血压记录</text>
+        <view wx:if="{{bptask>0}}" class='red-icon icon'>{{bptask}}</view>
+      </navigator>
+      <navigator class="health_card" style="background-color:#CCFFFF" url="../function/bg/bg">
+        <text>血糖记录</text>
+        <view wx:if="{{bgtask>0}}" class='red-icon icon'>{{bgtask}}</view>
+      </navigator>
+    </view>
+    <view class="record">
+      <navigator class="health_card" style="background-color:#CCFFCC" url="../function/weight/weight">
+        <text>体重记录</text>
+        <view wx:if="{{weighttask>0}}" class='red-icon icon'>{{weighttask}}</view>
+      </navigator>
+      <navigator class="health_card" style="background-color:#FFCCCC" url="../function/medicine/medicine">
+        <text>服药记录</text>
+        <view wx:if="{{medtask>0}}" class='red-icon icon'>{{medtask}}</view>
+      </navigator>
+    </view>
+    <view class="last">
+      <view>
+        <view class="health">膳食与运动记录</view>
+        <navigator class="diet" url="../function/eat/eat"><text>饮食记录</text></navigator>
+        <navigator class="sports" url="../function/sports/sports"><text>运动记录</text></navigator>
+      </view>
+
+      <view class="discomfort">
+        <view class="health">记录不适症状</view>
+        <navigator url="../function/uncomf/uncomf">
+          <image class="discomfort_image" mode="aspectFit" src="../../image/discomfort.png" />
+        </navigator>
+      </view>
+    </view>
+</view>

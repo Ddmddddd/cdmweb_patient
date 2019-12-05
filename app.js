@@ -156,6 +156,7 @@ App({
       while (socketMsgQueue.length > 0) {
         var msg = socketMsgQueue.shift();
         that.sendSocketMessage(msg);
+        console.log(msg)
       }
     })
     that.globalData.localSocket.onMessage(function(res) {
@@ -171,7 +172,7 @@ App({
       console.log('WebSocket连接已关闭！readyState=' + that.globalData.localSocket.readyState)
       let token = wx.getStorageSync("login_token");
       let url =
-        "wss://nx.zjubiomedit.com/patient.api/socket/notify/subscribe?token=" +
+        "wss://cdmwb-dev.vico-lab.com/patient.api/socket/notify/subscribe?token=" +
         token;
       that.initSocket(url)
     })

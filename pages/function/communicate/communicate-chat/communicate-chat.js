@@ -196,7 +196,6 @@ Page({
       method: method,
       data: data
     }).then(res => {
-      console.log(res)
       if (res.data.code == 0) {
         let data = res.data.data;
         chatList = data
@@ -216,7 +215,7 @@ Page({
         }
         // 阅读未读的消息
         if (this.data.unReadMsgList.length > 0){
-          this.readMsg();
+          this.readMsg(this.data.unReadMsgList);
         }else{
           app.globalData.msgtask = 0;
         }
@@ -237,7 +236,6 @@ Page({
       method: method,
       data: msg
     }).then(res => {
-      console.log(res)
       if (res.data.code == 0) {
         this.getHistoryMsgList(true);
         // let message = {
@@ -261,14 +259,11 @@ Page({
     })
   },
 
-  readMsg: function(){
-    if (this.data.unReadMsgList.length <= 0) {
-      return
-    }
+  readMsg: function(unReadMsgList){
     let url = vicoChatRead
     let data = {
       receiverID: this.data.doctorId,
-      msgSerialNos: this.data.unReadMsgList
+      msgSerialNos: unReadMsgList
     }
     let method = "POST"
     let token = wx.getStorageSync('login_token');
@@ -294,7 +289,7 @@ Page({
     var that = this;
     let token = wx.getStorageSync("login_token");
     let url =
-      "wss://nx.zjubiomedit.com/patient.api/socket/notify/subscribe?token=" +
+      "wss://cdmwb-dev.vico-lab.com/patient.api/socket/notify/subscribe?token=" +
       token;
     if (
       app.globalData.localSocket.readyState !== 0 &&
@@ -310,6 +305,7 @@ Page({
     app.globalData.callback = function (res) {
       let resData = JSON.parse(res.data);
       let msg = resData.data;
+      console.log(resData)
       if (resData.notifyID == 2) {
         let message = {
           serialNo: msg.serialNo,
@@ -328,6 +324,10 @@ Page({
           toView: 'msg-' + (chatList.length - 1)
         })
         that.getMsgHeight();
+        if (msg.senderID == that.data.doctorId) {
+          let serialNo = [msg.serialNo];
+          that.readMsg(serialNo);
+        }
       }else if(resData.notifyID == 3) {
         let readList = msg.msgSerialNos
         readList.forEach(item => {

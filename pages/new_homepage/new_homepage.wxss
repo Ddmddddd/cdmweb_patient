@@ -1,0 +1,252 @@
+/* pages/new_homepage/new_homepage.wxss */
+.homepage {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+}
+
+.first {
+    height:255rpx;
+    width: 100%;
+    background-color: #F2F2F2;
+    padding-left: 32rpx;
+    padding-top: 16rpx;
+    box-shadow: 4rpx 6rpx 4rpx 2rpx rgba(1, 1, 5, 0.1);
+    border-radius: 16rpx;
+    border: 0 solid #797979;
+}
+
+.top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.top>image {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 80rpx;
+    margin-bottom: 10rpx;
+    border: 0 solid #797979;
+    box-shadow: 4rpx 4rpx 4rpx 2rpx rgba(1, 1, 5, 0.1);
+}
+
+.base {
+    display: flex;
+    flex-direction: column;
+    margin-left: 14rpx;
+    width: 296rpx;
+    padding-left: 10rpx;
+    height: 75rpx;
+}
+
+.base>text:first-child {
+    font-weight: bold;
+    font-size: 28rpx;
+}
+
+.base>text:last-child {
+    font-size: 20rpx;
+    color: #666666;
+}
+
+.report {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 58rpx;
+    padding-left: 6rpx;
+    padding-right: 10rpx;
+    height: 75rpx;
+    border: 0 solid #797979;
+    box-shadow: 6rpx 6rpx 4rpx 2rpx rgba(1, 1, 5, 0.1);
+    border-radius: 6rpx;
+    background-color: #FFFFFF;
+}
+
+.report>image {
+    height: 60rpx;
+    width: 60rpx;
+}
+
+.report>view {
+    font-size: 36rpx;
+}
+
+.mask {
+    margin-top: 20rpx;
+    height: 132rpx;
+    width: 296rpx;
+    background-color: #FFFFFF;
+    border: 0 solid #797979;
+    box-shadow: 6rpx 6rpx 4rpx 2rpx rgba(1, 1, 5, 0.1);
+    border-radius: 8rpx;
+    display: flex;
+    flex-direction: row;
+}
+
+.mask>text:first-child {
+    font-weight: bold;
+    font-size: 26rpx;
+    margin-left: 10rpx;
+}
+
+.plan {
+    display: flex;
+    align-items: center;
+    margin-left: 10rpx;
+}
+
+.plan>image {
+    height: 28rpx;
+    width: 28rpx;
+}
+
+.plan>text {
+    font-size: 26rpx;
+    margin-left: 4rpx;
+}
+
+.target {
+    margin-left: 92rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.target>view:last-child {
+    font-size: 36rpx;
+    font-weight: bold;
+}
+
+.lesson {
+    margin-top: 20rpx;
+    display: flex;
+    position: relative;
+    height: 266rpx;
+    align-items: center;
+}
+
+.lesson>view {
+    opacity: 0.8;
+    font-size: 32rpx;
+    z-index:1;
+    color: white;
+    margin-left: 130rpx;
+    width:300rpx;
+}
+
+.lesson>image {
+    position: absolute;
+    height: 266rpx;
+    width: 90%;
+    border-radius: 30rpx;
+    margin-left: 5%;
+    box-shadow: 4rpx 8rpx 8rpx 2rpx rgba(1, 1, 5, 0.1);
+}
+
+.health {
+    margin-top: 10rpx;
+    font-weight: bold;
+    font-size: 34rpx; 
+}
+
+.record {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10rpx;
+    width: 90%;
+    margin-left: 5%;
+    justify-content: space-between;
+}
+
+.health_card {
+    height: 100rpx;
+    font-size: 34rpx;
+    width: 320rpx;
+    border-radius: 30rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+    box-shadow: 4rpx 8rpx 8rpx 2rpx rgba(1, 1, 5, 0.1);
+}
+
+.last {
+    display: flex;
+    flex-direction: row;
+    width:90%;
+    margin-left: 5%;
+    justify-content: space-between;
+}
+
+.diet {
+    background-color: #CCCCFF;
+    height: 72rpx;
+    margin-top: 10rpx;
+    width:320rpx;
+    font-size: 34rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 40rpx;
+    border-top-right-radius: 40rpx;
+    box-shadow: 4rpx 8rpx 8rpx 2rpx rgba(1, 1, 5, 0.1);
+}
+
+.sports {
+    background-color: #99CCCC;
+    height: 72rpx;
+    margin-top: 8rpx;
+    width:320rpx;
+    font-size: 34rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 40rpx;
+    border-bottom-right-radius: 40rpx;
+    box-shadow: 4rpx 8rpx 8rpx 2rpx rgba(1, 1, 5, 0.1);
+}
+
+.column {
+    height:160rpx;
+    margin-top: 20rpx;
+    width:2rpx;
+    background-color: #797979;
+}
+
+.discomfort>navigator {
+    height: 152rpx;
+    width:320rpx;
+    margin-top: 10rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 40rpx;
+    background-color: #CCCCCC;
+    box-shadow: 4rpx 8rpx 8rpx 2rpx rgba(1, 1, 5, 0.1);
+}
+
+.discomfort_image {
+    height:130rpx;
+}
+
+.red-icon {
+    width: 34rpx;
+    height: 34rpx;
+    background: #f44;
+    font-size: 24rpx;
+    border-radius: 26rpx;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ddd;
+    z-index: 10;
+  }
+  
+  .icon {
+    left: 94%;
+    top: -10rpx;
+  }

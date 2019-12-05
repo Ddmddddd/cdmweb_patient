@@ -164,6 +164,7 @@ Page({
   onLoad: function(options) {
     var patientId = wx.getStorageSync("patientid_token");
     var studyList = JSON.parse(options.kid);
+    console.log(studyList)
     this.setData({
       studyList: studyList,
       patientId: patientId

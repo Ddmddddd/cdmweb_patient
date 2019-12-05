@@ -124,7 +124,7 @@ export const tokenRequest = ({
   function reLoginRequest(){
     var account = wx.getStorageSync('patientid_token');
     var password = wx.getStorageSync('password_token');
-    let url =  'https://nx.zjubiomedit.com/auth/login/patient';
+    let url =  'https://cdmwb-dev.vico-lab.comzjubiomedit.com/auth/login/patient';
     let data = {
       account: account,
       password: password,

@@ -31,7 +31,7 @@ Page({
         var that = this
         let token = wx.getStorageSync("login_token");
         let url =
-            "wss://nx.zjubiomedit.com/patient.api/socket/notify/subscribe?token=" +
+            "wss://cdmwb-dev.vico-lab.com/patient.api/socket/notify/subscribe?token=" +
             token;
         if (
             app.globalData.localSocket.readyState !== 0 &&
@@ -65,7 +65,6 @@ Page({
             "content-type": "application/json"
         }
         tokenRequest({url:url, header:header, method:method, data:null}).then(res=>{
-            console.log(res)
             if (res.data.code == 0) {
                 let data = res.data.data;
                 this.setData({

@@ -88,7 +88,7 @@ Page({
             wx.setStorageSync("password_token", that.data.userPassword);
             wx.setStorageSync("login_token", data.token);
             wx.switchTab({
-              url: "../homepage/homepage"
+              url: "../new_homepage/new_homepage"
             });
         }
       });

@@ -48,6 +48,7 @@ const formatNumber = n => {
 const formatCalendarDate = (y,m,d) => {
   return [y,m,d].map(formatNumber).join('-')
 }
+
 module.exports = {
   formatTime: formatTime,
   formatTime2: formatTime2,

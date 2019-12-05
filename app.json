@@ -34,14 +34,15 @@
     "pages/setting/user/user",
     "pages/setting/bindUserInfo/bindphone/bindphone",
     "pages/setting/bindUserInfo/bindpassword/bindpassword",
-    "pages/function/charts/bgcalendar/bgcalendar"
+    "pages/function/charts/bgcalendar/bgcalendar",
+    "pages/new_homepage/new_homepage"
   ],
   "window": {
     "navigationBarTitleText": "慢病微管家",
     "enablePullDownRefresh": true,
     "backgroundTextStyle": "dark",
     "backgroundColor": "#f2f2f2",
-    "navigationBarBackgroundColor": "#fbfbfb",
+    "navigationBarBackgroundColor": "#FFFFFF",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
@@ -52,8 +53,14 @@
       {
         "selectedIconPath": "image/homepage_fill.png",
         "iconPath": "image/homepage.png",
-        "pagePath": "pages/homepage/homepage",
+        "pagePath": "pages/new_homepage/new_homepage",
         "text": "首页"
+      },
+      {
+        "selectedIconPath": "image/class_tab_fill.png",
+        "iconPath": "image/class_tab.png",
+        "pagePath": "pages/function/class/class-index/class-index",
+        "text": "课堂"
       },
       {
         "selectedIconPath": "image/message_fill.png",
