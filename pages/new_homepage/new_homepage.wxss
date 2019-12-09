@@ -6,14 +6,30 @@
 }
 
 .first {
-    height:255rpx;
-    width: 100%;
+    height:205rpx;
+    width: 99%;
+    margin-left: 0.2%;
     background-color: #F2F2F2;
     padding-left: 32rpx;
     padding-top: 16rpx;
     box-shadow: 4rpx 6rpx 4rpx 2rpx rgba(1, 1, 5, 0.1);
     border-radius: 16rpx;
     border: 0 solid #797979;
+    display: flex;
+    flex-direction: row;
+}
+
+.today_task {
+    margin-top: 20rpx;
+    background-color: white;
+    height: 80rpx;
+    width: 480rpx;
+    margin-left: 8rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24rpx;
+    border-radius: 6rpx;
 }
 
 .top {
@@ -107,42 +123,30 @@
     margin-left: 4rpx;
 }
 
-.target {
-    margin-left: 92rpx;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.target>view:last-child {
-    font-size: 36rpx;
-    font-weight: bold;
-}
-
-.lesson {
-    margin-top: 20rpx;
+.knowledge {
     display: flex;
     position: relative;
-    height: 266rpx;
+    height: 300rpx;
     align-items: center;
+    justify-content: center;
 }
 
-.lesson>view {
-    opacity: 0.8;
-    font-size: 32rpx;
-    z-index:1;
-    color: white;
-    margin-left: 130rpx;
-    width:300rpx;
+.knowledge>swiper {
+    width: 100%;
+    margin-top: 10rpx;
 }
 
-.lesson>image {
+.kno_image_title {
+    font-size: 26rpx;
+    text-align: center;
+    background-color:black;
+    color:white
+}
+
+.knowledge>image {
     position: absolute;
     height: 266rpx;
-    width: 90%;
-    border-radius: 30rpx;
-    margin-left: 5%;
+    border-radius: 6rpx;
     box-shadow: 4rpx 8rpx 8rpx 2rpx rgba(1, 1, 5, 0.1);
 }
 
@@ -156,57 +160,74 @@
     display: flex;
     flex-direction: row;
     margin-top: 10rpx;
-    width: 90%;
-    margin-left: 5%;
-    justify-content: space-between;
+    width: 94%;
+    margin-left: 3%;
 }
 
 .health_card {
-    height: 100rpx;
-    font-size: 34rpx;
-    width: 320rpx;
-    border-radius: 30rpx;
+    height: 120rpx;
+    font-size: 30rpx;
+    width: 356rpx;
+    border-radius: 8rpx;
     display: flex;
     align-items: center;
-    justify-content: space-around;
     position: relative;
-    box-shadow: 4rpx 8rpx 8rpx 2rpx rgba(1, 1, 5, 0.1);
+    box-shadow: 2rpx 2rpx 2rpx 2rpx rgba(1, 1, 5, 0.1);
+}
+
+.record_png {
+    height: 70rpx;
+    width: 70rpx;
+    z-index: 10;
+    opacity: 0.1;
+    position: absolute;
+    margin-left: 100rpx;
+}
+
+.target {
+    font-size: 20rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(253, 253, 253, 0.5);
+    padding: 6rpx;
+    border-radius: 8rpx;
+    margin-left: 70rpx;
 }
 
 .last {
     display: flex;
     flex-direction: row;
-    width:90%;
-    margin-left: 5%;
+    width:94%;
+    margin-left: 3%;
     justify-content: space-between;
 }
 
 .diet {
     background-color: #CCCCFF;
-    height: 72rpx;
+    height: 80rpx;
     margin-top: 10rpx;
     width:320rpx;
-    font-size: 34rpx;
+    font-size: 28rpx;
     display: flex;
-    justify-content: center;
     align-items: center;
-    border-top-left-radius: 40rpx;
-    border-top-right-radius: 40rpx;
+    border-top-left-radius: 8rpx;
+    border-top-right-radius: 8rpx;
     box-shadow: 4rpx 8rpx 8rpx 2rpx rgba(1, 1, 5, 0.1);
 }
 
 .sports {
     background-color: #99CCCC;
-    height: 72rpx;
+    height: 80rpx;
     margin-top: 8rpx;
     width:320rpx;
-    font-size: 34rpx;
+    font-size: 28rpx;
     display: flex;
-    justify-content: center;
     align-items: center;
-    border-bottom-left-radius: 40rpx;
-    border-bottom-right-radius: 40rpx;
-    box-shadow: 4rpx 8rpx 8rpx 2rpx rgba(1, 1, 5, 0.1);
+    border-bottom-left-radius: 8rpx;
+    border-bottom-right-radius: 8rpx;
+    box-shadow: 2rpx 2rpx 2rpx 2rpx rgba(1, 1, 5, 0.1);
 }
 
 .column {
@@ -217,15 +238,15 @@
 }
 
 .discomfort>navigator {
-    height: 152rpx;
+    height: 168rpx;
     width:320rpx;
     margin-top: 10rpx;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 40rpx;
+    border-radius: 8rpx;
     background-color: #CCCCCC;
-    box-shadow: 4rpx 8rpx 8rpx 2rpx rgba(1, 1, 5, 0.1);
+    box-shadow: 2rpx 2rpx 2rpx 2rpx rgba(1, 1, 5, 0.1);
 }
 
 .discomfort_image {
@@ -244,9 +265,18 @@
     align-items: center;
     color: #ddd;
     z-index: 10;
-  }
+}
   
-  .icon {
+.icon {
     left: 94%;
     top: -10rpx;
-  }
+}
+
+.container1 {
+    width:180rpx;
+    height:180rpx;
+    margin-left: 14rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

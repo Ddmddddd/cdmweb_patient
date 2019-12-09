@@ -1,8 +1,9 @@
 // pages/new_homepage/new_homepage.js
 var util = require('../../utils/util.js');
 import { request } from "../../utils/Request";
-import { vicoLogedUrl, eduTodayScheduleApi, eduWXKnowledgeDetailApi } from "../../utils/config";
-var app = getApp()
+import { vicoLogedUrl, mesGet } from "../../utils/config";
+var app = getApp();
+
 Page({
 
   /**
@@ -22,6 +23,7 @@ Page({
     bgtask:0,
     classtask:0,
     msgtask:0,
+
   },
 
   /**
@@ -81,9 +83,16 @@ Page({
         that.setData({
           nickname: nickname,
           registDate: data.loginUserInfo.registDate || "2016/6/23 18:18:53",
-          diastolicPressureGoal: data.managementPlan.goalDBP || 80,
-          systolicPressureGoal: data.managementPlan.goalSBP  || 120,
+          diastolicPressureGoal: data.managementPlan.goalDBP || 90,
+          systolicPressureGoal: data.managementPlan.goalSBP  || 140,
           returnVisitDate: data.managementPlan.returnVisitDate || "暂无",
+          bloodGlucoseGoal: data.managementPlan.goalGLU || 6.1,
+          weightGoal: ~~(data.managementPlan.goalBMI*data.loginUserInfo.newestHeight*data.loginUserInfo.newestHeight/10000),
+          nowWeight: data.loginUserInfo.newestWeight,
+          nowDiastolicPressure: data.todayRecords.bpRecordList.length>0 ? data.todayRecords.bpRecordList[0].diastolicPressure : 0,
+          nowSystolicPressure: data.todayRecords.bpRecordList.length>0 ? data.todayRecords.bpRecordList[0].systolicPressure : 0,
+          nowBloodGlucose: data.todayRecords.bloodGlucoseRecordList.length>0 ? data.todayRecords.bloodGlucoseRecordList[0].bloodGlucose : 0,
+          todayMed: data.todayRecords.drugRecordList.length>0 ? data.todayRecords.drugRecordList.length : 0,
           bptask: bptask,
           weighttask: weighttask,
           medtask: medtask,
@@ -99,79 +108,22 @@ Page({
       }
     })
   },
-
   /**
-   * 查询 今日的学习计划GET patientId
+   * 获取六条咨询
    */
-  todayStudyGet: function() {
+  getSixKno(){
     var that = this;
-    var patientId = wx.getStorageSync("patientid_token");
-    var url = eduTodayScheduleApi + patientId;
-    request({ url }).then(res => {
-      if(res.data.success) {
-        if(res.data.result.length!=0){
-          that.setData({
-            kid:res.data.result[0].kid,
-            cid:res.data.result[0].cid,
-            classtask:1,
-          })
-          app.globalData.classtask = 1
-          wx.setStorageSync("kid", res.data.result[0].kid);
-          wx.setStorageSync("cid", res.data.result[0].cid);
-          that.knowledgeInfo(patientId, res.data.result[0].kid);
-        } else {
-          that.setData({
-            classtask:0,
-          })
-          app.globalData.classtask = 0
-          let kid = wx.getStorageSync("kid");
-          that.knowledgeInfo(patientId, kid); 
-        }
-      }
-    });
-  },
-
-  /**
-   * 获取某知识的具体数据
-   * POST patientId kid
-   */
-  knowledgeInfo: function(patientId, kid) {
-    var that = this;
-    let header = {
-      "Content-Type": "application/x-www-form-urlencoded"
-    };
-    let url = eduWXKnowledgeDetailApi;
-    let data = {
-      patientId: patientId,
-      kid: kid
-    };
-    let method = "POST";
-    request({
-      url: url,
-      header: header,
-      data: data,
-      method: method
-    }).then(res => {
-      const { result } = res.data
+    var count = 4;
+    request({url:mesGet + count}).then(res=>{
+      let knowledge1 = res.data.result.knowledge.map(function(item){
+        var arr=item.kno_time.split(" ");
+        item.kno_time=arr[0];
+        return item
+      })
       that.setData({
-        classTitle: result.title
-      });
-    });
-  },
-
-  gotoStudy:function() {
-    var kid = wx.getStorageSync("kid");
-    var cid = wx.getStorageSync("cid");
-    kid = [
-      {
-        kid: kid,
-        cid: cid
-      }
-    ];
-    kid = JSON.stringify(kid);
-    wx.navigateTo({
-      url: "../function/class/class-learn/class-learn?kid=" + kid
-    });
+        knowledge:knowledge1
+      })
+    })
   },
 
   /**
@@ -182,7 +134,7 @@ Page({
       title:'数据加载中...'
     })
     this.initDataRequest();
-    this.todayStudyGet();
+    this.getSixKno();
   },
 
   /**
@@ -203,41 +155,6 @@ Page({
       classtask:app.globalData.classtask,
       msgtask:app.globalData.msgtask
     })
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-    wx.stopPullDownRefresh()
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   },
 
 })

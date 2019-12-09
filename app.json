@@ -35,7 +35,9 @@
     "pages/setting/bindUserInfo/bindphone/bindphone",
     "pages/setting/bindUserInfo/bindpassword/bindpassword",
     "pages/function/charts/bgcalendar/bgcalendar",
-    "pages/new_homepage/new_homepage"
+    "pages/new_homepage/new_homepage",
+    "components/circle/index",
+    "pages/today_task/today_task"
   ],
   "window": {
     "navigationBarTitleText": "慢病微管家",
@@ -61,12 +63,6 @@
         "iconPath": "image/class_tab.png",
         "pagePath": "pages/function/class/class-index/class-index",
         "text": "课堂"
-      },
-      {
-        "selectedIconPath": "image/message_fill.png",
-        "iconPath": "image/message.png",
-        "pagePath": "pages/message/message",
-        "text": "资讯"
       },
       {
         "selectedIconPath": "image/mine_fill.png",

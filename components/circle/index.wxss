@@ -1,0 +1,25 @@
+/* components/circle/index.wxss */
+.circle_box,.circle_draw{ position: relative; }
+.circle_bg{position: absolute;}
+.circle_box{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.circle_txt{
+  font-size: 28rpx;
+}
+
+.circle_png {
+    height:60rpx;
+    width:60rpx;
+}
+
+.circle_info {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
