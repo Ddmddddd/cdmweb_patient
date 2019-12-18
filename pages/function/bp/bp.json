@@ -2,6 +2,5 @@
     "usingComponents": {
       "ec-canvas": "../../../components/ec-canvas/ec-canvas"
     },
-  "navigationBarTitleText": "测量血压"
-
+  "navigationBarTitleText": "记录血压"
 }

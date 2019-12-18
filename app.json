@@ -36,7 +36,6 @@
     "pages/setting/bindUserInfo/bindpassword/bindpassword",
     "pages/function/charts/bgcalendar/bgcalendar",
     "pages/new_homepage/new_homepage",
-    "components/circle/index",
     "pages/today_task/today_task"
   ],
   "window": {

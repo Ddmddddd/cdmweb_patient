@@ -28,7 +28,7 @@ Page({
     let feature = parseInt(this.data.feature)
     this.setData({
       feature: e.detail.value? feature+ weight:feature - weight,
-      discomfort:e.detail.value?this.data.discomfort.concat(uncomfArr[id] + ','):this.data.discomfort.replace(uncomfArr[id] + ',','')
+      discomfort:e.detail.value?this.data.discomfort.concat(uncomfArr[id] + '，'):this.data.discomfort.replace(uncomfArr[id] + '，','')
     })
   },
 

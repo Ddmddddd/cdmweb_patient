@@ -16,13 +16,13 @@
           <view class='history-time'>{{date[index2][1]}}</view>
         </view>
         <!-- <view class='history-date'>{{bp.measureTime}}</view> -->
-        <view class='history-list'>
-          <block  wx:for="{{medname[index2]}}" wx:key="*this">
-            <view class='history-list-item'>
-            {{item}}{{medvalue[index2][index]}}
-            </view>
-          </block>
-        </view>
+          <scroll-view scroll-y="{{true}}" class="history-list" enable-flex="{{true}}">
+            <block  wx:for="{{medname[index2]}}" wx:key="*this">
+              <view class='{{medname[index2].length>3? "history-list-item-overflow":"history-list-item"}}'>
+              {{item}}{{medvalue[index2][index]}}
+              </view>
+            </block>
+          </scroll-view>
       </view>
     </navigator>
   </block>

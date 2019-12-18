@@ -7,12 +7,11 @@
 
 .first {
     height:205rpx;
-    width: 99%;
-    margin-left: 0.2%;
+
     background-color: #F2F2F2;
     padding-left: 32rpx;
     padding-top: 16rpx;
-    box-shadow: 4rpx 6rpx 4rpx 2rpx rgba(1, 1, 5, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.239216) 0px 1px 3px 1px;
     border-radius: 16rpx;
     border: 0 solid #797979;
     display: flex;
@@ -44,7 +43,7 @@
     border-radius: 80rpx;
     margin-bottom: 10rpx;
     border: 0 solid #797979;
-    box-shadow: 4rpx 4rpx 4rpx 2rpx rgba(1, 1, 5, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.239216) 0px 1px 3px 1px;
 }
 
 .base {
@@ -75,7 +74,7 @@
     padding-right: 10rpx;
     height: 75rpx;
     border: 0 solid #797979;
-    box-shadow: 6rpx 6rpx 4rpx 2rpx rgba(1, 1, 5, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.239216) 0px 1px 6px 1px;
     border-radius: 6rpx;
     background-color: #FFFFFF;
 }
@@ -95,7 +94,7 @@
     width: 296rpx;
     background-color: #FFFFFF;
     border: 0 solid #797979;
-    box-shadow: 6rpx 6rpx 4rpx 2rpx rgba(1, 1, 5, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.239216) 0px 1px 3px 1px;
     border-radius: 8rpx;
     display: flex;
     flex-direction: row;
@@ -126,7 +125,7 @@
 .knowledge {
     display: flex;
     position: relative;
-    height: 300rpx;
+
     align-items: center;
     justify-content: center;
 }
@@ -147,11 +146,10 @@
     position: absolute;
     height: 266rpx;
     border-radius: 6rpx;
-    box-shadow: 4rpx 8rpx 8rpx 2rpx rgba(1, 1, 5, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.239216) 0px 1px 3px 1px;
 }
 
 .health {
-    margin-top: 10rpx;
     font-weight: bold;
     font-size: 34rpx; 
 }
@@ -159,20 +157,23 @@
 .record {
     display: flex;
     flex-direction: row;
-    margin-top: 10rpx;
     width: 94%;
     margin-left: 3%;
 }
 
 .health_card {
-    height: 120rpx;
     font-size: 30rpx;
     width: 356rpx;
     border-radius: 8rpx;
     display: flex;
     align-items: center;
     position: relative;
-    box-shadow: 2rpx 2rpx 2rpx 2rpx rgba(1, 1, 5, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.239216) 0px 1px 3px 1px;
+}
+
+.health_card>text {
+    font-size: 36rpx;
+    margin-left: 12rpx;
 }
 
 .record_png {
@@ -193,7 +194,7 @@
     background-color: rgba(253, 253, 253, 0.5);
     padding: 6rpx;
     border-radius: 8rpx;
-    margin-left: 70rpx;
+    margin-left: 120rpx;
 }
 
 .last {
@@ -206,28 +207,24 @@
 
 .diet {
     background-color: #CCCCFF;
-    height: 80rpx;
-    margin-top: 10rpx;
     width:320rpx;
     font-size: 28rpx;
     display: flex;
     align-items: center;
     border-top-left-radius: 8rpx;
     border-top-right-radius: 8rpx;
-    box-shadow: 4rpx 8rpx 8rpx 2rpx rgba(1, 1, 5, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.239216) 0px 1px 3px 1px;
 }
 
 .sports {
     background-color: #99CCCC;
-    height: 80rpx;
-    margin-top: 8rpx;
     width:320rpx;
     font-size: 28rpx;
     display: flex;
     align-items: center;
     border-bottom-left-radius: 8rpx;
     border-bottom-right-radius: 8rpx;
-    box-shadow: 2rpx 2rpx 2rpx 2rpx rgba(1, 1, 5, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.239216) 0px 1px 6px 1px;
 }
 
 .column {
@@ -240,17 +237,18 @@
 .discomfort>navigator {
     height: 168rpx;
     width:320rpx;
-    margin-top: 10rpx;
+
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 8rpx;
     background-color: #CCCCCC;
-    box-shadow: 2rpx 2rpx 2rpx 2rpx rgba(1, 1, 5, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.239216) 0px 1px 3px 1px;
 }
 
 .discomfort_image {
     height:130rpx;
+    opacity: 0.5;
 }
 
 .red-icon {

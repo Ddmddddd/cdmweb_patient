@@ -59,9 +59,9 @@ ec-canvas {
   background-color: #eee;
   display: flex;
   justify-content: center;
-  align-items: center;
   color: #188df0;
   font-weight: bold;
+  font-size: 44rpx;
 }
 
 .add-title {

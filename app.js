@@ -10,12 +10,6 @@ App({
     loginUserInfo: null,
     managementPlan: null,
     todayRecords: null,
-    //TASK
-    bptask: 0,
-    weighttask: 0,
-    medtask: 0,
-    classtask: 0,
-    msgtask:0,
     //charts
     bps: [],
     wgs: [],
@@ -112,6 +106,7 @@ App({
     ]
   },
   onLaunch: function() {
+    let that = this;
     // 展示本地存储能力
     var logs = wx.getStorageSync("logs") || [];
     logs.unshift(Date.now());
@@ -123,6 +118,7 @@ App({
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
       }
     });
+      
     // 获取用户信息
     wx.getSetting({
       success: res => {

@@ -3,7 +3,6 @@
   <view class=" charts_item">
   </view>
   <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
-  <navigator class='chart-nav' url="../charts/wgareachart/wgareachart">更多详情</navigator>
 
   <navigator class='record-item' url='../input/inputwg/inputwg?id=0&weight=""&memo=""&time=""'>
     <view class='record-item-add'>

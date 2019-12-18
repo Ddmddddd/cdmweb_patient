@@ -74,7 +74,7 @@ Page({
         var nickname = data.loginUserInfo.nickname || data.loginUserInfo.name;
         var bptask = data.managementPlan.bpTasks.length - data.todayRecords.bpRecordList.length;
         var weighttask = data.managementPlan.weightTasks.length - data.todayRecords.weightRecordList.length;
-        var medtask = data.managementPlan.drugTasks.length - data.todayRecords.drugRecordList.length;
+        var medtask = (data.managementPlan.drugTasks.length - data.todayRecords.drugRecordList.length)<0 ? 0 : data.managementPlan.drugTasks.length - data.todayRecords.drugRecordList.length;
         var bgtask = data.managementPlan.bloodGlucoseTasks.length - data.todayRecords.bloodGlucoseRecordList.length;
         var msgtask = 0
         data.chatDoctorList.forEach(item => {
@@ -93,6 +93,7 @@ Page({
           nowSystolicPressure: data.todayRecords.bpRecordList.length>0 ? data.todayRecords.bpRecordList[0].systolicPressure : 0,
           nowBloodGlucose: data.todayRecords.bloodGlucoseRecordList.length>0 ? data.todayRecords.bloodGlucoseRecordList[0].bloodGlucose : 0,
           todayMed: data.todayRecords.drugRecordList.length>0 ? data.todayRecords.drugRecordList.length : 0,
+          sex: data.loginUserInfo.sex=="男"? 1 : 0,
           bptask: bptask,
           weighttask: weighttask,
           medtask: medtask,
@@ -100,18 +101,28 @@ Page({
           msgtask:msgtask
         })
         that.calregistTime(that.data.registDate);
-        app.globalData.bptask = bptask;
-        app.globalData.weighttask = weighttask;
-        app.globalData.medtask = medtask;
-        app.globalData.bgtask = bgtask;
-        app.globalData.msgtask = msgtask;
       }
     })
   },
   /**
-   * 获取六条咨询
+   * 前往今日任务小结
    */
-  getSixKno(){
+  gotoTodayTask(){
+    wx.showToast({
+      title:"功能暂未开放，敬请期待！",
+      icon:"none",
+      duration:2000,
+    })
+    /*
+    wx.navigateTo({
+      url: '/pages/today_task/today_task',
+    });
+    */
+  },
+  /**
+   * 获取四条咨询
+   */
+  getFourKno(){
     var that = this;
     var count = 4;
     request({url:mesGet + count}).then(res=>{
@@ -133,8 +144,6 @@ Page({
     wx.showLoading({
       title:'数据加载中...'
     })
-    this.initDataRequest();
-    this.getSixKno();
   },
 
   /**
@@ -142,19 +151,27 @@ Page({
    */
   onReady: function () {
     wx.hideLoading();
+    let that = this;
+    wx.getSystemInfo({
+      success: (res) => {
+        that.setData({
+          windowHeight: res.windowHeight,
+          windowWidth: res.windowWidth,
+        })
+      },
+    });
   },
-
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+    wx.stopPullDownRefresh()
+  },
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.setData({
-      bptask: app.globalData.bptask,
-      weighttask: app.globalData.weighttask,
-      medtask: app.globalData.medtask,
-      classtask:app.globalData.classtask,
-      msgtask:app.globalData.msgtask
-    })
-  },
-
+    this.initDataRequest();
+    this.getFourKno();
+  }
 })

@@ -74,7 +74,7 @@
       <button bindtap="dataManager" data-status="{{255}}" type="warn">删除</button>
     </block>
     <block wx:else>
-      <button bindtap="dataManager" data-status="{{0}}" type='primary'>完成</button>
+      <button bindtap="dataManager" disabled="{{disable}}" data-status="{{0}}" type='primary'>完成</button>
     </block>
   </form>
 </view>

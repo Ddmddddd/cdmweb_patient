@@ -20,7 +20,8 @@ Page({
     memo: "",
     serialNo: 0,
     status: 0,
-    event: {}
+    event: {},
+    disable:false,
   },
 
   //page func
@@ -66,13 +67,13 @@ Page({
     var heartRate = Math.round(this.data.heartRate);
     let title = "",
       warn = "";
-    if (!systolicPressure) title += "收缩压,";
-    if (!diastolicPressure) title += "舒张压,";
-    if (!heartRate) title += "心率,";
-    if (systolicPressure < 60 || systolicPressure > 200) warn += "收缩压,";
+    if (!systolicPressure) title += "收缩压，";
+    if (!diastolicPressure) title += "舒张压，";
+    if (!heartRate) title += "心率，";
+    if (systolicPressure < 60 || systolicPressure > 200) warn += "收缩压，";
     if (diastolicPressure < 40 || diastolicPressure > systolicPressure)
-      warn += "舒张压,";
-    if (heartRate < 30 || heartRate > 200) warn += "心率,";
+      warn += "舒张压，";
+    if (heartRate < 30 || heartRate > 200) warn += "心率，";
     if (title) {
       wx.showToast({
         title: "请输入" + title.slice(0, -1),
@@ -129,7 +130,9 @@ Page({
       };
       url = vicoBloodPressureCommit
     }
-
+    this.setData({
+      disable:true,
+    });
     let method = "POST";
     let token = wx.getStorageSync("login_token");
     let header = {
@@ -145,9 +148,6 @@ Page({
             that.dataManager(that.data.event);
           }, 700);
         } else {
-          if (!status) {
-            app.globalData.bptask--;
-          }
           wx.showToast({
             title: "成功",
             icon: "success"
@@ -196,7 +196,7 @@ Page({
 
   /**
    * 生命周期函数--监听页面显示
-   */
+   
   onShow: function() {
     let token = wx.getStorageSync("login_token");
     let url =
@@ -222,7 +222,7 @@ Page({
       }, 1500);
     };
   },
-
+*/
   /**
    * 生命周期函数--监听页面隐藏
    */

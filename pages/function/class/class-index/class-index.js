@@ -59,7 +59,7 @@ Page({
           that.setData({
             tabbarData: {
               navbarWidth: 100,
-              tabs: "您还没有订阅课程，请点击订阅按钮"
+              tabs: "您还没有订阅课程，请点击选择课程"
             },
             subscribeList: coidList
           });

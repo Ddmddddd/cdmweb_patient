@@ -67,13 +67,13 @@ Page({
     durationTime = this.data.durationTime;
     let title = ''
     if (sportsType.length <= 0){
-      title = title.concat('运动类型,')
+      title = title.concat('运动类型，')
     }
     if(intensity.length <= 0 ){
-      title = title.concat('运动强度,')
+      title = title.concat('运动强度，')
     }
     if(durationTime == null || durationTime.length <= 0){
-      title = title.concat('运动时间,')
+      title = title.concat('运动时间，')
     }
     console.log(title)
     if(title){

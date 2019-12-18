@@ -2,7 +2,6 @@
   <view class=" charts_item">
   </view>
   <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
-  <navigator class='chart-nav' url="../charts/bplinechart/bplinechart">更多详情</navigator>
   <navigator class='record-item' url='../input/inputbp/inputbp?id=0'>
     <view class='record-item-add'>
       <view class='add-icon'>+</view>
@@ -27,7 +26,7 @@
         </view>
         <view class='history-hr'>
           <view class="history-data {{(bp.heartRate>=50)&&(bp.heartRate<=100)?'normal':'warn'}}"> {{bp.heartRate}}</view>
-          <view class='history-unit'>bmp</view>
+          <view class='history-unit'>bpm</view>
         </view>
       </view>
     </navigator>

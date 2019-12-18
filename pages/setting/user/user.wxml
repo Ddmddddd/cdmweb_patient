@@ -20,7 +20,7 @@
       <view  class="weui-cell__ft">{{identityCardNumber}} </view>
     </view>
 
-    <navigator url='../bindUserInfo/bindphone/bindphone?phone={{phoneNumber}}' class="weui-cell weui-cell_access ">
+    <navigator url='../bindUserInfo/bindphone/bindphone?phone={{phoneNumber}}' class="weui-cell weui-cell_access phone" >
       <view class="weui-cell__bd">
         <view class="weui-label">绑定手机</view>
       </view>

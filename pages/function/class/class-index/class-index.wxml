@@ -3,7 +3,7 @@
   <view>欢迎来到健康课堂</view>
   <view bindtap="gotoSubscribe"><text>选择课程</text></view>
 </view>
-<top-tabbar tabbarData="{{tabbarData}}" id="mytab">
+<top-bar tabbarData="{{tabbarData}}" id="mytab">
   <view wx:for="{{subscribeList}}" wx:for-item="mainClass" slot="toptab{{index}}" wx:key="index" class="list">
     <view wx:for="{{classSchedule[mainClass]}}" wx:key="index" wx:for-item="chapter" wx:for-index="cindex" class="chapter">
       <view bindtap="changeShowStatus" data-stateid="{{[index,cindex]}}" class="select-title {{chapterShow[index][cindex]?'':'closed'}}">
@@ -25,7 +25,8 @@
     </view>
   <view style="height:80px"></view>
   </view>
-</top-tabbar>
+</top-bar>
 <view class="study">
-  <button data-kid="{{studyList}}" data-isLearn="{{1}}" bindtap="gotoStudy">开始学习({{studyList.length}})</button>
+  <button wx:if="{{studyList.length>0}}" data-kid="{{studyList}}" data-isLearn="{{1}}" bindtap="gotoStudy">开始学习({{studyList.length}})</button>
+  <button wx:else disabled="{{true}}">今日学习任务已完成</button>
 </view>

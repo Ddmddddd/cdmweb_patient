@@ -114,9 +114,6 @@ Page({
             that.dataManager(that.data.event)
           },700)
         } else {
-          if (!status) {
-            app.globalData.weighttask--;
-          }
           wx.showToast({
             title: "成功",
             icon: "success"

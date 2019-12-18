@@ -2,5 +2,5 @@
   "usingComponents": {
     "ec-canvas": "../../../components/ec-canvas/ec-canvas"
   },
-  "navigationBarTitleText": "测量体重"
+  "navigationBarTitleText": "记录体重"
 }

@@ -4,7 +4,7 @@
   <navigator class='record-item' url='../input/inputbg/inputbg?id=0'>
     <view class='record-item-add'>
       <view class='add-icon'>+</view>
-      <view class='add-title'>添加一次血糖记录</view>
+      <view class='add-title'>添加一次记录</view>
     </view>
   </navigator>
 

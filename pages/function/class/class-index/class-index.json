@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "top-tabbar": "../../../../components/top-tabbar/top-tabbar"
+    "top-bar": "../../../../components/top-bar/index"
   },
   "navigationBarTitleText": "健康课堂"
 }

@@ -24,6 +24,7 @@ Page({
     serialNo: 0,
     status: 0,
     event: {},
+    disable:false,
     
     markArr:[{type:1,name:"晨起空腹"},{type:2,name:"早餐后"},{type:3,name:"午餐前"},
     {type:4,name:"午餐后"},{type:5,name:"晚餐前"},{type:6,name:"晚餐后"},
@@ -78,9 +79,9 @@ Page({
     var timePoint = this.data.timePoint;
     let title = "",
       warn = "";
-    if (!bloodGlucose) title += "血糖值,";
-    if (!timePoint) title += "类型,";
-    if (bloodGlucose < 1 || bloodGlucose > 34) warn += "血糖值,";
+    if (!bloodGlucose) title += "血糖值，";
+    if (!timePoint) title += "类型，";
+    if (bloodGlucose < 1 || bloodGlucose > 34) warn += "血糖值，";
     if (title) {
       wx.showToast({
         title: "请输入" + title.slice(0, -1),
@@ -138,6 +139,9 @@ Page({
       url = vicoBloodGlucoseCommit
     }
 
+    this.setData({
+      disable:true,
+    });
     let method = "POST";
     let token = wx.getStorageSync("login_token");
     let header = {
@@ -153,9 +157,6 @@ Page({
             that.dataManager(that.data.event);
           }, 700);
         } else {
-          // if (!status) {
-          //   app.globalData.bptask--;
-          // }
           wx.showToast({
             title: "成功",
             icon: "success"
