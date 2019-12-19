@@ -9,6 +9,7 @@ Page({
   data: {
     //username 即原patientid 现默认为phoneNumber
     patientName: "",
+    diagnosis:"",
     sex: "",
     birthDate: "",
     identityCardNumber: "",
@@ -49,6 +50,10 @@ Page({
       "家务",
       "个体",
       "其他"
+    ],
+    diagnosisArr:[
+        {id:0,name:"高血压",checked:""},
+        {id:1,name:"糖尿病"}
     ],
     sexArr: ["男", "女"],
     regionArr: [],
@@ -167,6 +172,20 @@ Page({
     }
   },
 
+  //诊断选择
+  diagnoseRadioChange:function(e){
+      //如果选中两个则diagnosis值固定
+      if(e.detail.value.length === 2){
+          this.setData({
+              diagnosis: "高血压，糖尿病"
+          });
+      }else{
+          this.setData({
+              diagnosis: e.detail.value.toString()
+          });
+      }
+  },
+
   // 教育程度选择
   bindeducationChange: function(e) {
     this.setData({
@@ -249,7 +268,7 @@ Page({
   },
 
   confirm_register: function() {
-    const { patientName,identityCardNumber,manager,
+    const { patientName,diagnosis,identityCardNumber,manager,
       hospital,phoneNumber,education,
       profession,sex,height,weight} = this.data;
     var toast = "";
@@ -260,6 +279,7 @@ Page({
       phonenumberError
     } = this.data;
     //各项数据是否填写
+    if(!diagnosis) toast = toast.concat("诊断，");
     if (!identityCardNumber) toast = toast.concat("身份证号，");
     if (!phoneNumber) toast = toast.concat("手机号，");
     if (!education) toast = toast.concat("学历，");
@@ -289,6 +309,7 @@ Page({
     var userName = phoneNumber
     var patientinfo = {
       userName: userName,
+      diagnosis:diagnosis,
       name: patientName,
       sex: sex,
       dateOfBirth: this.data.birthDate,

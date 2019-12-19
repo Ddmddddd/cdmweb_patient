@@ -18,8 +18,8 @@ Page({
 
     sportstypeArr: app.globalData.sportstypeArr,
     intensityArr: app.globalData.intensityArr,
-    event:{}
-
+    event:{},
+    commitStatus : true,
   },
 
   bindDateChange: function(e) {
@@ -67,13 +67,13 @@ Page({
     durationTime = this.data.durationTime;
     let title = ''
     if (sportsType.length <= 0){
-      title = title.concat('运动类型，')
+      title = title.concat('运动类型,')
     }
     if(intensity.length <= 0 ){
-      title = title.concat('运动强度，')
+      title = title.concat('运动强度,')
     }
     if(durationTime == null || durationTime.length <= 0){
-      title = title.concat('运动时间，')
+      title = title.concat('运动时间,')
     }
     console.log(title)
     if(title){
@@ -133,22 +133,25 @@ Page({
       token: token,
       "content-type": "application/json"
     };
-    tokenRequest({ url: url, header: header, method: method, data: data }).then(res => {
-      if (res.data.code == 20001) {
-        console.log('relogin')
-        setTimeout(()=>{
-          that.dataManager(that.data.event)
-        },700)
-      } else {
-        wx.showToast({
-          title: "成功",
-          icon: "success"
+    if(that.data.commitStatus){
+        tokenRequest({ url: url, header: header, method: method, data: data }).then(res => {
+            if (res.data.code == 20001) {
+                console.log('relogin')
+                setTimeout(()=>{
+                    that.dataManager(that.data.event)
+                },700)
+            } else {
+                that.data.commitStatus = false;
+                wx.showToast({
+                    title: "成功",
+                    icon: "success"
+                });
+                setTimeout(() => {
+                    wx.navigateBack();
+                }, 1500);
+            }
         });
-        setTimeout(() => {
-          wx.navigateBack();
-        }, 1500);
-      }
-    });
+    }
   },
 
   /**

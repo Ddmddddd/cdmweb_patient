@@ -129,6 +129,10 @@ Page({
     // 获取用户输入信息
     let msgText = this.data.userInputValue;
     if (msgText === "") {
+        wx.showToast({
+            title: "发送信息不能为空！",
+            icon: "none"
+        });
       return
     }
     let msg = {
@@ -196,6 +200,7 @@ Page({
       method: method,
       data: data
     }).then(res => {
+      console.log(res)
       if (res.data.code == 0) {
         let data = res.data.data;
         chatList = data
@@ -215,7 +220,7 @@ Page({
         }
         // 阅读未读的消息
         if (this.data.unReadMsgList.length > 0){
-          this.readMsg(this.data.unReadMsgList);
+          this.readMsg();
         }else{
           app.globalData.msgtask = 0;
         }
@@ -236,6 +241,7 @@ Page({
       method: method,
       data: msg
     }).then(res => {
+      console.log(res)
       if (res.data.code == 0) {
         this.getHistoryMsgList(true);
         // let message = {
@@ -259,11 +265,14 @@ Page({
     })
   },
 
-  readMsg: function(unReadMsgList){
+  readMsg: function(){
+    if (this.data.unReadMsgList.length <= 0) {
+      return
+    }
     let url = vicoChatRead
     let data = {
       receiverID: this.data.doctorId,
-      msgSerialNos: unReadMsgList
+      msgSerialNos: this.data.unReadMsgList
     }
     let method = "POST"
     let token = wx.getStorageSync('login_token');
@@ -289,7 +298,7 @@ Page({
     var that = this;
     let token = wx.getStorageSync("login_token");
     let url =
-      "wss://cdmwb-dev.vico-lab.com/patient.api/socket/notify/subscribe?token=" +
+      "wss://test.zjubiomedit.com/patient.api/socket/notify/subscribe?token=" +
       token;
     if (
       app.globalData.localSocket.readyState !== 0 &&
@@ -305,7 +314,6 @@ Page({
     app.globalData.callback = function (res) {
       let resData = JSON.parse(res.data);
       let msg = resData.data;
-      console.log(resData)
       if (resData.notifyID == 2) {
         let message = {
           serialNo: msg.serialNo,
@@ -324,10 +332,6 @@ Page({
           toView: 'msg-' + (chatList.length - 1)
         })
         that.getMsgHeight();
-        if (msg.senderID == that.data.doctorId) {
-          let serialNo = [msg.serialNo];
-          that.readMsg(serialNo);
-        }
       }else if(resData.notifyID == 3) {
         let readList = msg.msgSerialNos
         readList.forEach(item => {

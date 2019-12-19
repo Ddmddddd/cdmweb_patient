@@ -72,8 +72,8 @@ Page({
       ]
     ],
     multiIndex2: [0, 0],
-    event:{}
-
+    event:{},
+    commitStatus : true,
   },
 
   bindDateChange: function(e) {
@@ -230,31 +230,37 @@ Page({
       token: token,
       "content-type": "application/json"
     };
-    tokenRequest({ url: url, header: header, method: method, data: data }).then(
-      res => {
-        if (res.data.code == 20001) {
-          console.log('relogin')
-          setTimeout(()=>{
-            that.dataManager(that.data.event)
-          },700)
-        } else {
-          wx.showToast({
-            title: "成功",
-            icon: "success"
-          });
-          setTimeout(() => {
-            wx.navigateBack();
-          }, 1500);
-        }
-      }
-    );
+    if(that.data.commitStatus){
+        tokenRequest({ url: url, header: header, method: method, data: data }).then(
+            res => {
+                if (res.data.code == 20001) {
+                    console.log('relogin')
+                    setTimeout(()=>{
+                        that.dataManager(that.data.event)
+                    },700)
+                } else {
+                    if (!status) {
+                        app.globalData.medtask--;
+                    }
+                    that.data.commitStatus = false;
+                    wx.showToast({
+                        title: "成功",
+                        icon: "success"
+                    });
+                    setTimeout(() => {
+                        wx.navigateBack();
+                    }, 1500);
+                }
+            }
+        );
+    }
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log(options)
     var datetime = options.time,
       date,
       time;
@@ -279,16 +285,16 @@ Page({
         time: util.formatTime4(new Date()),
         useDateTime: util.formatTime3(new Date())
       });
-      // 读取患者的历史服药记录
-      var medHistory = wx.getStorageSync("medHistory")
-      if (medHistory) {
-        var medinfo = JSON.parse(medHistory)
-        let {drugName, dosage} = medinfo
-        this.setData({
-          drugName: drugName.split(","),
-          dosage: dosage.split(",")
-        })
-      }
+    }
+    // 读取患者的历史服药记录
+    var medHistory = wx.getStorageSync("medHistory")
+    if (medHistory) {
+      var medinfo = JSON.parse(medHistory)
+      let {drugName, dosage} = medinfo
+      this.setData({
+        drugName: drugName.split(","),
+        dosage: dosage.split(",")
+      })
     }
   },
 
