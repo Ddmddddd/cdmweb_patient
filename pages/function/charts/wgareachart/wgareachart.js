@@ -1,6 +1,7 @@
 // pages/charts/wglinechart/wglinechart.js
 
 var wxCharts = require('../../../../utils/wxcharts.js');
+import {formatTime6} from '../../../../utils/util';
 var app = getApp();
 var lineChart = null;
 
@@ -33,8 +34,10 @@ Page({
 
   createData: function () {
     var that = this;
-    var categories = [];
-    var wgdata = [];
+    var chartsdate = {
+      categories: [],
+      wg: [],
+    };
     var wgs = (this.data.wgs).reverse();
     if (wgs.length > 20) {
       that.setData({
@@ -46,14 +49,12 @@ Page({
         enableScroll: false
       })
     }
-    for (var i = 0; i < wgs.length; i++) {
-      categories.push(wgs[i].measureDateTime);
-      wgdata.push(wgs[i].weight);
-    }
-    return {
-      categories: categories,
-      wgdata: wgdata,
-    }
+    chartsdate.categories = wgs.map(function (item) {
+      chartsdate.wg.push(item.weight);
+      return formatTime6(item.measureDateTime)
+    })
+    chartsdate.categories.push('')
+    return chartsdate;
   },
 
   drawlinechart: function (e) {
@@ -66,29 +67,33 @@ Page({
       animation: true,
       series: [{
         name: '体重',
-        data: weekData.wgdata,
-
+        data: weekData.wg,
       }],
       yAxis: {
-        title: 'Kg',
+        title: 'kg',
         format: function (val) {
-          return val.toFixed(2);
+          return val.toFixed(0);
         },
-        min: 25,
+        min: 35,
+        max: 175,
         // fontColor: '#83bff6',
         // gridColor: '#8085e9',
         // titleFontColor: '#f7a35c'
       },
       xAxis: {
-        // fontColor: '#7cb5ec',
-        // gridColor: '#7cb5ec'
+        disableGrid: false
       },
       extra: {
         // legendTextColor: '#cb2431'
       },
-      width: this.data.windowWidth - 5,
+      width: this.data.windowWidth,
       enableScroll: this.data.enableScroll,
-      height: this.data.windowHeight - 100
+      height: this.data.windowHeight*0.8,
+      dataLabel: true,
+      dataPointShape: true,
+      extra: {
+        lineStyle: 'curve'
+      }
     });
   },
 

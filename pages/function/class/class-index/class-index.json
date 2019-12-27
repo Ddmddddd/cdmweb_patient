@@ -2,5 +2,5 @@
   "usingComponents": {
     "top-bar": "../../../../components/top-bar/index"
   },
-  "navigationBarTitleText": "健康课堂"
+  "navigationBarTitleText": "慢病微管家"
 }

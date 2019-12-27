@@ -1,5 +1,6 @@
 // pages/charts/bplinechart/bplinechart.js
 var wxCharts = require('../../../../utils/wxcharts.js');
+import {formatTime6} from '../../../../utils/util';
 var app = getApp();
 var lineChart = null;
 Page({
@@ -37,7 +38,7 @@ Page({
       hr: []
     };
     var bps = (this.data.bps).reverse();
-    if (bps.length > 20) {
+    if (bps.length > 14) {
       that.setData({
         enableScroll: true
       })
@@ -51,8 +52,9 @@ Page({
       chartsdate.sp.push(item.systolicPressure);
       chartsdate.dp.push(item.diastolicPressure);
       chartsdate.hr.push(item.heartRate);
-      return item.measureDateTime
+      return formatTime6(item.measureDateTime)
     })
+    chartsdate.categories.push('')
     // console.log(chartsdate)
     return chartsdate
   },
@@ -65,11 +67,9 @@ Page({
       type: 'line',
       categories: weekData.categories,
       animation: true,
-      background: '#f5f5f5',
       series: [{
         name: '收缩压',
         data: weekData.sp,
-
       }, {
         name: '舒张压',
         data: weekData.dp,
@@ -77,7 +77,7 @@ Page({
       }, {
         name: '心率',
         data: weekData.hr,
-
+        color:'#FF5900',
       }],
       xAxis: {
         disableGrid: false
@@ -85,12 +85,13 @@ Page({
       yAxis: {
         title: '血压mmHg',
         format: function (val) {
-          return val.toFixed(2);
+          return val.toFixed(0);
         },
-        min: 40
+        min: 40,
+        max: 200,
       },
-      width: this.data.windowWidth - 5,
-      height: this.data.windowHeight - 100,
+      width: this.data.windowWidth,
+      height: this.data.windowHeight*0.8,
       dataLabel: true,
       dataPointShape: true,
       enableScroll: this.data.enableScroll,
@@ -118,7 +119,6 @@ Page({
         showCancel: false,
         success: function (res) {
           if (res.confirm) {
-            console.log('用户点击确定')
             wx.navigateBack({
             })
           }
@@ -126,7 +126,7 @@ Page({
       })
     }
     else {
-      this.drawlinechart()
+      this.drawlinechart();
     }
  
 

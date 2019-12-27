@@ -51,7 +51,7 @@ export const request = ({
       },
       fail: err => {
         wx.showLoading({
-          title: "网络错误!"
+          title: "网络重连!"
         });
         setTimeout(() => {
           wx.hideLoading();
@@ -108,7 +108,7 @@ export const tokenRequest = ({
         },
         fail: err => {
           wx.showLoading({
-            title: "网络错误!"
+            title: "网络重连!"
           });
           setTimeout(() => {
             wx.hideLoading();

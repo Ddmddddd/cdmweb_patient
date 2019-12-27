@@ -3,33 +3,24 @@
 .history-list {
   display: flex;
   width: 60%;
-  height: 100%;
-  overflow: auto;
+  height: 72px;
   justify-content: space-around;
   align-items: flex-end;
   flex-direction: column;
+  overflow-y: auto;
 }
 
 .history-list-item {
-  font-size: 30rpx;
+  font-size: 28rpx;
   color: #188df0;
   /* flex-shrink: 1; */
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
-  padding-right: 16rpx
+  padding-right: 16rpx;
 }
 
-.history-list-item-overflow {
-  font-size: 30rpx;
-  color: #188df0;
-  /* flex-shrink: 1; */
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  padding-right: 16rpx
-}
-
-.history-list-item-overflow:first-child {
-  margin-top:36rpx;
+.history-list-item:last-child {
+  display: flex;
+  flex-direction: row;
 }

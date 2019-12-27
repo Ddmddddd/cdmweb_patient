@@ -1,0 +1,106 @@
+<!--pages/new_homepage/new_homepage.wxml-->
+<view class="homepage">
+    <view class="first" style="height:{{windowHeight*0.184}}px">
+      <view style="display:flex;flex-direction:column;width:500rpx;">
+        <view class="top">
+          <image wx:if="{{sex==1}}" mode="aspectFill" src="../../image/male.jpeg"/>
+          <image wx:if="{{sex==0}}" mode="aspectFill" src="../../image/female.jpeg" />
+          <view class="base">
+            <text>{{nickname}}，您好!</text>
+            <text>慢病微管家已为您服务{{registTime}}天</text>
+          </view>
+        </view>
+          <view class="today_task" bindtap="gotoTodayTask" style="margin-top:{{windowHeight*0.018}}px;height:{{windowHeight*0.072}}px;">
+            <view>今日任务小结</view>
+          </view>
+      </view>
+        <view class="container1" style="margin-top:{{windowHeight*0.018}}px;">
+          <circle r="85" per="1" number="未记录"/>
+        </view>
+    </view>
+    <view class="knowledge" style="height:{{windowHeight*0.27}}px">
+      <swiper
+        indicator-dots="{{true}}"
+        autoplay="{{true}}"
+        interval="{{3000}}"
+        duration="{{1000}}"
+        style="height:{{windowHeight*0.27}}px"
+      >
+      <navigator wx:for="{{knowledge}}" wx:key="{{index}}" url='../message/mescontent/mescontent?id={{item.kno_id}}'>
+        <swiper-item>
+          <view class="kno_image_title">{{item.kno_name}}</view>
+          <image
+            style="width:100%;height:{{windowHeight*0.234}}px;"
+            mode='widthFix'
+            src="{{item.kno_link}}"
+          />
+        </swiper-item>
+      </navigator>
+    </swiper>
+    </view>
+    <view class="health" style="width:94%;margin-left:3%;margin-top:{{windowHeight*0.009}}px;">健康记录</view>
+    <view class="record" style="margin-top:{{windowHeight*0.009}}px;">
+      <navigator class="health_card" style="background-color:#FFFFCC;height:{{windowHeight*0.103}}px;" url="../function/bp/bp">
+        <text>血压</text>
+        <image src="/image/bp_record.png" class="record_png" mode="aspectFit" />
+        <view class="target">
+          <view>目标 {{systolicPressureGoal}}/{{diastolicPressureGoal}}</view>
+          <view wx:if="{{nowDiastolicPressure!=0}}">当前 {{nowSystolicPressure}}/{{nowDiastolicPressure}}</view>
+          <view wx:else>当前 无</view>
+        </view>
+        <view wx:if="{{bptask>0}}" class='red-icon icon'>{{bptask}}</view>
+      </navigator>
+      <navigator class="health_card" style="background-color:#CCFFFF;margin-left:26rpx;height:{{windowHeight*0.103}}px;" url="../function/bg/bg">
+        <text>血糖</text>
+        <image src="/image/bg_record.png" class="record_png" mode="aspectFit" />
+        <view class="target" style="margin-left:100rpx;">
+          <view>目标 {{bloodGlucoseGoal}}mmol/L</view>
+          <view wx:if="{{nowBloodGlucose!=0}}">当前 {{nowBloodGlucose}}mmol/L</view>
+          <view wx:elif="{{nowBloodGlucose==0&&bgtask==0}}">无要求</view>
+          <view wx:else style="color:red">当前 无</view>
+        </view>
+        <view wx:if="{{bgtask>0}}" class='red-icon icon'>{{bgtask}}</view>
+      </navigator>
+    </view>
+    <view class="record" style="margin-top:{{windowHeight*0.02}}px;">
+      <navigator class="health_card" style="background-color:#CCFFCC;height:{{windowHeight*0.103}}px;" url="../function/weight/weight">
+        <text>体重</text>
+        <image src="/image/weight_record.png" class="record_png" mode="aspectFit" style="height:76rpx;width:76rpx;opacity:0.05;"/>
+        <view class="target" style="width:120rpx;">
+          <text>目标 {{weightGoal}}kg</text>
+          <text>当前 {{nowWeight}}kg</text>
+        </view>
+        <view wx:if="{{weighttask>0}}" class='red-icon icon'>{{weighttask}}</view>
+      </navigator>
+      <navigator class="health_card" style="background-color:#FFCCCC;margin-left:26rpx;height:{{windowHeight*0.103}}px;" url="../function/medicine/medicine">
+        <text>服药</text>
+        <image src="/image/drug_record.png" class="record_png" mode="aspectFit" style="opacity:0.3;margin-left:110rpx;"/>
+        <view class="target" style="width:100rpx;">
+          <view>今日服药</view>
+            <view wx:if="{{medtask==0&&todayMed>0}}">已记录</view>
+            <view wx:elif="{{medtask==0&&todayMed==0}}">无记录</view>
+            <view wx:else>未记录</view>
+        </view>
+        <view wx:if="{{medtask>0}}" class='red-icon icon'>{{medtask}}</view>
+      </navigator>
+    </view>
+    <view class="last">
+      <view>
+        <view class="health" style="margin-top:{{windowHeight*0.009}}px;">饮食与运动记录</view>
+        <navigator class="diet" url="../function/eat/eat" style="height:{{windowHeight*0.072}}px;margin-top:{{windowHeight*0.009}}px;">
+          <text style="font-size: 36rpx;margin-left: 12rpx;">饮食</text>
+          <image src="/image/diet_record.png" class="record_png" mode="aspectFit" style="opacity:0.4;margin-left:140rpx;position:relative;"/>
+        </navigator>
+        <navigator class="sports" url="../function/sports/sports" style="height:{{windowHeight*0.072}}px;margin-top:{{windowHeight*0.009}}px;">
+          <text style="font-size: 36rpx;margin-left: 12rpx;">运动</text>
+          <image src="/image/sports_record.png" class="record_png" mode="aspectFit" style="opacity:0.4;margin-left:140rpx;position:relative;"/>
+        </navigator>
+      </view>
+      <view class="discomfort">
+        <view class="health" style="margin-top:{{windowHeight*0.009}}px;">不适症状记录</view>
+        <navigator url="../function/uncomf/uncomf" style="margin-top:{{windowHeight*0.009}}px;height:{{windowHeight*0.153}}px;">
+          <image class="discomfort_image" mode="aspectFit" src="../../image/discomfort.png" />
+        </navigator>
+      </view>
+    </view>
+</view>

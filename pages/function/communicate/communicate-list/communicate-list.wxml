@@ -18,23 +18,10 @@
           </view>
         </view>
       </view>
-      <!-- <navigator url="../communicate-chat/communicate-chat?doctorId={{item.id}}&doctorName={{item.name}}&unReadMsgList={{item.unReadMsgList}}" class=" nav-person-item">
-        <view class="list-part">
-          <view class="avatar">
-            <image class="list-avatar" src="../../../../image/userPhoto.jpeg" />
-            <view class="newMag" wx:if="{{item.unReadMsgList.length > 0}}"></view>
-          </view>
-          <view class="list-part-right">
-            <view class="communicate-title">
-              <view class="name">{{item.name}}</view>
-              <view class="time">{{!item.lastMsgDateTime?"":item.lastMsgDateTime}}</view>
-            </view>
-            <view class="communicate-detail">
-              {{item.lastMsgContent}}
-            </view>
-          </view>
-        </view>
-      </navigator> -->
     </block>
   </scroll-view>
+  <view wx:if="{{chatList.length==0}}" class="no_chat">
+    <image src="/image/no_chat.png" mode="aspectFit" style="height:300rpx;width:300rpx;" />
+    <view>医生没有给您发消息，请期待</view>
+  </view>
 </view>

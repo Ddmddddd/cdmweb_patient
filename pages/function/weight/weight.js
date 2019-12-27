@@ -26,7 +26,7 @@ Page({
   createData: function() {
     var that = this;
     var weight = [];
-    var wgs = this.data.wgs;
+    var wgs = this.data.wgs.reverse();
     //数据按时间排序
     wgs.sort(function(a, b) {
       if (a.measureDateTime < b.measureDateTime) {

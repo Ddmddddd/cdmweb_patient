@@ -31,9 +31,9 @@
       <view wx:for="{{kinds}}" wx:key="this" class='food-item'>
         <view class="food-item-text">
           {{index+1}}、{{item}}{{appetite[index]}}g
-        </view>
-        <view class='food-item-delete'>
-          <text bindtap="remove" data-index="{{index}}" class="delete">删除</text>
+          <view class='food-item-delete'>
+            <text bindtap="remove" data-index="{{index}}" class="delete">删除</text>
+          </view>
         </view>
       </view>
     </view>

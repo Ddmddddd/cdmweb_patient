@@ -79,8 +79,11 @@
   text-overflow: ellipsis;
 }
 
-
-
-
-
-
+.no_chat {
+  height:100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  opacity: 0.4;
+}

@@ -39,6 +39,7 @@
             {{item}}{{appetite[index2][index]}}g
             </view>
           </block>
+            <view class="history-list-item" wx:if="{{overflow[index2]==1}}">...</view>
         </view>
       </view>
     </navigator>

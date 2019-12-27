@@ -49,11 +49,23 @@ const formatCalendarDate = (y,m,d) => {
   return [y,m,d].map(formatNumber).join('-')
 }
 
+const formatTime6 = date => {
+  var arr=[],arr1=[];
+  arr = date.split("-");
+  arr1 = arr[2].split(":");
+  const month = arr[1]
+  const dayAndHour = arr1[0]
+  const minute = arr[1]
+
+  return [month, dayAndHour].map(formatNumber).join('-') + ':' + [minute].map(formatNumber)
+}
+
 module.exports = {
   formatTime: formatTime,
   formatTime2: formatTime2,
   formatTime3: formatTime3,
   formatTime4: formatTime4,
   formatTime5: formatTime5,
+  formatTime6: formatTime6,
   formatCalendarDate:formatCalendarDate
 }

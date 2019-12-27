@@ -2,7 +2,6 @@
 .content {
   box-sizing: border-box;
   height: 100%;
-  padding-top: 8vh;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -15,9 +14,8 @@
   height: 8vh;
   width: 100%;
   display: flex;
-  position: fixed;
+  position: relative;
   z-index: 50;
-  top: 49px;
   background-color: white;
   border-bottom: 1rpx solid #ccc;
 }

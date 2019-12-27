@@ -20,11 +20,11 @@
       <view  class="weui-cell__ft">{{identityCardNumber}} </view>
     </view>
 
-    <navigator url='../bindUserInfo/bindphone/bindphone?phone={{phoneNumber}}' class="weui-cell weui-cell_access phone" >
+    <navigator url='../bindUserInfo/bindphone/bindphone?phone={{phoneNumber}}' class="weui-cell weui-cell_access" >
       <view class="weui-cell__bd">
         <view class="weui-label">绑定手机</view>
       </view>
-      <view   class="weui-cell__ft">{{phoneNumber}} </view>
+      <view   class="weui-cell__ft">{{phoneNumber}} <image mode="aspectFit" src="/image/right.png" style="height:24rpx;width:16rpx;" /></view>
     </navigator>
 
     <!-- <navigator url='../bindUserInfo/bindmail/bindmail?mail={{email}}' class="weui-cell weui-cell_access ">
@@ -40,11 +40,11 @@
     <view class="weui-cells__title">安全</view>
 
     <view class="weui-cells weui-cells_after-title">
-      <navigator url='../bindUserInfo/bindpassword/bindpassword' class="weui-cell weui-cell_access ">
-        <view class="weui-cell__bd">
+      <navigator url='../bindUserInfo/bindpassword/bindpassword' class="weui-cell weui-cell_access">
+        <view class="weui-cell__bd" style="display:flex;justify-content:space-between;width:100%;">
           <view class="weui-label">修改密码</view>
         </view>
-        <view class="weui-cell__ft"></view>
+        <view class="weui-cell__ft"><image mode="aspectFit" src="/image/right.png" style="height:24rpx;width:16rpx;" /></view>
       </navigator>
     </view>
 

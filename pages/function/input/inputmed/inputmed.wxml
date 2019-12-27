@@ -30,9 +30,9 @@
       <view wx:for="{{drugName}}" wx:key="this" wx:for-index="index" class='med-item'>
         <view class='med-item-text'>
           {{index+1}}、{{item}}\t{{dosage[index]}}
-        </view>
-        <view class='med-item-delete'>
-          <text bindtap="remove" data-index="{{index}}" class="delete">删除</text>
+          <view class='med-item-delete'>
+            <text bindtap="remove" data-index="{{index}}" class="delete">删除</text>
+          </view>
         </view>
       </view>
     </view>

@@ -1,10 +1,10 @@
 <!--pages/setting/setting.wxml-->
 
-<view class='container'>
  <view class="weui-cells">
     <view class="weui-cell">
       <view class='cell-icon'>
-        <image class='image-profile' mode='aspectFit' src='../../image/userPhoto.jpeg'></image>
+        <image class='image-profile' wx:if="{{sex==1}}" mode="aspectFill" src="../../image/male.jpeg"/>
+        <image class='image-profile' wx:if="{{sex==0}}" mode="aspectFill" src="../../image/female.jpeg" />
       </view>
       <view class="cell-text">
         <view class="title">{{patientName}}</view>
@@ -19,8 +19,8 @@
         <view class="weui-cell" style="width:100%">
           <view class="weui-cell__hd" style="display:flex;justify-content:space-between;width:100%;">
             <view class="weui-label">账号与安全</view>
-            <view class="weui-label" style="width:10rpx;">></view>
           </view>
+        <view class="weui-cell__ft"><image mode="aspectFit" src="/image/right.png" style="height:24rpx;width:16rpx;" /></view>
         </view>
       </navigator>
       <!-- <navigator url="" class="weui-cell weui-cell_input ">
@@ -34,13 +34,8 @@
         <view class="weui-cell" style="width:100%">
           <view class="weui-cell__hd" style="display:flex;justify-content:space-between;width:100%;">
             <view class="weui-label">退出</view>
-            <view class="weui-label" style="width:10rpx;">></view>
           </view>
+        <view class="weui-cell__ft"><image mode="aspectFit" src="/image/right.png" style="height:24rpx;width:16rpx;" /></view>
         </view>
       </view>
     </view>
-
- 
-
-
-</view>

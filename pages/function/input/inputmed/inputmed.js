@@ -95,7 +95,7 @@ Page({
   },
 
   bindMultiPickerChange2: function(e) {
-    // console.log("picker发送选择改变，携带值为", e.detail.value);
+     console.log("picker发送选择改变，携带值为", e.detail.value);
     var multiIndex = e.detail.value;
     var objectMultiArray = this.data.objectMultiArray;
     this.setData({
@@ -108,7 +108,7 @@ Page({
   },
 
   bindMultiPickerColumnChange2: function(e) {
-    // console.log("修改的列为", e.detail.column, "，值为", e.detail.value);
+     console.log("修改的列为", e.detail.column, "，值为", e.detail.value);
     var data = {
       objectMultiArray: this.data.objectMultiArray,
       multiIndex2: this.data.multiIndex2
@@ -198,6 +198,18 @@ Page({
     if (this.inputValidate()) {
       return false;
     }
+    let {drugName, dosage} = this.data;
+    var combinedDrugName = [];
+    var combinedDosage = [];
+    for(var i=0; i<drugName.length; i++) {
+      let index = combinedDrugName.indexOf(drugName[i]);
+      if(index==-1){
+        combinedDrugName.push(drugName[i]);
+        combinedDosage.push(dosage[i]);
+      } else {
+        combinedDosage.splice(index, 1, parseFloat(dosage[i])+parseFloat(combinedDosage[index])+"mg");
+      }
+    }
     //set status
     if(status == 255){
       data = {
@@ -207,16 +219,16 @@ Page({
     }else if(status == 254){
       data = {
         serialNo: this.data.serialNo.toString(),
-        drugName: this.data.drugName.toString(),
-        dosage: this.data.dosage.toString(),
+        drugName: combinedDrugName.toString(),
+        dosage: combinedDosage.toString(),
         useDateTime: this.data.useDateTime,
         memo: this.data.memo,
-      }; 
+      };
       url = vicoDrugCommit;
     }else{
       data = {
-        drugName: this.data.drugName.toString(),
-        dosage: this.data.dosage.toString(),
+        drugName: combinedDrugName.toString(),
+        dosage: combinedDosage.toString(),
         useDateTime: this.data.useDateTime,
         memo: this.data.memo,
       };

@@ -40,67 +40,78 @@
     </view>
     <view class="health" style="width:94%;margin-left:3%;margin-top:{{windowHeight*0.009}}px;">健康记录</view>
     <view class="record" style="margin-top:{{windowHeight*0.009}}px;">
-      <navigator class="health_card" style="background-color:#FFFFCC;height:{{windowHeight*0.108}}px;" url="../function/bp/bp">
-        <text>血压</text>
+      <navigator class="health_card" style="height:{{windowHeight*0.108}}px;" url="../function/bp/bp">
         <image src="/image/bp_record.png" class="record_png" mode="aspectFit" />
-        <view class="target">
-          <view>目标 {{diastolicPressureGoal}}/{{systolicPressureGoal}}</view>
-          <view wx:if="{{nowDiastolicPressure!=0}}">当前 {{nowDiastolicPressure}}/{{nowSystolicPressure}}</view>
-          <view wx:else>当前 无</view>
+        <view class="informations">
+          <view class="target">
+            <text style="font-size:30rpx;">血压</text>
+            <view>目标 {{systolicPressureGoal}}/{{diastolicPressureGoal}}mmHg</view>
+          </view>
+          <view wx:if="{{nowDiastolicPressure!=0}}" class="now_data">当前 {{nowSystolicPressure}}/{{nowDiastolicPressure}}mmHg</view>
+          <view wx:else class="now_data">当前 无</view>
         </view>
         <view wx:if="{{bptask>0}}" class='red-icon icon'>{{bptask}}</view>
       </navigator>
-      <navigator class="health_card" style="background-color:#CCFFFF;margin-left:10rpx;height:{{windowHeight*0.108}}px;" url="../function/bg/bg">
-        <text>血糖</text>
-        <image src="/image/bg_record.png" class="record_png" mode="aspectFit" />
-        <view class="target" style="margin-left:100rpx;">
-          <view>目标 {{bloodGlucoseGoal}}mmol/L</view>
-          <view wx:if="{{nowBloodGlucose!=0}}">当前 {{nowBloodGlucose}}mmol/L</view>
-          <view wx:elif="{{nowBloodGlucose==0&&bgtask==0}}">无要求</view>
-          <view wx:else style="color:red">当前 无</view>
-        </view>
-        <view wx:if="{{bgtask>0}}" class='red-icon icon'>{{bgtask}}</view>
+      <navigator class="health_card" style="margin-left:10rpx;height:{{windowHeight*0.108}}px;" url="../function/bg/bg">
+        <image src="/image/bg_record.png" class="record_png" mode="aspectFit"/>
+          <view class="informations">
+            <view class="target">
+              <text style="font-size:30rpx;">血糖</text>
+              <view>目标 {{bloodGlucoseGoal}}mmol/L</view>
+            </view>
+            <view wx:if="{{nowBloodGlucose!=0}}" class="now_data">当前 {{nowBloodGlucose}}mmol/L</view>
+            <view wx:elif="{{nowBloodGlucose==0&&bgtask==0}}" class="now_data">无要求</view>
+            <view wx:else style="color:red" class="now_data">当前 无</view>
+          </view>
+          <view wx:if="{{bgtask>0}}" class='red-icon icon'>{{bgtask}}</view>
       </navigator>
     </view>
-    <view class="record" style="margin-top:{{windowHeight*0.009}}px;">
-      <navigator class="health_card" style="background-color:#CCFFCC;height:{{windowHeight*0.108}}px;" url="../function/weight/weight">
-        <text>体重</text>
-        <image src="/image/weight_record.png" class="record_png" mode="aspectFit" style="height:76rpx;width:76rpx;opacity:0.05;"/>
-        <view class="target" style="width:100rpx;">
-          <text>目标 {{weightGoal}}kg</text>
-          <text>当前 {{nowWeight}}kg</text>
+    <view class="record" style="margin-top:{{windowHeight*0.01}}px;">
+      <navigator class="health_card" style="height:{{windowHeight*0.108}}px;" url="../function/weight/weight">
+        <image src="/image/weight_record.png" class="record_png" mode="aspectFit"/>
+        <view class="informations">
+          <view class="target">
+            <text style="font-size:30rpx;">体重</text>
+            <view>目标 {{weightGoal}}kg</view>
+          </view>
+          <view class="now_data">当前 {{nowWeight}}kg</view>
         </view>
         <view wx:if="{{weighttask>0}}" class='red-icon icon'>{{weighttask}}</view>
       </navigator>
-      <navigator class="health_card" style="background-color:#FFCCCC;margin-left:10rpx;height:{{windowHeight*0.108}}px;" url="../function/medicine/medicine">
-        <text>服药</text>
-        <image src="/image/drug_record.png" class="record_png" mode="aspectFit" style="opacity:0.3;margin-left:110rpx;"/>
-        <view class="target" style="width:100rpx;">
-          <view>今日服药</view>
-            <view wx:if="{{medtask==0&&todayMed>0}}">已记录</view>
-            <view wx:elif="{{medtask==0&&todayMed==0}}">无要求</view>
-            <view wx:else>未记录</view>
+      <navigator class="health_card" style="margin-left:10rpx;height:{{windowHeight*0.108}}px;" url="../function/medicine/medicine">
+        <image src="/image/drug_record.png" class="record_png" mode="aspectFit" />
+        <view class="informations">
+          <view class="target">
+            <text style="font-size:30rpx;">服药</text>
+            <view>今日服药</view>
+          </view>
+          <view wx:if="{{medtask==0&&todayMed>0}}" class="now_data">已记录</view>
+          <view wx:elif="{{medtask==0&&todayMed==0}}" class="now_data">无记录</view>
+          <view wx:else class="now_data">未记录</view>
         </view>
         <view wx:if="{{medtask>0}}" class='red-icon icon'>{{medtask}}</view>
       </navigator>
     </view>
+      <view class="health" style="margin-top:{{windowHeight*0.009}}px;width:94%;margin-left: 3%;">其他记录</view>
     <view class="last">
-      <view>
-        <view class="health" style="margin-top:{{windowHeight*0.009}}px;">饮食与运动记录</view>
-        <navigator class="diet" url="../function/eat/eat" style="height:{{windowHeight*0.072}}px;margin-top:{{windowHeight*0.009}}px;">
-          <text style="font-size: 36rpx;margin-left: 12rpx;">饮食</text>
-          <image src="/image/diet_record.png" class="record_png" mode="aspectFit" style="opacity:0.4;margin-left:120rpx;position:relative;"/>
+        <navigator class="diet_sports" url="../function/eat/eat" style="height:{{windowHeight*0.15}}px;margin-top:{{windowHeight*0.009}}px;">
+          <image src="/image/diet_record.png" class="other_png" mode="aspectFit" style="opacity:0.7;"/>
+          <text style="font-size: 30rpx;margin-top: {{windowHeight*0.01}}px;">饮食</text>
         </navigator>
-        <navigator class="sports" url="../function/sports/sports" style="height:{{windowHeight*0.072}}px;margin-top:{{windowHeight*0.009}}px;">
-          <text style="font-size: 36rpx;margin-left: 12rpx;">运动</text>
-          <image src="/image/sports_record.png" class="record_png" mode="aspectFit" style="opacity:0.4;margin-left:120rpx;position:relative;"/>
+        <navigator class="diet_sports" url="../function/sports/sports" style="height:{{windowHeight*0.15}}px;margin-top:{{windowHeight*0.009}}px; margin-left:10rpx;">
+          <image src="/image/sports_record.png" class="other_png" mode="aspectFit"/>
+          <text style="font-size: 30rpx;margin-top: {{windowHeight*0.01}}px;">运动</text>
         </navigator>
-      </view>
-      <view class="discomfort">
-        <view class="health" style="margin-top:{{windowHeight*0.009}}px;">不适症状记录</view>
-        <navigator url="../function/uncomf/uncomf" style="margin-top:{{windowHeight*0.009}}px;height:{{windowHeight*0.153}}px;">
-          <image class="discomfort_image" mode="aspectFit" src="../../image/discomfort.png" />
+        <navigator url="../function/uncomf/uncomf" class="diet_sports discomfort" style="margin-top:{{windowHeight*0.009}}px;height:{{windowHeight*0.15}}px;">
+          <image src="../../image/discomfort.png" class="other_png" mode="aspectFit" style="opacity:0.75;" />
+          <text style="font-size: 30rpx;margin-top: {{windowHeight*0.01}}px;">不适</text>
         </navigator>
-      </view>
+        <navigator url="../function/communicate/communicate-list/communicate-list" class="diet_sports communicate" style="margin-top:{{windowHeight*0.009}}px;height:{{windowHeight*0.15}}px;">
+
+            <image src="../../image/communicate.png" class="other_png" mode="aspectFit" />
+            <text style="font-size: 30rpx;margin-top: {{windowHeight*0.01}}px;">交流</text>
+
+          <view wx:if="{{msgtask>0}}" class='red-icon icon_communicate'>{{msgtask}}</view>
+        </navigator>
     </view>
 </view>

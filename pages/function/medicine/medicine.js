@@ -49,17 +49,31 @@ Page({
             that.refresh();
           }, 700);
         } else {
-          let med = res.data.data;
+          let med = res.data.data.reverse();
           that.setData({
             medicines: med
           });
+          var overflow = [];
           if (med.length >= 0) {
             var date = med.map(function(item) {
               return item.useDateTime.split(" ");
             });
             var medname = med.map(that.gettab);
             var medvalue = med.map(that.getvalue);
+            medname.forEach(e => {
+              if(e.length>3){
+                e.splice(2,e.length-2);
+                overflow.push(1);
+              }
+              else {overflow.push(0);}
+            });
+            medvalue.forEach(e => {
+              if(e.length>3){
+                e.splice(2,e.length-2);
+              }
+            });
             that.setData({
+              overflow,
               medname: medname,
               medvalue: medvalue,
               date: date

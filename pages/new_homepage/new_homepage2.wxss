@@ -163,13 +163,12 @@
 
 .health_card {
     font-size: 30rpx;
-    width: 356rpx;
+    width: 340rpx;
     border-radius: 8rpx;
     display: flex;
     align-items: center;
     position: relative;
-    background: linear-gradient(#F6FBFE,#DCEDF4);
-    border: solid 1px #D9E4EA;
+    box-shadow: rgba(0, 0, 0, 0.239216) 0px 1px 3px 1px;
 }
 
 .health_card>text {
@@ -180,32 +179,22 @@
 .record_png {
     height: 70rpx;
     width: 70rpx;
-    margin-left: 14rpx;
-}
-
-.informations {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width:100%;
+    z-index: 10;
+    opacity: 0.1;
+    position: absolute;
+    margin-left: 100rpx;
 }
 
 .target {
+    font-size: 20rpx;
     display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-}
-
-.target>view {
-    font-size: 22rpx;
-    color: #828383;
-    margin-left: 10rpx;
-}
-
-.now_data {
-    font-size: 28rpx;
-    color: #0086E3;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(253, 253, 253, 0.5);
+    padding: 6rpx;
+    border-radius: 8rpx;
+    margin-left: 120rpx;
 }
 
 .last {
@@ -213,23 +202,29 @@
     flex-direction: row;
     width:94%;
     margin-left: 3%;
+    justify-content: space-between;
 }
 
-.diet_sports {
-    background: linear-gradient(#F2FBDD, #ECFDB1);
-    width:168.75rpx;
+.diet {
+    background-color: #CCCCFF;
+    width:340rpx;
     font-size: 28rpx;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    border: solid 1px #C3E7A7;
-    border-radius: 8rpx;
+    border-top-left-radius: 8rpx;
+    border-top-right-radius: 8rpx;
+    box-shadow: rgba(0, 0, 0, 0.239216) 0px 1px 3px 1px;
 }
 
-.other_png {
-    height: 90rpx;
-    width: 90rpx;
+.sports {
+    background-color: #99CCCC;
+    width:340rpx;
+    font-size: 28rpx;
+    display: flex;
+    align-items: center;
+    border-bottom-left-radius: 8rpx;
+    border-bottom-right-radius: 8rpx;
+    box-shadow: rgba(0, 0, 0, 0.239216) 0px 1px 6px 1px;
 }
 
 .column {
@@ -239,17 +234,21 @@
     background-color: #797979;
 }
 
-.discomfort {
-    margin-left: 10rpx;
-    background: linear-gradient(#F8ECD0, #F6C78B);
-    border: solid 1px #E7CDA7;
+.discomfort>navigator {
+    height: 168rpx;
+    width:340rpx;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8rpx;
+    background-color: #CCCCCC;
+    box-shadow: rgba(0, 0, 0, 0.239216) 0px 1px 3px 1px;
 }
 
-.communicate {
-    margin-left: 10rpx;
-    background: rgba(244, 244, 247, 1);
-    border: 0px;
-    position: relative;
+.discomfort_image {
+    height:130rpx;
+    opacity: 0.5;
 }
 
 .red-icon {
@@ -268,11 +267,6 @@
   
 .icon {
     left: 94%;
-    top: -10rpx;
-}
-
-.icon_communicate {
-    left: 90%;
     top: -10rpx;
 }
 

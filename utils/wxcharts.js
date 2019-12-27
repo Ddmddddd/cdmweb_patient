@@ -18,7 +18,7 @@ var config = {
     yAxisTitleWidth: 15,
     padding: 12,
     columePadding: 3,
-    fontSize: 10,
+    fontSize: 16,
     dataPointShape: ['diamond', 'circle', 'triangle', 'rect'],
     colors: ['#7cb5ec', '#f7a35c', '#434348', '#90ed7d', '#f15c80', '#8085e9'],
     pieChartLinePadding: 25,
@@ -969,7 +969,7 @@ function drawToolTip(textList, offset, opts, config, context) {
     }, offset);
     offset.y -= 8;
     var textWidth = textList.map(function (item) {
-        return measureText(item.text);
+        return measureText(item.text)*1.4;
     });
 
     var toolTipWidth = legendWidth + legendMarginRight + 4 * config.toolTipPadding + Math.max.apply(null, textWidth);

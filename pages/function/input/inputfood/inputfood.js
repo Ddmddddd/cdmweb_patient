@@ -114,6 +114,18 @@ Page({
     if (this.inputValidate()) {
       return false;
     }
+    let {kinds, appetite} = this.data;
+    var combinedKinds = [];
+    var combinedAppetite = [];
+    for(var i=0; i<kinds.length; i++) {
+      let index = combinedKinds.indexOf(kinds[i]);
+      if(index==-1){
+        combinedKinds.push(kinds[i]);
+        combinedAppetite.push(appetite[i]);
+      } else {
+        combinedAppetite.splice(index, 1, parseFloat(appetite[i])+parseFloat(combinedAppetite[index]));
+      }
+    }
     //set status
     if(status == 255){
       data = {
@@ -123,8 +135,8 @@ Page({
     }else if(status == 254){
       data = {
         serialNo: this.data.serialNo.toString(),
-        kinds: this.data.kinds.toString(),
-        appetite: this.data.appetite.toString(),
+        kinds: combinedKinds.toString(),
+        appetite: combinedAppetite.toString(),
         happenDateTime: this.data.happenDateTime,
         memo: this.data.memo,
         type: parseInt(this.data.type),
@@ -132,8 +144,8 @@ Page({
       url = vicoDietCommit
     }else{
       data = {
-        kinds: this.data.kinds.toString(),
-        appetite: this.data.appetite.toString(),
+        kinds: combinedKinds.toString(),
+        appetite: combinedAppetite.toString(),
         happenDateTime: this.data.happenDateTime,
         memo: this.data.memo,
         type: parseInt(this.data.type),

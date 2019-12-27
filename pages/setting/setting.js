@@ -22,9 +22,11 @@ Page({
   onLoad: function (options) {
     var patientName = app.globalData.loginUserInfo.name
     var patientid = wx.getStorageSync('patientid_token');
+    var sex = app.globalData.sex;
     this.setData({
-      patientName:patientName,
-      patientid:patientid
+      patientName,
+      patientid,
+      sex,
     })
   },
 

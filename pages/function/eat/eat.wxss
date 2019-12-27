@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   width: 50%;
-  height: 90%;
+  height: 72px;
   overflow: auto;
   justify-content: center;
   align-items: center;
@@ -15,4 +15,3 @@
   color: #188df0;
   line-height: 46rpx;
 }
-

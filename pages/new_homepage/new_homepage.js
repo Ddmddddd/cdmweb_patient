@@ -89,9 +89,9 @@ Page({
           bloodGlucoseGoal: data.managementPlan.goalGLU || 6.1,
           weightGoal: ~~(data.managementPlan.goalBMI*data.loginUserInfo.newestHeight*data.loginUserInfo.newestHeight/10000),
           nowWeight: data.loginUserInfo.newestWeight,
-          nowDiastolicPressure: data.todayRecords.bpRecordList.length>0 ? data.todayRecords.bpRecordList[0].diastolicPressure : 0,
-          nowSystolicPressure: data.todayRecords.bpRecordList.length>0 ? data.todayRecords.bpRecordList[0].systolicPressure : 0,
-          nowBloodGlucose: data.todayRecords.bloodGlucoseRecordList.length>0 ? data.todayRecords.bloodGlucoseRecordList[0].bloodGlucose : 0,
+          nowDiastolicPressure: data.todayRecords.bpRecordList.length>0 ? data.todayRecords.bpRecordList[data.todayRecords.bpRecordList.length-1].diastolicPressure : 0,
+          nowSystolicPressure: data.todayRecords.bpRecordList.length>0 ? data.todayRecords.bpRecordList[data.todayRecords.bpRecordList.length-1].systolicPressure : 0,
+          nowBloodGlucose: data.todayRecords.bloodGlucoseRecordList.length>0 ? data.todayRecords.bloodGlucoseRecordList[data.todayRecords.bloodGlucoseRecordList.length-1].bloodGlucose : 0,
           todayMed: data.todayRecords.drugRecordList.length>0 ? data.todayRecords.drugRecordList.length : 0,
           sex: data.loginUserInfo.sex=="男"? 1 : 0,
           bptask: bptask,
@@ -101,6 +101,7 @@ Page({
           msgtask:msgtask
         })
         that.calregistTime(that.data.registDate);
+        app.globalData.sex = data.loginUserInfo.sex=="男"? 1 : 0;
       }
     })
   },
@@ -125,15 +126,37 @@ Page({
   getFourKno(){
     var that = this;
     var count = 4;
-    request({url:mesGet + count}).then(res=>{
-      let knowledge1 = res.data.result.knowledge.map(function(item){
-        var arr=item.kno_time.split(" ");
-        item.kno_time=arr[0];
-        return item
-      })
-      that.setData({
-        knowledge:knowledge1
-      })
+    let url = 'https://edu.zjubiomedit.com/health-knowledge/GetTopNKno.jsp?count=4'
+    wx.request({
+      url, 
+      method: "GET",
+      header: { "content-type": "application/json"},
+      success:res=>{
+        const { statusCode } = res;
+        if (statusCode > 400 && statusCode < 500) {
+          wx.showToast({
+            title: "端口请求错啦" + statusCode,
+            icon: "none"
+          });
+          return false
+        } else if (statusCode > 500) {
+          wx.showToast({
+            title: "服务器请求失败" + statusCode,
+            icon: "none"
+          });
+          return false
+        }
+        else {
+          let knowledge1 = res.data.result.knowledge.map(function(item){
+            var arr=item.kno_time.split(" ");
+            item.kno_time=arr[0];
+            return item
+          })
+          that.setData({
+            knowledge:knowledge1
+          })
+        }
+      }
     })
   },
 

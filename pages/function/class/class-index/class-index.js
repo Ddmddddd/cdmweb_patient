@@ -191,10 +191,15 @@ Page({
   onShow: function() {
     var that = this;
     let patientId = this.data.patientId;
+    wx.showLoading({
+      title: '加载中…',
+      mask: true,
+    });
     this.subscribeInfor(patientId).then(() => {
       that.classScheduleList(patientId);
       that.todayStudyList(patientId);
     });
+    wx.hideLoading();
   },
 
   /**

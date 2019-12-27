@@ -136,7 +136,7 @@ Page({
             that.refresh();
           }, 700);
         } else {
-          let sport = res.data.data;
+          let sport = res.data.data.reverse();
           that.setData({
             sports: sport
           });

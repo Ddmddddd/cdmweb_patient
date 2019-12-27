@@ -1,4 +1,1 @@
 /* pages/user/user.wxss */
-.phone {
-    background-color: #EBEBEB;
-}

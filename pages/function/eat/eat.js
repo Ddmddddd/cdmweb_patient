@@ -66,11 +66,12 @@ Page({
           that.refresh()
         },700)
       } else {
-        let diet = res.data.data;
+        let diet = res.data.data.reverse();
         that.setData({
           foods: diet,
           hidden: 0
         });
+        var overflow = [];
         if (diet.length != 0) {
           var date = diet.map(function(item) {
             return item.happenDateTime.split(" ");
@@ -79,7 +80,25 @@ Page({
           var foodtype = diet.map(that.parseFoodKind);
           var appetite = diet.map(that.parseFoodAppetite);
           var eattype = diet.map(that.parseType);
+          foodtype.forEach(e => {
+            if(e.length>3){
+              e.splice(2,e.length-2);
+              overflow.push(1);
+            }
+            else {overflow.push(0);}
+          });
+          appetite.forEach(e => {
+            if(e.length>3){
+              e.splice(2,e.length-2);
+            }
+          });
+          eattype.forEach(e => {
+            if(e.length>3){
+              e.splice(2,e.length-2);
+            }
+          });
           that.setData({
+            overflow,
             foodtype: foodtype,
             appetite: appetite,
             eattype: eattype,

@@ -52,7 +52,7 @@ Page({
           that.refresh()
         },700)
       } else {
-        let bgs = res.data.data
+        let bgs = res.data.data.reverse();
         let timePointArr = that.data.timePointArr
         that.setData({
           bgs:bgs

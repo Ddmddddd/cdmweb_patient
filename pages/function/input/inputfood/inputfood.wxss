@@ -2,6 +2,9 @@
 
 .food-item-text {
   font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
 }
 
 .delete {
@@ -23,6 +26,8 @@
   color: dodgerblue;
   text-align: right;
   font-size: 12px;
+  display: flex;
+  align-items: center;
 }
 
 .add-food-btn {

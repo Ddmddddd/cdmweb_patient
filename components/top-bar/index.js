@@ -8,6 +8,7 @@ Component({
    */
   properties: {
     tabbarData:Object,
+    subscribeList: Object,
   },
   
   /**
@@ -17,11 +18,17 @@ Component({
     activeIndex:0
   },
 
+  lifetimes: {
+    attached: function() {
+      console.log(this.data.tabbarData.tabs.length)
+    },
+  },
   /**
    * 组件的方法列表
    */
   methods: {
     tabClick: function(e) {
+      console.log(e.currentTarget.id)
       this.setData({
         activeIndex: parseInt(e.currentTarget.id)
       }) 

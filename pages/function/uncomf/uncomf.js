@@ -50,7 +50,7 @@ Page({
             that.refresh();
           }, 700);
         } else {
-          let uncomf = res.data.data;
+          let uncomf = res.data.data.reverse();
           that.setData({
             uncomfs: uncomf
           });
