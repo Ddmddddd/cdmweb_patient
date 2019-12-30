@@ -1,6 +1,5 @@
 {
   "usingComponents": {
     "circle": "../../../components/circle/index"
-  },
-  "disableScroll":true
+  }
 }

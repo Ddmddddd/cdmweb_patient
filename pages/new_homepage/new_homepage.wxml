@@ -24,7 +24,7 @@
         autoplay="{{true}}"
         interval="{{3000}}"
         duration="{{1000}}"
-        style="height:{{windowHeight*0.27}}px"
+        style="height:{{windowHeight*0.27}}px;width:{{knowledge.length==0?'0':'100%'}};"
       >
       <navigator wx:for="{{knowledge}}" wx:key="{{index}}" url='../message/mescontent/mescontent?id={{item.kno_id}}'>
         <swiper-item>
@@ -37,6 +37,10 @@
         </swiper-item>
       </navigator>
     </swiper>
+      <view wx:if="{{knowledge.length==0}}" class="swiper_wrong">
+        <image src="/image/empty_wrong.png" mode="aspectFit" />
+        <text>服务器不稳定，未能成功加载，请刷新重试。</text>
+      </view>
     </view>
     <view class="health" style="width:94%;margin-left:3%;margin-top:{{windowHeight*0.009}}px;">健康记录</view>
     <view class="record" style="margin-top:{{windowHeight*0.009}}px;">

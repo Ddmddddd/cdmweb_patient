@@ -149,6 +149,18 @@
     box-shadow: rgba(0, 0, 0, 0.239216) 0px 1px 3px 1px;
 }
 
+.swiper_wrong {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.swiper_wrong>image {
+    height: 140rpx;
+    width: 140rpx;
+}
+
 .health {
     font-weight: bold;
     font-size: 34rpx; 

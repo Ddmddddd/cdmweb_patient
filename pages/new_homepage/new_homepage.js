@@ -23,7 +23,7 @@ Page({
     bgtask:0,
     classtask:0,
     msgtask:0,
-
+    knowledge:[],
   },
 
   /**
@@ -188,7 +188,9 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    wx.stopPullDownRefresh()
+    wx.showLoading();
+    wx.stopPullDownRefresh();
+    wx.hideLoading();
   },
   /**
    * 生命周期函数--监听页面显示

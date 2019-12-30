@@ -17,7 +17,8 @@ Page({
     studyList: [],
     courseState: ["未开放", "待学习", "已学习"],
     sectionShow: [[[true]]],
-    chapterShow: [[true]]
+    chapterShow: [[true]],
+    server_error:true,
   },
   /**
    * 获取订阅情况，subscribeList
@@ -29,6 +30,9 @@ Page({
     let tab = this.selectComponent("#mytab");
     return new Promise((resolve, reject) => {
       request({ url }).then(res => {
+        that.setData({
+          server_error:false,
+        })
         var coidList = [],
           nameList = [];
         res.data.result.map(function(item) {
@@ -216,7 +220,9 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-    wx.stopPullDownRefresh()
+    wx.showLoading();
+    wx.stopPullDownRefresh();
+    wx.hideLoading();
   },
 
   /**

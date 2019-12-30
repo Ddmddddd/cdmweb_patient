@@ -31,6 +31,10 @@
   <button wx:if="{{studyList.length>0}}" data-kid="{{studyList}}" data-isLearn="{{1}}" bindtap="gotoStudy">开始学习({{studyList.length}})</button>
   <button wx:else disabled="{{true}}">今日学习任务已完成</button>
 </view>
+<view wx:elif="{{server_error}}" class="no_class">
+  <image src="/image/empty_wrong.png" mode="aspectFit" style="height:300rpx;width:300rpx;" />
+  <view>服务器不稳定，未能成功加载，请刷新重试。</view>
+</view>
 <view wx:else class="no_class">
   <image src="/image/class_null.png" mode="aspectFit" style="height:300rpx;width:300rpx;" />
   <view>暂无您的课堂记录</view>
