@@ -189,6 +189,7 @@ Page({
    */
   onPullDownRefresh: function () {
     wx.showLoading();
+    this.onShow();
     wx.stopPullDownRefresh();
     wx.hideLoading();
   },
