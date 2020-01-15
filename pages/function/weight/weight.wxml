@@ -21,7 +21,7 @@
         </view>
         <!-- <view class='history-date'>{{bp.measureTime}}</view> -->
         <view class='history-wg'>
-          <view class='history-data'> {{wg.weight||'未输入'}}</view>
+          <view class='history-data' style="{{wg.weight>weightGoal?'color:#FF4500':''}}"> {{wg.weight||'未输入'}}</view>
           <view class='history-unit' style='margin-left:2%'>kg</view>
         </view>
       </view>

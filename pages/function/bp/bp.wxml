@@ -19,7 +19,7 @@
         </view>
         <!-- <view class='history-date'>{{bp.measureTime}}</view> -->
         <view class='history-bp'>
-          <view class="history-data {{(bp.systolicPressure<=140)&&(bp.systolicPressure>90)&&(bp.diastolicPressure>60)&&(bp.diastolicPressure<=90)?'normal':'warn'}}">
+          <view class="history-data {{(bp.systolicPressure<=systolicPressureGoal)&&(bp.diastolicPressure<=diastolicPressureGoal)?'normal':'warn'}}">
           {{bp.systolicPressure}}/{{bp.diastolicPressure}}
           </view>
           <view class='history-unit'>mmHg</view>

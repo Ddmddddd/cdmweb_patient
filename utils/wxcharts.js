@@ -18,7 +18,7 @@ var config = {
     yAxisTitleWidth: 15,
     padding: 12,
     columePadding: 3,
-    fontSize: 16,
+    fontSize: 12,
     dataPointShape: ['diamond', 'circle', 'triangle', 'rect'],
     colors: ['#7cb5ec', '#f7a35c', '#434348', '#90ed7d', '#f15c80', '#8085e9'],
     pieChartLinePadding: 25,
@@ -493,8 +493,8 @@ function calLegendData(series, opts, config) {
             legendHeight: 0
         };
     }
-    var padding = 5;
-    var marginTop = 8;
+    var padding = 15;
+    var marginTop = 3;
     var shapeWidth = 15;
     var legendList = [];
     var widthCount = 0;
@@ -516,7 +516,7 @@ function calLegendData(series, opts, config) {
 
     return {
         legendList: legendList,
-        legendHeight: legendList.length * (config.fontSize + marginTop) + padding
+        legendHeight: legendList.length * (config.fontSize + marginTop) + padding 
     };
 }
 
@@ -810,12 +810,13 @@ function drawPointText(points, series, config, context) {
     var data = series.data;
 
     context.beginPath();
-    context.setFontSize(config.fontSize);
+    context.setFontSize(config.fontSize+1);
     context.setFillStyle('#666666');
     points.forEach(function (item, index) {
         if (item !== null) {
             var formatVal = series.format ? series.format(data[index]) : data[index];
             context.fillText(formatVal, item.x - measureText(formatVal) / 2, item.y - 2);
+            context.setFillStyle(series.pointColor[index+1]);
         }
     });
     context.closePath();
@@ -969,7 +970,7 @@ function drawToolTip(textList, offset, opts, config, context) {
     }, offset);
     offset.y -= 8;
     var textWidth = textList.map(function (item) {
-        return measureText(item.text)*1.4;
+        return measureText(item.text)*1.2;
     });
 
     var toolTipWidth = legendWidth + legendMarginRight + 4 * config.toolTipPadding + Math.max.apply(null, textWidth);
@@ -1017,7 +1018,7 @@ function drawToolTip(textList, offset, opts, config, context) {
 
     // draw text communicate-list
     context.beginPath();
-    context.setFontSize(config.fontSize);
+    context.setFontSize(config.fontSize+2);
     context.setFillStyle('#ffffff');
     textList.forEach(function (item, index) {
         var startX = offset.x + arrowWidth + 2 * config.toolTipPadding + legendWidth + legendMarginRight;
@@ -1035,7 +1036,7 @@ function drawYAxisTitle(title, opts, config, context) {
     var startX = config.xAxisHeight + (opts.height - config.xAxisHeight - measureText(title)) / 2;
     context.save();
     context.beginPath();
-    context.setFontSize(config.fontSize);
+    context.setFontSize(config.fontSize+4);
     context.setFillStyle(opts.yAxis.titleFontColor || '#333333');
     context.translate(0, opts.height);
     context.rotate(-90 * Math.PI / 180);
@@ -1330,7 +1331,7 @@ function drawXAxis(categories, opts, config, context) {
 
     if (config._xAxisTextAngle_ === 0) {
         context.beginPath();
-        context.setFontSize(config.fontSize);
+        context.setFontSize(config.fontSize+4);
         context.setFillStyle(opts.xAxis.fontColor || '#666666');
         categories.forEach(function (item, index) {
             var offset = eachSpacing / 2 - measureText(item) / 2;
@@ -1342,7 +1343,7 @@ function drawXAxis(categories, opts, config, context) {
         categories.forEach(function (item, index) {
             context.save();
             context.beginPath();
-            context.setFontSize(config.fontSize);
+            context.setFontSize(config.fontSize+4);
             context.setFillStyle(opts.xAxis.fontColor || '#666666');
             var textWidth = measureText(item);
             var offset = eachSpacing / 2 - textWidth;
@@ -1367,7 +1368,7 @@ function drawYAxisGrid(opts, config, context) {
     var spacingValid = opts.height - 2 * config.padding - config.xAxisHeight - config.legendHeight;
     var eachSpacing = Math.floor(spacingValid / config.yAxisSplit);
     var yAxisTotalWidth = config.yAxisWidth + config.yAxisTitleWidth;
-    var startX = config.padding + yAxisTotalWidth;
+    var startX = config.padding + yAxisTotalWidth + 6;
     var endX = opts.width - config.padding;
 
     var points = [];
@@ -1384,6 +1385,21 @@ function drawYAxisGrid(opts, config, context) {
         context.lineTo(endX, item);
     });
     context.closePath();
+    context.stroke();
+}
+
+//绘制虚线
+function dashedLineTodashedLineTo(context, endX, endY, startX, startY, dashLength, color) {
+    dashLength = dashLength === 0 || dashLength === undefined ? dashLength = 5 : dashLength = dashLength;
+    //这个this就是context哈
+
+    context.beginPath();
+    //线段数量
+    var dashNum = Math.floor(Math.sqrt(Math.pow(startX - endX, 2) + Math.pow(startY - endY, 2)) / dashLength);
+    for (var i = 0; i < dashNum; i++) {
+        context[i % 2 === 0 ? "moveTo" : "lineTo"](startX + i * (endX - startX) / dashNum, startY + i * (endY - startY) / dashNum);
+    }
+    context.setStrokeStyle(color);
     context.stroke();
 }
 
@@ -1417,7 +1433,7 @@ function drawYAxis(series, opts, config, context) {
 
     context.stroke();
     context.beginPath();
-    context.setFontSize(config.fontSize);
+    context.setFontSize(config.fontSize+4);
     context.setFillStyle(opts.yAxis.fontColor || '#666666');
     rangesFormat.forEach(function (item, index) {
         var pos = points[index] ? points[index] : endY;
@@ -1429,6 +1445,7 @@ function drawYAxis(series, opts, config, context) {
     if (opts.yAxis.title) {
         drawYAxisTitle(opts.yAxis.title, opts, config, context);
     }
+
 }
 
 function drawLegend(series, opts, config, context) {
@@ -1748,6 +1765,9 @@ function drawCharts(type, opts, config, context) {
 
     var series = opts.series;
     var categories = opts.categories;
+    if(opts.drawDashedLine==true){
+        var dashedLine = opts.dashedLine;
+    }
     series = fillSeriesColor(series, config);
 
     var _calLegendData = calLegendData(series, opts, config),
@@ -1794,6 +1814,11 @@ function drawCharts(type, opts, config, context) {
                     drawYAxis(series, opts, config, context);
                     drawToolTipBridge(opts, config, context, process);
                     drawCanvas(opts, context);
+                    if(dashedLine) {
+                        dashedLine.forEach(function(item, index){
+                            dashedLineTodashedLineTo(context, item.endX, item.endY, item.startX, item.startY, item.lineLength, item.color);
+                        })
+                    }
                 },
                 onAnimationFinish: function onAnimationFinish() {
                     _this.event.trigger('renderComplete');

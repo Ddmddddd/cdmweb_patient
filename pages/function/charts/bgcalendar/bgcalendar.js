@@ -14,15 +14,20 @@ Page({
   },
 
   dayClick:function(e){
-    // console.log(e.detail);
+    console.log(e.detail);
     var that = this
+    let dayscolor = this.data.dayscolor;
+    if(dayscolor[dayscolor.length-1].background=="#33ccff"){
+      dayscolor.pop();
+    }
+    dayscolor.push({
+      month:'current',
+      day:e.detail.day,
+      color:'white',
+      background:'#33ccff'
+    })
     this.setData({
-      dayscolor:[{
-        month:'current',
-        day:e.detail.day,
-        color:'white',
-        background:'#33ccff'
-      }]
+      dayscolor,
     })
     let dateString = util.formatCalendarDate(e.detail.year,e.detail.month,e.detail.day)
     console.log(dateString)
@@ -51,16 +56,83 @@ Page({
         that.setData({
           bgHisData:bgs
         });
+      }
+    })
+  },
+
+  monthBgRequest(data) {
+    var that = this;
+    let url = vicoBloodGlucoseGet;
+    let method = "POST"
+    let token = wx.getStorageSync('login_token');
+    let header = {
+      "token":token,
+      "content-type": "application/json" 
+    }
+    tokenRequest({url:url, header:header, method:method, data:data}).then(res=>{
+      // console.log(res)
+      if (res.data.code == 20001) {
+        console.log('relogin')
+        setTimeout(()=>{
+          that.dayClick()
+        },700)
+      } else {
+        console.log(res.data.data)
+        let bgs = res.data.data
         if (bgs.length != 0) {
-          var date = bgs.map(function(item) {
-            return item.measureDateTime.split(" ");
+          var date;
+          date = bgs.map(function(item) {
+            let day = item.measureDateTime.split(" ")[0].split("-")[2];
+            return day;
+          });
+          var monthStyle = [];
+          date.forEach(e => {
+            monthStyle.push({
+              month:'current',
+              day:e,
+              color:'white',
+              background:'#95D42A'
+            })
           });
           that.setData({
-            date: date
+            date: date,
+            bgHisData:[],
+            dayscolor: monthStyle
           });
         }
       }
     })
+  },
+
+  prevMonthChange(e){
+    this.setData({
+      dayscolor:[]
+    })
+    let currentMonthString = util.formatCalendarDate(e.detail.currentYear, e.detail.currentMonth, '1');
+    let prevMonthString = util.formatCalendarDate(e.detail.prevYear, e.detail.prevMonth, '1');
+    let data = {
+      measureStartDate: currentMonthString + ' ' + '00:00:00',
+      measureEndDate: prevMonthString + ' ' + '00:00:00',
+    }
+    this.monthBgRequest(data);
+  },
+
+  nextMonthChange(e){
+    this.setData({
+      dayscolor:[]
+    })
+    let currentMonthString = util.formatCalendarDate(e.detail.currentYear, e.detail.currentMonth, '1');
+    var nextMonthString;
+    if(e.detail.currentMonth<12) {
+      nextMonthString = util.formatCalendarDate(e.detail.currentYear, e.detail.currentMonth+1, '1');
+    }else {
+      nextMonthString = util.formatCalendarDate(e.detail.currentYear+1, '1', '1');
+    }
+    let data = {
+      measureStartDate: currentMonthString + ' ' + '00:00:00',
+      measureEndDate: nextMonthString + ' ' + '00:00:00',
+    }
+    this.monthBgRequest(data);
   },
   
   dateChange:function(e){
@@ -76,21 +148,20 @@ Page({
   onLoad: function (options) {
     let day = new Date().getDate()
     let bgHisData = JSON.parse(options.data)
-    let date = bgHisData.map(function(item) {
-      if(item){
-        return item.measureDateTime.split(" ");
-      }
-    });
-    this.setData({
-      bgHisData:bgHisData,
-      date:date,
-      dayscolor:[{
-        month:'current',
-        day:day,
-        color:'white',
-        background:'#33ccff'
-      }]
-    })
+    let year = new Date().getFullYear();
+    let month = new Date().getMonth()+1;
+    let currentMonthString = util.formatCalendarDate(year, month, '1');
+    var nextMonthString;
+    if(month<12) {
+      nextMonthString = util.formatCalendarDate(year, month+1, '1');
+    }else {
+      nextMonthString = util.formatCalendarDate(year+1, '1', '1');
+    }
+    let data = {
+      measureStartDate: currentMonthString + ' ' + '00:00:00',
+      measureEndDate: nextMonthString + ' ' + '00:00:00',
+    }
+    this.monthBgRequest(data);
   },
 
   /**

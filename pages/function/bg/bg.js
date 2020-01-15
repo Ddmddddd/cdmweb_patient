@@ -3,7 +3,7 @@ var util = require('../../../utils/util.js');
 import { tokenRequest } from "../../../utils/Request";
 import { vicoBloodGlucoseGet } from "../../../utils/config";
 // import * as echarts from '../../components/ec-canvas/echarts.min';
-// var app = getApp();
+var app = getApp();
 
 Page({
 
@@ -89,7 +89,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      bloodGlucoseGoal: app.globalData.bloodGlucoseGoal,
+    })
   },
 
   /**

@@ -45,12 +45,14 @@ Page({
    */
   onLoad: function(options) {
     this.openWS();
+    var sex = app.globalData.sex;
     var query = wx.createSelectorQuery();
     query.select('weui-textarea')
     chatList = [];
     index = 0;
     let chatBasic = JSON.parse(options.chatInfo)
     this.setData({
+      sex,
       doctorId: parseInt(chatBasic.id),
       doctorName: chatBasic.name,
       unReadMsgList: chatBasic.unReadMsgList

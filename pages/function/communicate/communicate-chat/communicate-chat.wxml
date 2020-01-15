@@ -4,8 +4,12 @@
       <block wx:for='{{chatList}}' wx:key='{{index}}'>
         <view id="msg-{{index}}" class='msg' style="flex-direction:{{item.senderID!=doctorId?'row-reverse':'row'}}">
           <view class='msg-content' style="flex-direction:{{item.senderID!=doctorId?'row-reverse':'row'}}">
-            <view class='avatar'>
-              <image class="msg-avatar" src="../../../../image/userPhoto.jpeg" />
+            <view class='avatar' wx:if="{{item.senderID!=doctorId}}">
+              <image class='msg-avatar' wx:if="{{sex==1}}" mode="aspectFill" src="/image/male.jpeg"/>
+              <image class='msg-avatar' wx:if="{{sex==0}}" mode="aspectFill" src="/image/female.jpeg" />
+            </view>
+            <view class='avatar' wx:else>
+              <image class='msg-avatar' mode="aspectFill" src="/image/doctor.png" />
             </view>
             <view class='content'>
               <view class='time' style="text-align:{{item.senderID!=doctorId?'right':'left'}}">

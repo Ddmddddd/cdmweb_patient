@@ -19,7 +19,7 @@
           <view class="history-timePoint">{{bg.timePoint}}</view>
         </view>
         <view class='history-bp'>
-          <view class="history-data {{warning[index2]}}">
+          <view class="history-data {{warning[index2]}}" style="{{bg.bloodGlucose>bloodGlucoseGoal?'color:#FF4500':''}}">
           {{bg.bloodGlucose}}
           </view>
           <view class='history-unit'>mmol/L</view>

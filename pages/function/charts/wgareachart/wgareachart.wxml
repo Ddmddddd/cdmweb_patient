@@ -1,3 +1,4 @@
 <!--pages/charts/wgareachart/wgareachart.wxml-->
 
-<canvas canvas-id="lineCanvas" disable-scroll="true" style="width:750rpx;height:1200rpx;" bindtouchstart="touchHandler" bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas>
+<canvas canvas-id="lineCanvas" disable-scroll="true" style="width:750rpx;height:1000rpx;" bindtouchstart="touchHandler" bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas>
+<view class="bmi">当前bmi指数为：{{bmi}}（{{status}}）</view>

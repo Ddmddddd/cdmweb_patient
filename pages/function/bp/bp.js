@@ -192,6 +192,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      systolicPressureGoal: app.globalData.systolicPressureGoal,
+      diastolicPressureGoal: app.globalData.diastolicPressureGoal,
+    })
     wx.showShareMenu({
       withShareTicket: true,
     })

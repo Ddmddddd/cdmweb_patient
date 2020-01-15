@@ -177,8 +177,8 @@ Page({
       });
     } else {
       this.setData({
-        date_sport: util.formatTime2(new Date()),
-        time_sport: util.formatTime4(new Date()),
+        date: util.formatTime2(new Date()),
+        time: util.formatTime4(new Date()),
         happenDateTime: util.formatTime3(new Date())
       });
     }

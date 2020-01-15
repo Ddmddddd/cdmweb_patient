@@ -1,8 +1,8 @@
 <!-- pages/function/charts/bgcalendar/bgcalendar.wxml -->
 <view class='calendar-container'>
   <calendar binddayClick="dayClick" weeks-type="cn" days-color="{{dayscolor}}" cell-size="38" 
-  bindnextMonth="dateChange" 
-  bindprevMonth="dateChange" 
+  bindnextMonth="nextMonthChange" 
+  bindprevMonth="prevMonthChange" 
   binddateChange="dateChange" />
 </view>
 <view class="history">

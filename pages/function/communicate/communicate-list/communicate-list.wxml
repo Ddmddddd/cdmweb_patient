@@ -4,7 +4,7 @@
       <view class=" nav-person-item" data-chat="{{item}}" bindtap='gotoChat'>
         <view class="list-part">
           <view class="avatar">
-            <image class="list-avatar" src="../../../../image/userPhoto.jpeg" />
+            <image class="list-avatar" src="../../../../image/doctor.png" />
             <view class="newMag" wx:if="{{item.unReadMsgList.length > 0}}"></view>
           </view>
           <view class="list-part-right">

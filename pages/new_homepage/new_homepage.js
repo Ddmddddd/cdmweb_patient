@@ -80,28 +80,37 @@ Page({
         data.chatDoctorList.forEach(item => {
           msgtask += item.unReadMsgList.length
         })
+        let diastolicPressureGoal = data.managementPlan.goalDBP || 90;
+        let systolicPressureGoal = data.managementPlan.goalSBP  || 140;
+        let bloodGlucoseGoal = data.managementPlan.goalGLU || 6.1;
+        let weightGoal = ~~(data.managementPlan.goalBMI*data.loginUserInfo.newestHeight*data.loginUserInfo.newestHeight/10000);
         that.setData({
           nickname: nickname,
           registDate: data.loginUserInfo.registDate || "2016/6/23 18:18:53",
-          diastolicPressureGoal: data.managementPlan.goalDBP || 90,
-          systolicPressureGoal: data.managementPlan.goalSBP  || 140,
+          diastolicPressureGoal,
+          systolicPressureGoal,
           returnVisitDate: data.managementPlan.returnVisitDate || "暂无",
-          bloodGlucoseGoal: data.managementPlan.goalGLU || 6.1,
-          weightGoal: ~~(data.managementPlan.goalBMI*data.loginUserInfo.newestHeight*data.loginUserInfo.newestHeight/10000),
+          bloodGlucoseGoal,
+          weightGoal,
           nowWeight: data.loginUserInfo.newestWeight,
           nowDiastolicPressure: data.todayRecords.bpRecordList.length>0 ? data.todayRecords.bpRecordList[data.todayRecords.bpRecordList.length-1].diastolicPressure : 0,
           nowSystolicPressure: data.todayRecords.bpRecordList.length>0 ? data.todayRecords.bpRecordList[data.todayRecords.bpRecordList.length-1].systolicPressure : 0,
           nowBloodGlucose: data.todayRecords.bloodGlucoseRecordList.length>0 ? data.todayRecords.bloodGlucoseRecordList[data.todayRecords.bloodGlucoseRecordList.length-1].bloodGlucose : 0,
           todayMed: data.todayRecords.drugRecordList.length>0 ? data.todayRecords.drugRecordList.length : 0,
           sex: data.loginUserInfo.sex=="男"? 1 : 0,
-          bptask: bptask,
-          weighttask: weighttask,
-          medtask: medtask,
-          bgtask:bgtask,
-          msgtask:msgtask
+          bptask,
+          weighttask,
+          medtask,
+          bgtask,
+          msgtask,
         })
         that.calregistTime(that.data.registDate);
         app.globalData.sex = data.loginUserInfo.sex=="男"? 1 : 0;
+        app.globalData.height = data.loginUserInfo.newestHeight;
+        app.globalData.diastolicPressureGoal = diastolicPressureGoal;
+        app.globalData.systolicPressureGoal = systolicPressureGoal;
+        app.globalData.bloodGlucoseGoal = bloodGlucoseGoal;
+        app.globalData.weightGoal = weightGoal;
       }
     })
   },

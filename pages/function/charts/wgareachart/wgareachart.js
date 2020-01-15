@@ -15,6 +15,8 @@ Page({
     windowWidth: 0,
     windowHeight: 0,
     enableScroll: false,
+    bmi: 0,
+    status: '正常',
   },
 
   touchHandler: function (e) {
@@ -37,6 +39,7 @@ Page({
     var chartsdate = {
       categories: [],
       wg: [],
+      wgColor: [],
     };
     var wgs = (this.data.wgs).reverse();
     if (wgs.length > 20) {
@@ -51,6 +54,7 @@ Page({
     }
     chartsdate.categories = wgs.map(function (item) {
       chartsdate.wg.push(item.weight);
+      chartsdate.wgColor.push('#666666');
       return formatTime6(item.measureDateTime)
     })
     chartsdate.categories.push('')
@@ -68,14 +72,14 @@ Page({
       series: [{
         name: '体重',
         data: weekData.wg,
+        pointColor: weekData.wgColor,
       }],
       yAxis: {
         title: 'kg',
         format: function (val) {
           return val.toFixed(0);
         },
-        min: 35,
-        max: 175,
+        min: 35
         // fontColor: '#83bff6',
         // gridColor: '#8085e9',
         // titleFontColor: '#f7a35c'
@@ -137,7 +141,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+      var weight = this.data.wgs[this.data.wgs.length-1].weight;
+      var height = app.globalData.height/100;
+      let bmi = weight/(height*height);
+      bmi = bmi.toFixed(1);
+      this.setData({
+        bmi,
+        status: bmi>24 ? '超重' : '正常',
+      })
   },
 
   /**

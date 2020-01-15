@@ -26,7 +26,7 @@
         duration="{{1000}}"
         style="height:{{windowHeight*0.27}}px;width:{{knowledge.length==0?'0':'100%'}};"
       >
-      <navigator wx:for="{{knowledge}}" wx:key="{{index}}" url='../message/mescontent/mescontent?id={{item.kno_id}}'>
+      <navigator wx:for="{{knowledge}}" wx:key="index" url='../message/mescontent/mescontent?id={{item.kno_id}}'>
         <swiper-item>
           <view class="kno_image_title">{{item.kno_name}}</view>
           <image
@@ -51,7 +51,9 @@
             <text style="font-size:30rpx;">血压</text>
             <view>目标 {{systolicPressureGoal}}/{{diastolicPressureGoal}}mmHg</view>
           </view>
-          <view wx:if="{{nowDiastolicPressure!=0}}" class="now_data">当前 {{nowSystolicPressure}}/{{nowDiastolicPressure}}mmHg</view>
+          <view wx:if="{{nowDiastolicPressure!=0}}" class="now_data">
+            当前 <text style="{{nowSystolicPressure>systolicPressureGoal||nowDiastolicPressure>diastolicPressureGoal ? 'color:#FF4500;':''}}">{{nowSystolicPressure}}/{{nowDiastolicPressure}}</text>mmHg
+          </view>
           <view wx:else class="now_data">当前 无</view>
         </view>
         <view wx:if="{{bptask>0}}" class='red-icon icon'>{{bptask}}</view>
@@ -63,9 +65,11 @@
               <text style="font-size:30rpx;">血糖</text>
               <view>目标 {{bloodGlucoseGoal}}mmol/L</view>
             </view>
-            <view wx:if="{{nowBloodGlucose!=0}}" class="now_data">当前 {{nowBloodGlucose}}mmol/L</view>
+            <view wx:if="{{nowBloodGlucose!=0}}" class="now_data">
+              当前 <text style="{{nowBloodGlucose>bloodGlucoseGoal ? 'color:#FF4500' : ''}}">{{nowBloodGlucose}}</text>mmol/L
+            </view>
             <view wx:elif="{{nowBloodGlucose==0&&bgtask==0}}" class="now_data">无要求</view>
-            <view wx:else style="color:red" class="now_data">当前 无</view>
+            <view wx:else class="now_data">当前 无</view>
           </view>
           <view wx:if="{{bgtask>0}}" class='red-icon icon'>{{bgtask}}</view>
       </navigator>
@@ -78,7 +82,10 @@
             <text style="font-size:30rpx;">体重</text>
             <view>目标 {{weightGoal}}kg</view>
           </view>
-          <view class="now_data">当前 {{nowWeight}}kg</view>
+          <view class="now_data" wx:if="{{nowWeight!=0}}">
+            当前 <text style="{{nowWeight>weightGoal ? 'color:#FF4500' : ''}}">{{nowWeight}}</text>kg
+          </view>
+          <view class="now_data" wx:else>当前 无</view>
         </view>
         <view wx:if="{{weighttask>0}}" class='red-icon icon'>{{weighttask}}</view>
       </navigator>
@@ -90,8 +97,8 @@
             <view>今日服药</view>
           </view>
           <view wx:if="{{medtask==0&&todayMed>0}}" class="now_data">已记录</view>
-          <view wx:elif="{{medtask==0&&todayMed==0}}" class="now_data">无记录</view>
-          <view wx:else class="now_data">未记录</view>
+          <view wx:elif="{{medtask==0&&todayMed==0}}" class="now_data">无要求</view>
+          <view wx:else class="now_data">当前 无</view>
         </view>
         <view wx:if="{{medtask>0}}" class='red-icon icon'>{{medtask}}</view>
       </navigator>
@@ -115,7 +122,8 @@
             <image src="../../image/communicate.png" class="other_png" mode="aspectFit" />
             <text style="font-size: 30rpx;margin-top: {{windowHeight*0.01}}px;">交流</text>
 
-          <view wx:if="{{msgtask>0}}" class='red-icon icon_communicate'>{{msgtask}}</view>
+          <view wx:if="{{msgtask>0&&msgtask<100}}" class='red-icon icon_communicate'>{{msgtask}}</view>
+          <view wx:if="{{msgtask>=100}}" class='red-icon icon_communicate'>...</view>
         </navigator>
     </view>
 </view>

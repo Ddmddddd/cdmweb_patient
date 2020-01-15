@@ -3,8 +3,11 @@ page{
   background-color: white
 }
 canvas{
-  background-color: white;
-  position: absolute;
   top: 20px;
   left: 2px;
+}
+
+.bmi {
+  margin-left: 40rpx;
+  margin-bottom: 40rpx;
 }
