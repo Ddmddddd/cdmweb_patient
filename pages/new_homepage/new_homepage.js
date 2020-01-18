@@ -135,7 +135,7 @@ Page({
   getFourKno(){
     var that = this;
     var count = 4;
-    let url = 'https://edu.zjubiomedit.com/health-knowledge/GetTopNKno.jsp?count=4'
+    let url = mesGet + count;
     wx.request({
       url, 
       method: "GET",

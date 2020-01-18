@@ -1,5 +1,7 @@
 //健康课堂模块
-const eduBaseUrl = "https://edu.zjubiomedit.com/healtheducation/"
+const eduProxy = "https://exp.zjubiomedit.com/eduproxy"
+//const eduBaseUrl = "https://edu.zjubiomedit.com/healtheducation/"
+const eduBaseUrl = eduProxy + "/healtheducation/" 
 
 const eduSubscribeApi = eduBaseUrl + "api/data/subscribe"
 const eduTodayScheduleApi = eduBaseUrl + 'api/data/today?patientId='
@@ -11,7 +13,8 @@ const eduRecordApi = eduBaseUrl + "api/data/record"
 const eduFavorApi = eduBaseUrl + "api/data/favor"
 
 //健康资讯模块
-const mesBaseUrl = 'https://edu.zjubiomedit.com/health-knowledge/'
+//const mesBaseUrl = 'https://edu.zjubiomedit.com/health-knowledge/'
+const mesBaseUrl = eduProxy + "/health-knowledge/"
 const mesGet = mesBaseUrl + 'GetTopNKno.jsp?count='
 const mesContentGet = mesBaseUrl + 'getKnoContent.jsp?kno_id='
 /**
